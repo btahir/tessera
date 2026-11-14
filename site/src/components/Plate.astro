@@ -1,0 +1,224 @@
+---
+// One plate as a person sees it: the scene behind a plain chat window with frosted panels.
+// The window is generic on purpose. It shows how the colors and the glass sit over the scene.
+import { sceneFor, type Mode, type Theme } from '../lib/themes'
+import Scene from './Scene.astro'
+
+interface Props {
+  theme: Theme
+  mode: Mode
+}
+
+const { theme, mode } = Astro.props
+const anchors = theme.modes[mode]!.anchors
+const pick = (key: string, fallback: string) => anchors[key] ?? anchors[fallback]!
+
+const vars = [
+  `--s0:${anchors['surface-0']}`,
+  `--s1:${pick('surface-1', 'surface-0')}`,
+  `--s2:${pick('surface-2', 'surface-0')}`,
+  `--t1:${anchors['text-primary']}`,
+  `--t2:${pick('text-secondary', 'text-primary')}`,
+  `--t3:${pick('text-muted', 'text-primary')}`,
+  `--accent:${theme.roles.accent}`,
+  `--glass:${Math.round(theme.glass.opacity * 100)}%`,
+  `--blur:${theme.glass.blur}px`,
+].join(';')
+---
+
+<div class:list={['window', mode]} style={vars} data-mode={mode}>
+  <Scene svg={sceneFor(theme, mode)} alt={`${theme.alt}, ${mode} mode`} class="bg" />
+  <div class="ui" aria-hidden="true">
+    <div class="side glass">
+      <b>Sessions</b>
+      <span class="on">Fix the login test</span>
+      <span>Write the release notes</span>
+      <span>Tidy the parser</span>
+      <div class="dots">{Object.values(theme.roles).map(color => <i style={`background:${color}`} />)}</div>
+    </div>
+    <div class="main glass">
+      <div class="me">Why does the login test fail on CI?</div>
+      <div class="you">
+        The test reads <code>SESSION_SECRET</code>, which CI never sets. Locally it comes from your <code>.env</code> file, so it passes
+        on your machine and fails in the pipeline.
+        <div class="muted">Read 3 files, ran 1 command</div>
+      </div>
+      <div class="you">
+        I added the variable to the workflow and the test passes now.
+        <div class="muted">Edited ci.yml</div>
+      </div>
+      <div class="status"><i></i><span data-word>{theme.words[0]}</span></div>
+      <div class="box"><span class="muted">Reply</span><span class="send"></span></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .window {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    container-type: inline-size;
+    background: var(--s0);
+    color: var(--t1);
+    font: 15px/1.55 var(--sans);
+  }
+
+  .window :global(.bg) {
+    position: absolute;
+    inset: 0;
+  }
+
+  .ui {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 21% 1fr;
+  }
+
+  .glass {
+    background: color-mix(in srgb, var(--s1) var(--glass), transparent);
+    -webkit-backdrop-filter: blur(var(--blur));
+    backdrop-filter: blur(var(--blur));
+  }
+
+  .side {
+    padding: 2.2cqw 1.4cqw;
+    font-size: max(11px, 1.1cqw);
+    color: var(--t2);
+    border-right: 1px solid color-mix(in srgb, var(--t3) 18%, transparent);
+  }
+
+  .side b {
+    display: block;
+    color: var(--t1);
+    font-weight: 600;
+    margin-bottom: 1.1cqw;
+  }
+
+  .side span {
+    display: block;
+    padding: 0.5cqw 0.7cqw;
+    border-radius: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .side .on {
+    background: color-mix(in srgb, var(--s2) 80%, transparent);
+    color: var(--t1);
+  }
+
+  .dots {
+    display: flex;
+    gap: 0.6cqw;
+    margin-top: 1.4cqw;
+  }
+
+  .dots i {
+    width: 1.2cqw;
+    height: 1.2cqw;
+    min-width: 9px;
+    min-height: 9px;
+    border-radius: 50%;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.3cqw;
+    padding: 2.4cqw 15%;
+    font-size: max(12px, 1.25cqw);
+  }
+
+  .me {
+    align-self: flex-end;
+    max-width: 72%;
+    padding: 0.8cqw 1.1cqw;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--s2) 90%, transparent);
+  }
+
+  .you code {
+    color: var(--accent);
+    font: 0.88em var(--mono);
+  }
+
+  .muted {
+    color: var(--t3);
+    font-size: 0.87em;
+    margin-top: 0.3em;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    color: var(--t2);
+    font-size: 0.93em;
+    visibility: hidden;
+  }
+
+  .status i {
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .status span::after {
+    content: '…';
+  }
+
+  :global([data-playing]) .status {
+    visibility: visible;
+  }
+
+  .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1cqw 1.2cqw;
+    border-radius: 12px;
+    border: 1px solid color-mix(in srgb, var(--t3) 35%, transparent);
+  }
+
+  .send {
+    width: max(18px, 2cqw);
+    height: max(18px, 2cqw);
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* A phone: no sidebar, a taller window. */
+  @media (max-width: 720px) {
+    .window {
+      aspect-ratio: 4 / 5;
+    }
+
+    .ui {
+      grid-template-columns: 1fr;
+    }
+
+    .side {
+      display: none;
+    }
+
+    .main {
+      padding: 20px 16px;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .me {
+      max-width: 85%;
+      padding: 8px 12px;
+    }
+
+    .box {
+      padding: 10px 12px;
+    }
+  }
+</style>

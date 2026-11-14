@@ -1,0 +1,9 @@
+{
+  "name": "hortus",
+  "version": "1.0.0",
+  "description": "Hortus (garden). A greenhouse in soft daylight, with broad leaves reaching in from the edges.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}

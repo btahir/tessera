@@ -1,0 +1,571 @@
+---
+import Install from '../../components/Install.astro'
+import Plate from '../../components/Plate.astro'
+import { REPO_URL, SITE_NAME, SITE_URL, abs } from '../../config'
+import Base from '../../layouts/Base.astro'
+import { ANCHOR_LABELS, ROLE_LABELS, THEMES, capitalize, modesOf, type Theme } from '../../lib/themes'
+
+export const getStaticPaths = () =>
+  THEMES.map((theme, index) => ({
+    params: { name: theme.name },
+    props: {
+      theme,
+      previous: THEMES.length > 1 ? THEMES[(index - 1 + THEMES.length) % THEMES.length] : undefined,
+      next: THEMES.length > 1 ? THEMES[(index + 1) % THEMES.length] : undefined,
+    },
+  }))
+
+interface Props {
+  theme: Theme
+  previous?: Theme
+  next?: Theme
+}
+
+const { theme, previous, next } = Astro.props
+const modes = modesOf(theme)
+const both = modes.length === 2
+const path = `/${theme.name}/`
+
+const title = `${theme.title}, Plate ${theme.numeral} · Tessera theme for Claude Code`.length <= 60
+  ? `${theme.title}, Plate ${theme.numeral} · Tessera theme for Claude Code`
+  : `${theme.title}, Plate ${theme.numeral} · Tessera`
+const shareTitle = `${theme.title} · Plate ${theme.numeral} of Tessera`
+const description = `${theme.tagline} ${theme.title} (“${theme.meaning}”) is a free theme for the Claude Code desktop app, in ${both ? 'light and dark' : `${modes[0]} mode`}.`.slice(0, 200)
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  '@id': `${abs(path)}#plate`,
+  name: theme.title,
+  alternateName: `Plate ${theme.numeral}`,
+  headline: `${theme.title}: ${theme.tagline}`,
+  description: theme.story,
+  url: abs(path),
+  image: abs(`/og/${theme.name}.png`),
+  inLanguage: 'en',
+  genre: 'Theme',
+  keywords: ['Claude Code theme', theme.title, theme.meaning, ...theme.words].join(', '),
+  license: 'https://opensource.org/licenses/MIT',
+  isAccessibleForFree: true,
+  position: THEMES.indexOf(theme) + 1,
+  isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, name: SITE_NAME, url: `${SITE_URL}/` },
+  sameAs: `${REPO_URL}/tree/main/themes/${theme.name}`,
+}
+
+const swatchModes = modes.map(mode => ({
+  mode,
+  entries: Object.entries(theme.modes[mode]!.anchors).map(([key, hex]) => ({ label: ANCHOR_LABELS[key] ?? key, hex })),
+}))
+const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LABELS[key] ?? key, hex }))
+---
+
+<Base
+  title={title}
+  shareTitle={shareTitle}
+  description={description}
+  path={path}
+  image={`/og/${theme.name}.png`}
+  imageAlt={`${theme.title}: ${theme.alt}`}
+  ld={ld}
+>
+  <article class="plate-page" data-plate={theme.name}>
+    <header class="wrap head">
+      <nav class="crumbs mark" aria-label="Breadcrumb"><a href="/#plates">Tessera</a> <span aria-hidden="true">/</span> Plate {theme.numeral}</nav>
+      <h1>{theme.title}</h1>
+      <p class="meaning">“{theme.meaning}”</p>
+      <p class="tagline">{theme.tagline}</p>
+    </header>
+
+    <div class="wrap">
+      <figure class="showcase" data-showcase data-mode="auto" data-words={JSON.stringify(theme.words)}>
+        <div class="mount">
+          {modes.map(mode => <Plate theme={theme} mode={mode} />)}
+        </div>
+        <figcaption class="controls">
+          {
+            both && (
+              <div class="modes" role="group" aria-label="Mode">
+                <button class="button" type="button" data-set-mode="light" aria-pressed="false">Light</button>
+                <button class="button" type="button" data-set-mode="dark" aria-pressed="false">Dark</button>
+              </div>
+            )
+          }
+          {!both && <p class="only">{capitalize(modes[0]!)} mode only</p>}
+          <button class="button" type="button" data-play data-event="Play motion" data-event-plate={theme.name}>
+            <span class="label">Play the motion</span>
+          </button>
+          {
+            theme.hasChime && (
+              <button class="button" type="button" data-chime data-event="Hear chime" data-event-plate={theme.name}>
+                <span class="label">Hear the chime</span>
+                <audio preload="none" src={`/chimes/${theme.name}.mp3`} />
+              </button>
+            )
+          }
+          <p class="alt">{theme.alt}. Held still, as it is while you read.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap details">
+      <section class="story">
+        <p class="mark">The plate</p>
+        <p class="lead">{theme.story}</p>
+
+        <p class="mark sub">While Claude works</p>
+        <p>The spinner takes one of these words in place of “Working”. When the app names the step it is on, that name stays.</p>
+        <ul class="words">
+          {theme.words.map(word => <li>{word}</li>)}
+        </ul>
+        {
+          theme.hasChime ? (
+            <p class="note">After a turn of 20 seconds or more, {theme.title} plays a soft chime under a second and a half long.</p>
+          ) : (
+            <p class="note">{theme.title} has no chime. Long turns end in silence.</p>
+          )
+        }
+      </section>
+
+      <section class="facts">
+        <p class="mark">Palette</p>
+        {
+          swatchModes.map(({ mode, entries }) => (
+            <div class="swatch-group">
+              <h2>{capitalize(mode)}</h2>
+              <ul class="swatches">
+                {entries.map(entry => (
+                  <li>
+                    <span class="chip" style={`background:${entry.hex}`} />
+                    <span class="what">{entry.label}</span>
+                    <code>{entry.hex}</code>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+        <div class="swatch-group">
+          <h2>Roles</h2>
+          <ul class="swatches">
+            {
+              roles.map(entry => (
+                <li>
+                  <span class="chip round" style={`background:${entry.hex}`} />
+                  <span class="what">{entry.label}</span>
+                  <code>{entry.hex}</code>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <p class="mark sub">Measured</p>
+        <table class="measured">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Reading</span></th>
+              {modes.map(mode => <th scope="col">{capitalize(mode)}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Body text on the page</th>
+              {modes.map(mode => <td>{theme.modes[mode]!.bodyContrast}:1</td>)}
+            </tr>
+            <tr>
+              <th scope="row">Muted text on the page</th>
+              {modes.map(mode => <td>{theme.modes[mode]!.mutedContrast}:1</td>)}
+            </tr>
+            <tr>
+              <th scope="row">Page lightness</th>
+              {modes.map(mode => <td>{Math.round(theme.modes[mode]!.pageLightness * 100)}%</td>)}
+            </tr>
+            <tr>
+              <th scope="row">Glass</th>
+              {modes.map(() => <td>{Math.round(theme.glass.opacity * 100)}%, {theme.glass.blur} pt blur</td>)}
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">Contrast is the WCAG ratio. Body text is held between 9:1 and 14:1 and muted text at 4.5:1 or better. Lightness is OKLCH, where 0% is black and 100% is white.</p>
+      </section>
+    </div>
+
+    <section class="section install-section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="mark">Install</p>
+          <h2>Hang {theme.title}</h2>
+        </div>
+        <Install theme={theme} />
+      </div>
+    </section>
+
+    {
+      previous && next && (
+        <nav class="wrap pager" aria-label="More plates">
+          <a href={`/${previous.name}/`} rel="prev">
+            <span class="mark">Previous · Plate {previous.numeral}</span>
+            <span class="name">{previous.title}</span>
+          </a>
+          <a href={`/${next.name}/`} rel="next" class="next">
+            <span class="mark">Next · Plate {next.numeral}</span>
+            <span class="name">{next.title}</span>
+          </a>
+        </nav>
+      )
+    }
+  </article>
+</Base>
+
+<script>
+  const showcase = document.querySelector<HTMLElement>('[data-showcase]')
+
+  if (showcase) {
+    const dark = window.matchMedia('(prefers-color-scheme: dark)')
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const modeButtons = [...showcase.querySelectorAll<HTMLButtonElement>('[data-set-mode]')]
+    const play = showcase.querySelector<HTMLButtonElement>('[data-play]')
+    const chime = showcase.querySelector<HTMLButtonElement>('[data-chime]')
+    const words: string[] = JSON.parse(showcase.dataset.words ?? '[]')
+    let timer: number | undefined
+    let turn = 0
+
+    // Light or dark: the system's choice until a button is pressed.
+    const shown = () => (showcase.dataset.mode === 'auto' ? (dark.matches ? 'dark' : 'light') : showcase.dataset.mode)
+    const syncModes = () => {
+      for (const button of modeButtons) button.setAttribute('aria-pressed', String(button.dataset.setMode === shown()))
+    }
+    for (const button of modeButtons) {
+      button.addEventListener('click', () => {
+        showcase.dataset.mode = button.dataset.setMode
+        syncModes()
+      })
+    }
+    dark.addEventListener('change', syncModes)
+    syncModes()
+
+    // Motion: the scene runs and the spinner word turns, as while Claude works.
+    const svgs = () =>
+      [...showcase.querySelectorAll('[data-scene]')].map(host => host.shadowRoot?.querySelector('svg')).filter(Boolean) as SVGElement[]
+    const setWord = (word: string) => {
+      for (const slot of showcase.querySelectorAll('[data-word]')) slot.textContent = word
+    }
+    const setPlaying = (playing: boolean) => {
+      for (const svg of svgs()) svg.classList.toggle('still', !playing)
+      showcase.toggleAttribute('data-playing', playing)
+      const label = play?.querySelector('.label')
+      if (label) label.textContent = playing ? 'Hold still' : 'Play the motion'
+      play?.setAttribute('aria-pressed', String(playing))
+      window.clearInterval(timer)
+      if (playing && words.length > 0) {
+        timer = window.setInterval(() => setWord(words[++turn % words.length]!), 2600)
+      }
+    }
+    const syncReduce = () => {
+      if (!play) return
+      if (reduce.matches) {
+        setPlaying(false)
+        play.disabled = true
+        const label = play.querySelector('.label')
+        if (label) label.textContent = 'Motion is off: your system reduces motion'
+      } else {
+        play.disabled = false
+        setPlaying(false)
+      }
+    }
+    play?.addEventListener('click', () => setPlaying(!showcase.hasAttribute('data-playing')))
+    reduce.addEventListener('change', syncReduce)
+    syncReduce()
+
+    // The chime, at the gain the app plays it.
+    const audio = chime?.querySelector('audio')
+    if (chime && audio) {
+      audio.volume = 0.5
+      chime.addEventListener('click', () => {
+        audio.currentTime = 0
+        void audio.play().catch(() => undefined)
+      })
+    }
+  }
+</script>
+
+<style>
+  .head {
+    display: grid;
+    gap: 6px;
+    padding-block: clamp(48px, 7vw, 96px) clamp(32px, 4vw, 48px);
+  }
+
+  .crumbs {
+    margin-bottom: 18px;
+  }
+
+  .crumbs a {
+    text-decoration: none;
+  }
+
+  .crumbs a:hover {
+    color: var(--ink);
+  }
+
+  .head h1 {
+    font-size: clamp(56px, 9vw, 124px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+  }
+
+  .head .meaning {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    color: var(--ink-2);
+  }
+
+  .tagline {
+    margin-top: 14px;
+    max-width: 36rem;
+    font-size: clamp(18px, 1.6vw, 21px);
+    color: var(--ink-2);
+  }
+
+  .showcase {
+    margin: 0;
+  }
+
+  .mount {
+    padding: clamp(8px, 1.2vw, 16px);
+    background: var(--mat);
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow);
+  }
+
+  /* Both modes are on the page. Show the system's, or the one picked. */
+  .mount :global(.window.dark) {
+    display: none;
+  }
+
+  .mount :global(.window:only-child) {
+    display: block;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    [data-mode='auto'] .mount :global(.window.light:not(:only-child)) {
+      display: none;
+    }
+
+    [data-mode='auto'] .mount :global(.window.dark) {
+      display: block;
+    }
+  }
+
+  [data-mode='dark'] .mount :global(.window.light:not(:only-child)) {
+    display: none;
+  }
+
+  [data-mode='dark'] .mount :global(.window.dark) {
+    display: block;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .modes {
+    display: inline-flex;
+    gap: 6px;
+  }
+
+  .only {
+    color: var(--ink-2);
+    font-size: 15px;
+  }
+
+  .alt {
+    margin-left: auto;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 16px;
+  }
+
+  .details {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(48px, 7vw, 112px);
+    padding-block: clamp(64px, 8vw, 112px);
+  }
+
+  .story,
+  .facts {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+  }
+
+  .lead {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2vw, 27px);
+    line-height: 1.45;
+  }
+
+  .sub {
+    margin-top: 36px;
+  }
+
+  .story p:not(.mark):not(.lead) {
+    color: var(--ink-2);
+  }
+
+  .words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .words li {
+    padding: 6px 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  .note {
+    color: var(--ink-3);
+    font-size: 15px;
+    margin-top: 6px;
+  }
+
+  .swatch-group {
+    display: grid;
+    gap: 10px;
+    padding-block: 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .swatch-group h2 {
+    font-size: 20px;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+    gap: 12px 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .swatches li {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    align-items: center;
+  }
+
+  .chip {
+    grid-row: span 2;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+  }
+
+  .chip.round {
+    border-radius: 50%;
+  }
+
+  .what {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .swatches code {
+    font-size: 12.5px;
+    color: var(--ink-3);
+  }
+
+  .measured {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .measured th,
+  .measured td {
+    padding: 10px 0;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .measured thead th {
+    font-weight: 550;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+
+  .measured tbody th {
+    font-weight: 400;
+    color: var(--ink-2);
+    padding-right: 12px;
+  }
+
+  .measured td {
+    font-family: var(--serif);
+    font-size: 19px;
+  }
+
+  .install-section {
+    padding-top: clamp(64px, 8vw, 104px);
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-block: 40px 72px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pager a {
+    display: grid;
+    gap: 4px;
+    text-decoration: none;
+  }
+
+  .pager .next {
+    text-align: right;
+  }
+
+  .pager .name {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+  }
+
+  .pager a:hover .name {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (max-width: 900px) {
+    .details {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .alt {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+</style>

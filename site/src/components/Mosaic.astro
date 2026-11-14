@@ -1,0 +1,93 @@
+---
+// The hero mosaic: every plate as a small framed stone, held still. Images, not inline scenes,
+// so the page carries each scene once (in the gallery). A stone moves on hover or focus.
+import { THEMES, modesOf } from '../lib/themes'
+---
+
+<ul class="mosaic" aria-label="The plates">
+  {
+    THEMES.map(theme => {
+      const modes = modesOf(theme)
+      const light = modes.includes('light') ? 'light' : modes[0]!
+      const dark = modes.includes('dark') ? 'dark' : modes[0]!
+      return (
+        <li>
+          <a href={`/${theme.name}/`} data-stone data-name={theme.name} data-light={light} data-dark={dark} aria-label={`Plate ${theme.numeral}, ${theme.title}`}>
+            <picture>
+              <source media="(prefers-color-scheme: dark)" srcset={`/stills/${theme.name}.${dark}.svg`} />
+              <img src={`/stills/${theme.name}.${light}.svg`} alt="" width="160" height="100" decoding="async" />
+            </picture>
+          </a>
+        </li>
+      )
+    })
+  }
+</ul>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const dark = window.matchMedia('(prefers-color-scheme: dark)')
+
+  const set = (stone: HTMLElement, moving: boolean) => {
+    const { name, light, dark: night } = stone.dataset
+    const folder = moving && !reduce.matches ? 'scenes' : 'stills'
+    const source = stone.querySelector('source')
+    const img = stone.querySelector('img')
+    if (source) source.srcset = `/${folder}/${name}.${night}.svg`
+    if (img) img.src = `/${folder}/${name}.${dark.matches ? night : light}.svg`
+  }
+
+  for (const stone of document.querySelectorAll<HTMLElement>('[data-stone]')) {
+    stone.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse') set(stone, true)
+    })
+    stone.addEventListener('pointerleave', () => set(stone, false))
+    stone.addEventListener('focus', () => set(stone, true))
+    stone.addEventListener('blur', () => set(stone, false))
+  }
+</script>
+
+<style>
+  .mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(8px, 1vw, 14px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    padding: 5px;
+    background: var(--mat);
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow);
+    transition: border-color 0.4s, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  a:hover,
+  a:focus-visible {
+    border-color: var(--rule-strong);
+    transform: translateY(-2px);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--well);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a {
+      transition: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      transform: none;
+    }
+  }
+</style>

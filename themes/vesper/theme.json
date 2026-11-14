@@ -1,0 +1,13 @@
+{
+  "name": "vesper",
+  "numeral": "VI",
+  "title": "Vesper",
+  "meaning": "evening",
+  "tagline": "The last light of evening over a wide plain, with a sun half set at the edge.",
+  "story": "A wide plain at the end of the day. By day it is an early dusk in peach and rose. By night the sky turns plum, a magenta and amber afterglow lies low in the corners, and a sun sits half below the horizon. While Claude works, the lines of the plain glide slowly toward you and bands drift down the sun. When the answer is ready, the evening holds still.",
+  "modes": ["light", "dark"],
+  "words": ["Settling", "Fading to dusk", "Following the horizon", "Watching the afterglow", "Waiting for the first star"],
+  "alt": "A plum evening sky over a plain of thin lines, with a sun half set in one corner",
+  "chime": "A single soft low bell heard from far across an open field at evening, warm and round, a gentle fade, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Vesper: the last light of evening over a wide plain. A plum dusk in dark mode and a peach and rose early dusk in light mode, a magenta and amber afterglow low in the corners, a sun half set near one lower corner, and a perspective grid of thin lines in the bottom corners that glides slowly toward the viewer while Claude works. Keep the middle quiet, the accents muted, add spinner words about evening, and a soft chime after long turns."
+}

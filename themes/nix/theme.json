@@ -1,0 +1,13 @@
+{
+  "name": "nix",
+  "numeral": "XIV",
+  "title": "Nix",
+  "meaning": "snow",
+  "tagline": "Snow falling quietly past a bare branch, with drifts in the corners.",
+  "story": "A pale blue grey winter day, with soft drifts in the lower corners and a bare branch holding a line of snow. At night the same drifts turn pale blue and one warm lamp glows behind the branch. While Claude works the flakes come down slowly, drifting a little sideways, and they hold still when the answer is ready.",
+  "modes": ["light", "dark"],
+  "words": ["Snowing", "Drifting", "Settling", "Falling softly", "Gathering on the branch"],
+  "alt": "Snow falling past a bare branch over drifts",
+  "chime": "A small clump of snow sliding off a branch onto soft snow, a muffled hush and a faint soft thud, quiet and close, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Nix: quiet snowfall. Icy, nearly neutral blue greys in both modes. By day soft drifts sit in the lower corners and a bare branch reaches in from the top right; by night the drifts turn pale blue under one warm lamp. Slow flakes fall with a slight sideways drift while Claude works and stay faint through the middle. Spinner words about snow, and a soft chime after long turns."
+}

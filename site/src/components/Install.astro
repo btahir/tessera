@@ -1,0 +1,214 @@
+---
+import { PLUGIN, REPO } from '../config'
+import { THEMES, countWord, type Theme } from '../lib/themes'
+
+interface Props {
+  /** On a plate's page, the plate. The panel then names it. */
+  theme?: Theme
+}
+
+const { theme } = Astro.props
+const all = countWord(THEMES.length)
+const terminal = `/plugin install ${PLUGIN} --marketplace ${REPO}`
+const ask = `Install the ${PLUGIN} plugin from the ${REPO} marketplace on GitHub.`
+const example = theme ?? THEMES[0]
+const single = example === undefined ? null : `/plugin install ${example.name} --marketplace ${REPO}`
+const plate = theme?.name
+
+const ways = [
+  {
+    label: 'In the desktop app',
+    body: `Click + next to the prompt box and choose Plugins. Add the marketplace ${REPO}, then add the ${PLUGIN} plugin.`,
+    copy: REPO,
+    copyLabel: 'Copy name',
+    show: REPO,
+    event: 'Copy marketplace',
+  },
+  {
+    label: 'In a terminal session',
+    body: 'Paste this at the prompt.',
+    copy: terminal,
+    copyLabel: 'Copy',
+    show: terminal,
+    event: 'Copy install command',
+  },
+  {
+    label: 'Ask Claude',
+    body: 'Send this sentence in any session.',
+    copy: ask,
+    copyLabel: 'Copy',
+    show: ask,
+    event: 'Copy install sentence',
+  },
+]
+---
+
+<div class="install">
+  <ol class="ways">
+    {
+      ways.map((way, index) => (
+        <li class="way">
+          <p class="mark">
+            <span class="step">{index + 1}</span> {way.label}
+          </p>
+          <p class="body">{way.body}</p>
+          <div class="line">
+            <code>{way.show}</code>
+            <button class="copy" type="button" data-copy={way.copy} data-event={way.event} data-event-plate={plate}>
+              <span class="label">{way.copyLabel}</span>
+            </button>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="after">
+    <div>
+      <h3>Then</h3>
+      <p>
+        The {PLUGIN} plugin holds all {all} {THEMES.length === 1 ? 'plate' : 'plates'}.
+        {
+          theme ? (
+            <>
+              Type <code>/{PLUGIN} {theme.name}</code> to hang {theme.title}.
+            </>
+          ) : (
+            <>
+              Type <code>/{PLUGIN}</code> and a name, such as <code>/{PLUGIN} {example?.name}</code>, to change plates.
+            </>
+          )
+        }{' '}
+        <code>/{PLUGIN} still</code> stops the motion and <code>/{PLUGIN} quiet</code> mutes the chime. Your choice is kept across sessions.
+      </p>
+    </div>
+    {
+      single && example && (
+        <div>
+          <h3>{theme ? `Only ${theme.title}` : 'One plate only'}</h3>
+          <p>
+            Each plate also installs by its own name. Its command is <code>/{example.name}</code>.
+          </p>
+          <div class="line small">
+            <code>{single}</code>
+            <button class="copy" type="button" data-copy={single} data-event="Copy single install" data-event-plate={example.name}>
+              <span class="label">Copy</span>
+            </button>
+          </div>
+        </div>
+      )
+    }
+    <div>
+      <h3>Where it shows</h3>
+      <p>Themes appear in the Claude Code desktop and mobile apps. The terminal keeps its own colors. The chime plays on macOS only.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ways {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .way {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    background: var(--mat);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  .step {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 6px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 50%;
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+
+  .body {
+    color: var(--ink-2);
+    font-size: 16px;
+  }
+
+  .line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding: 10px 10px 10px 14px;
+    background: var(--page);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  .line code {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .copy {
+    flex: none;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .copy:hover {
+    background: var(--mat);
+  }
+
+  .after {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .after h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .after p:not(.mark) {
+    color: var(--ink-2);
+    font-size: 16px;
+  }
+
+  .after code {
+    color: var(--ink);
+  }
+
+  .line.small {
+    margin-top: 14px;
+  }
+
+  @media (max-width: 960px) {
+    .ways,
+    .after {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

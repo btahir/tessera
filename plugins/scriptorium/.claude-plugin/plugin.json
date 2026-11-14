@@ -1,0 +1,9 @@
+{
+  "name": "scriptorium",
+  "version": "1.0.0",
+  "description": "Scriptorium (writing room). A vellum page with painted vines in its margins, and a candle burning low at night.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}

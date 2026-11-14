@@ -1,0 +1,9 @@
+{
+  "name": "tessera",
+  "version": "1.0.0",
+  "description": "Tessera: all 16 themes in one plugin. Type /tessera and a name to change the room.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}

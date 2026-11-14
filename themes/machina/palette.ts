@@ -1,0 +1,35 @@
+// Machina: an engineer's blueprint. Navy drawing sheet by night, drafting paper by day.
+// The checks and the gallery site read this file too, so keep it plain data.
+
+export const PALETTE = {
+  label: 'Machina',
+  roles: { accent: '#4b8fd8', danger: '#cf6459', success: '#4ea27c', warning: '#c6953c', pro: '#9a80d2' },
+  light: {
+    gray: {
+      anchors: {
+        'surface-0': '#eaf1fa',
+        'surface-1': '#f0f5fc',
+        'surface-2': '#f5f9fe',
+        'text-primary': '#192941',
+        'text-secondary': '#2d415d',
+        'text-muted': '#415877',
+      },
+    },
+  },
+  dark: {
+    gray: {
+      anchors: {
+        'surface-0': '#14263c',
+        'surface-1': '#1a2b41',
+        'surface-2': '#203045',
+        'surface-3': '#253549',
+        'text-primary': '#d8e4f1',
+        'text-secondary': '#bac9db',
+        'text-muted': '#9db0c6',
+      },
+    },
+  },
+}
+
+// How the app frosts its panels over the scene.
+export const GLASS = { blur: 18, opacity: 0.64 }

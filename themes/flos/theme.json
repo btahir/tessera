@@ -1,0 +1,13 @@
+{
+  "name": "flos",
+  "numeral": "XVI",
+  "title": "Flos",
+  "meaning": "flower",
+  "tagline": "A flowering branch in spring, reaching in from the corner.",
+  "story": "Warm white with a blush of rose. By day a branch of pale blossom leans in from the top right corner, and a few loose petals rest near the edges. By night the same branch stands dark against a plum sky, its flowers pale under a low moon. While Claude works, petals let go and drift down the sides of the window, turning as they fall, and they stop when the answer is ready.",
+  "modes": ["light", "dark"],
+  "words": ["Blossoming", "Unfolding", "Opening buds", "Letting petals fall", "Leaning toward the light"],
+  "alt": "A flowering branch with petals drifting down",
+  "chime": "A single soft wooden wind chime note heard from a garden, warm and round, fading quickly with a light breeze, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Flos: a blossoming branch in spring. Warm white with a blush tint by day and a plum night after dark, a flowering branch reaching in from the top right corner with pale blossoms, loose petals that drift down the edges and turn slowly while Claude works, spinner words about flowers opening, and a soft wind chime after long turns."
+}

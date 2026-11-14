@@ -1,0 +1,91 @@
+---
+// A plate in the gallery: the live scene held still, framed, with a catalogue caption.
+// It moves while the pointer rests on it or it has keyboard focus, as the app moves while Claude works.
+import { liveScene, type Theme } from '../lib/themes'
+import Scene from './Scene.astro'
+
+interface Props {
+  theme: Theme
+}
+
+const { theme } = Astro.props
+---
+
+<a class="tile" href={`/${theme.name}/`} data-tile aria-label={`Plate ${theme.numeral}, ${theme.title}, “${theme.meaning}”. ${theme.tagline}`}>
+  <span class="frame">
+    <Scene svg={liveScene(theme)} alt={theme.alt} class="art" />
+  </span>
+  <span class="caption">
+    <span class="mark">Plate {theme.numeral}</span>
+    <span class="title">{theme.title}</span>
+    <span class="meaning">“{theme.meaning}”</span>
+  </span>
+</a>
+
+<style>
+  .tile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-decoration: none;
+  }
+
+  .frame {
+    display: block;
+    padding: clamp(6px, 0.9vw, 12px);
+    background: var(--mat);
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow);
+    transition: border-color 0.4s, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .frame :global(.art) {
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    background: var(--well);
+  }
+
+  .tile:hover .frame,
+  .tile:focus-visible .frame {
+    border-color: var(--rule-strong);
+    transform: translateY(-2px);
+  }
+
+  .tile:focus-visible {
+    outline: none;
+  }
+
+  .tile:focus-visible .frame {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .caption {
+    display: grid;
+    gap: 2px;
+  }
+
+  .title {
+    font-family: var(--serif);
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height: 1.2;
+  }
+
+  .meaning {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .frame {
+      transition: none;
+    }
+
+    .tile:hover .frame,
+    .tile:focus-visible .frame {
+      transform: none;
+    }
+  }
+</style>

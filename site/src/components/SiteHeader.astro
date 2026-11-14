@@ -1,0 +1,75 @@
+---
+import { REPO_URL } from '../config'
+import { markSvg } from '../lib/mark'
+
+const isHome = Astro.url.pathname === '/'
+const home = (hash: string) => (isHome ? hash : `/${hash}`)
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="Tessera, home">
+      <span class="logo" set:html={markSvg()} />
+      <span class="word">Tessera</span>
+    </a>
+    <nav aria-label="Site">
+      <a href={home('#plates')}>Plates</a>
+      <a href={home('#principles')} class="wide">Principles</a>
+      <a href={home('#install')}>Install</a>
+      <a href={REPO_URL} rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 68px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+  }
+
+  .logo :global(svg) {
+    width: 26px;
+    height: 26px;
+  }
+
+  .word {
+    font-family: var(--serif);
+    font-size: 23px;
+    letter-spacing: 0.01em;
+  }
+
+  nav {
+    display: flex;
+    gap: clamp(14px, 3vw, 32px);
+    font-size: 15px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--ink-2);
+  }
+
+  nav a:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 520px) {
+    .wide {
+      display: none;
+    }
+  }
+</style>

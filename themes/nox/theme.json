@@ -1,0 +1,13 @@
+{
+  "name": "nox",
+  "numeral": "V",
+  "title": "Nox",
+  "meaning": "night",
+  "tagline": "A clear night sky over low hills, with stars gathered at the edges.",
+  "story": "By night the sky is violet indigo, the stars gather toward the corners and a low line of hills rests in the bottom corners. By day it is the hour before sunrise: pale lavender, a thin moon near one corner and the last few stars. While Claude works the stars brighten and dim slowly and now and then a meteor crosses a corner. When the answer is ready the sky holds still.",
+  "modes": ["light", "dark"],
+  "words": ["Stargazing", "Counting stars", "Waiting for dawn", "Tracing the sky", "Watching for meteors"],
+  "alt": "A night sky of stars over low hills",
+  "chime": "One soft, high glass bell tone fading slowly into quiet night air, gentle attack, a faint shimmer, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Nox: a clear night sky. Violet indigo at night with stars gathered toward the corners and low hills in the bottom corners, pale lavender before sunrise with a thin moon and a few last stars. Keep the middle calm, let the stars brighten and dim slowly and a meteor cross a corner while Claude works, use spinner words about the night sky, and play a soft bell tone after long turns."
+}

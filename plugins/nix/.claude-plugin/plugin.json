@@ -1,0 +1,9 @@
+{
+  "name": "nix",
+  "version": "1.0.0",
+  "description": "Nix (snow). Snow falling quietly past a bare branch, with drifts in the corners.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}

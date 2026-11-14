@@ -1,0 +1,17 @@
+---
+// A scene drawn inline inside its own shadow root, so its classes, keyframes and ids never meet
+// another scene's on the same page. The root carries "still", as in the app while you read.
+interface Props {
+  svg: string
+  alt: string
+  class?: string
+}
+
+const { svg, alt, class: className = '' } = Astro.props
+
+const HOST = ':host{display:block;overflow:hidden}svg{display:block;width:100%;height:100%}'
+---
+
+<div class:list={['scene', className]} role="img" aria-label={alt} data-scene>
+  <template shadowrootmode="open" set:html={`<style>${HOST}</style>${svg}`} />
+</div>

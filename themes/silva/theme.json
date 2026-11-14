@@ -1,0 +1,13 @@
+{
+  "name": "silva",
+  "numeral": "X",
+  "title": "Silva",
+  "meaning": "forest",
+  "tagline": "Pine woods in mist, with fireflies at the edges of the trees.",
+  "story": "Deep forest green in both modes. By day the pines stand in morning fog, sage and pale green, each row softer than the one in front of it. By night they turn to dark layers in a green-black mist, and a few fireflies glow among the nearest trunks. While Claude works the mist drifts slowly sideways and the fireflies light and fade. When the answer is ready the woods hold still.",
+  "modes": ["light", "dark"],
+  "words": ["Wandering the pines", "Following the path", "Gathering moss", "Listening to the woods", "Waiting for the mist"],
+  "alt": "Rows of pine trees fading into mist, with a few fireflies",
+  "chime": "A single soft wooden knock followed by a faint distant bird call in a quiet forest, gentle attack, natural room tone, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Silva: a pine forest in mist. Deep blue green in both modes, layered pine silhouettes at the left and right edges fading into fog, a quiet middle for the conversation, mist that drifts sideways and a few fireflies that glow while Claude works, spinner words about the woods, and a soft chime after long turns."
+}

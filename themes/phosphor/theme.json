@@ -1,0 +1,13 @@
+{
+  "name": "phosphor",
+  "numeral": "III",
+  "title": "Phosphor",
+  "meaning": "light-bringer",
+  "tagline": "The soft glow of an old green screen, and the paper it printed on.",
+  "story": "By night the page is a green-black screen with a soft glow pooled in its rounded corners, faint scanlines near the edges and the ghost of old lines burned into the glass. By day it is pale green printout paper with ruled bands and feed holes down both sides. While Claude works a slow sweep line crosses the screen, the corner glow breathes and the paper feeds up a little. When the answer is ready, everything holds still.",
+  "modes": ["light", "dark"],
+  "words": ["Warming up", "Scanning", "Glowing", "Feeding paper", "Refreshing the screen"],
+  "alt": "A green glowing screen with rounded corners, and green ruled printout paper with feed holes",
+  "chime": "A soft low hum of an old screen warming up, then a gentle muted click, warm and quiet, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Phosphor: the glow of an old green monitor. Dark mode is a green-black screen with soft glow in the rounded corners, faint scanlines at the edges and one slow sweep line. Light mode is pale green ruled printout paper with feed holes down the sides that feeds up slowly while Claude works. Soft green-tinted text, spinner words about old screens and printers, and a quiet chime after long turns."
+}

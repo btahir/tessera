@@ -1,0 +1,131 @@
+---
+import '@fontsource-variable/newsreader/opsz.css'
+import '@fontsource-variable/newsreader/opsz-italic.css'
+import '@fontsource-variable/instrument-sans/wght.css'
+import '@fontsource/ibm-plex-mono/latin-400.css'
+import '../styles/global.css'
+
+import SiteFooter from '../components/SiteFooter.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import { SITE_NAME, SITE_URL, abs } from '../config'
+
+interface Props {
+  /** The full <title>, under 60 characters. */
+  title: string
+  /** The meta description, under 160 characters. */
+  description: string
+  /** Site path of this page, such as "/pluvia/". */
+  path: string
+  /** Site path of the 1200x630 share image. */
+  image: string
+  imageAlt: string
+  /** Structured data for this page. */
+  ld: Record<string, unknown>
+  /** The share title, if it differs from the page title. */
+  shareTitle?: string
+  noindex?: boolean
+}
+
+const { title, description, path, image, imageAlt, ld, shareTitle = title, noindex = false } = Astro.props
+const canonical = abs(path)
+const imageUrl = abs(image)
+
+// The box's own analytics script. Page views are counted at the edge without it; the script adds
+// the clicks marked data-event. It loads on the site's own host only, so local builds and forks
+// send nothing. Build with PUBLIC_TIFFIN_SCRIPT="" to leave it out.
+const tiffinScript = import.meta.env.PUBLIC_TIFFIN_SCRIPT ?? 'https://t.shiptiffin.app/script.js'
+const siteHost = new URL(SITE_URL).hostname
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f1eee8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1f1c1a" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={shareTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={shareTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+
+    {
+      tiffinScript && (
+        <script is:inline define:vars={{ tiffinScript, siteHost }}>
+          if (location.hostname === siteHost) {
+            window.tiffin = window.tiffin || { q: [], track: function () { this.q.push(arguments) } }
+            const s = document.createElement('script')
+            s.defer = true
+            s.src = tiffinScript
+            document.head.append(s)
+            document.addEventListener('click', (e) => {
+              const el = e.target instanceof Element ? e.target.closest('[data-event]') : null
+              if (!el) return
+              const plate = el.getAttribute('data-event-plate')
+              window.tiffin.track(el.getAttribute('data-event'), plate ? { plate } : undefined)
+            }, true)
+          }
+        </script>
+      )
+    }
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+    <script>
+      // Copy buttons: the text to copy sits in data-copy.
+      for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+        const label = button.querySelector('.label')
+        const idle = label?.textContent ?? 'Copy'
+
+        button.addEventListener('click', async () => {
+          const text = button.dataset.copy ?? ''
+
+          try {
+            await navigator.clipboard.writeText(text)
+          } catch {
+            // No clipboard (an insecure context): select the command so it can be copied by hand.
+            const code = button.parentElement?.querySelector('code')
+            if (code) window.getSelection()?.selectAllChildren(code)
+            return
+          }
+
+          if (label) {
+            label.textContent = 'Copied'
+            window.setTimeout(() => (label.textContent = idle), 1600)
+          }
+        })
+      }
+    </script>
+  </body>
+</html>

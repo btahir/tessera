@@ -1,0 +1,13 @@
+{
+  "name": "hortus",
+  "numeral": "XIII",
+  "title": "Hortus",
+  "meaning": "garden",
+  "tagline": "A greenhouse in soft daylight, with broad leaves reaching in from the edges.",
+  "story": "Leaf green in both modes. By day, light comes through the glass panes and split leaves, ferns and trailing vines lean in from the corners. By night it is the same conservatory under the moon, the leaves gone to deep green shapes against a pale glow. The leaves sway on slow, uneven rhythms while Claude works and hold still when the answer is ready.",
+  "modes": ["light", "dark"],
+  "words": ["Potting", "Pruning", "Taking root", "Unfurling", "Tending the beds", "Watering"],
+  "alt": "Large leaves and ferns at the edges of a greenhouse",
+  "chime": "A few drops of water falling from a leaf onto broad leaves below, soft and close, a short natural patter, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Hortus: a greenhouse. Leaf green in both modes, soft daylight through glass panes with large split leaves, ferns and trailing vines reaching in from the corners, the same room under moonlight at night, leaves that sway slowly while Claude works, spinner words about tending plants, and a soft chime of water dripping from leaves after long turns."
+}

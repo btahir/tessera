@@ -1,0 +1,13 @@
+{
+  "name": "meridies",
+  "numeral": "XII",
+  "title": "Meridies",
+  "meaning": "midday",
+  "tagline": "Sand dunes at noon under a large pale sun.",
+  "story": "Warm sand in light mode, with terracotta dunes low in the corners and a large pale sun in the upper corner. In dark mode it is the same desert at night: cool sand, a small moon, a few stars, and the dunes as dark shapes. While Claude works, thin lines of heat waver above the dunes and their shadows drift slowly. When the answer is ready the desert holds still.",
+  "modes": ["light", "dark"],
+  "words": ["Basking", "Shimmering", "Drifting sand", "Crossing dunes", "Waiting out the heat"],
+  "alt": "Sand dunes under a large pale sun",
+  "chime": "A soft gust of dry wind with a few grains of sand settling, warm and quiet, no music, under 1.5 seconds",
+  "prompt": "Make me a Claude Code theme called Meridies: the desert at midday. Warm sand colors in light mode, terracotta dunes low in the corners and a large pale sun toward one upper corner. In dark mode show the same desert at night under a moon. Keep the middle of the window calm, let heat shimmer waver above the dunes while Claude works, use spinner words about heat and sand, and play a soft chime after long turns."
+}

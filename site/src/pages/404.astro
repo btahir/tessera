@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro'
+---
+
+<Base
+  title="Not found · Tessera"
+  description="This page is not in the Tessera collection. The plates are on the home page."
+  path="/404/"
+  image="/og/home.png"
+  imageAlt="The Tessera plates in a grid"
+  ld={{ '@context': 'https://schema.org', '@type': 'WebPage', name: 'Not found' }}
+  noindex
+>
+  <section class="wrap missing">
+    <p class="mark">Not found</p>
+    <h1>This wall is empty.</h1>
+    <p>The page you asked for is not in the collection.</p>
+    <a class="button" href="/">See the plates</a>
+  </section>
+</Base>
+
+<style>
+  .missing {
+    display: grid;
+    justify-items: start;
+    gap: 20px;
+    padding-block: clamp(96px, 16vw, 200px);
+  }
+
+  .missing h1 {
+    font-size: clamp(44px, 7vw, 88px);
+  }
+
+  .missing p:not(.mark) {
+    color: var(--ink-2);
+  }
+</style>

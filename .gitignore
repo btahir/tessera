@@ -1,0 +1,11 @@
+node_modules/
+.cache/
+.DS_Store
+*.log
+site/dist/
+site/.astro/
+.claude-plugin/types/
+plugins/*/.claude-plugin/types/
+.env
+.env.*
+!.env.example

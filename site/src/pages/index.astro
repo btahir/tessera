@@ -1,0 +1,266 @@
+---
+import Install from '../components/Install.astro'
+import Mosaic from '../components/Mosaic.astro'
+import Tile from '../components/Tile.astro'
+import { REPO_URL, SITE_NAME, SITE_URL, abs } from '../config'
+import Base from '../layouts/Base.astro'
+import { THEMES, capitalize, countWord, measured, plateRange, span } from '../lib/themes'
+
+const count = THEMES.length
+const word = countWord(count)
+const plates = count === 1 ? 'plate' : 'plates'
+const m = measured()
+const lightSpan = span(m.lightMin, m.lightMax)
+const darkSpan = span(m.darkMin, m.darkMax)
+const bodySpan = m.bodyMin === m.bodyMax ? `${m.bodyMin}:1` : `${m.bodyMin} to ${m.bodyMax}:1`
+
+const title = `Tessera · ${capitalize(word)} themes for Claude Code, made to read in`
+const shareTitle = `Tessera · ${capitalize(word)} themes for Claude Code`
+const description = `${capitalize(word)} free themes for the Claude Code desktop app. Each draws a quiet scene that moves while Claude works and holds still while you read.`
+
+const principles = [
+  {
+    figure: 'Still',
+    label: 'while you read',
+    text: 'The scene moves only while Claude is working. When the answer lands, it stops on the frame you were looking at. Type /tessera still and it stays still for good. A system set to reduce motion gets no motion at all.',
+  },
+  {
+    figure: bodySpan,
+    label: 'body text contrast',
+    text: `Measured in all ${m.readings} readings, every plate in every mode. Dark enough to read by day, soft enough that letters never glare at night.`,
+  },
+  {
+    figure: `${m.mutedMin}:1`,
+    label: 'the faintest text, at its lowest',
+    text: 'Timestamps and tool summaries stay readable. The floor is 4.5:1 on the page and on panels. Terminal themes often let comments fall under 3:1.',
+  },
+  {
+    figure: 'No white',
+    label: 'and no black',
+    text: [
+      lightSpan && `Light pages sit at ${lightSpan} lightness`,
+      darkSpan && `dark pages at ${darkSpan}`,
+    ]
+      .filter(Boolean)
+      .join(' and ')
+      .concat('. Every neutral carries a trace of the plate’s own hue.'),
+  },
+  {
+    figure: '1.6:1',
+    label: 'the most contrast behind the words',
+    text: 'Detail and motion live at the edges and corners. The middle of each scene stays within 1.6:1 of the page, and the glass keeps text above 7:1 over its brightest point.',
+  },
+  {
+    figure: '20 s',
+    label: 'before a chime',
+    text: 'A plate with a chime plays it only after a turn of 20 seconds or more, when you may have looked away. It is soft, lasts under a second and a half, and /tessera quiet turns it off.',
+  },
+]
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      description,
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'CollectionPage',
+      '@id': `${SITE_URL}/#collection`,
+      name: shareTitle,
+      url: `${SITE_URL}/`,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: 'Themes for the Claude Code desktop app',
+      license: 'https://opensource.org/licenses/MIT',
+      codeRepository: REPO_URL,
+      hasPart: THEMES.map(theme => ({
+        '@type': 'CreativeWork',
+        name: `${theme.title} (Plate ${theme.numeral})`,
+        url: abs(`/${theme.name}/`),
+        description: theme.tagline,
+      })),
+    },
+  ],
+}
+---
+
+<Base
+  title={title}
+  shareTitle={shareTitle}
+  description={description}
+  path="/"
+  image="/og/home.png"
+  imageAlt={`The ${word} Tessera plates in a grid`}
+  ld={ld}
+>
+  <section class="hero wrap">
+    <div class="intro">
+    <p class="mark">{capitalize(word)} {plates} for the Claude Code desktop app</p>
+    <h1>Rooms to read in.</h1>
+    <p class="lede">
+      Tessera is a free set of themes for Claude Code. Each one sets the colors and draws a quiet scene behind the conversation. The
+      scene moves while Claude works. When the answer lands, it holds still.
+    </p>
+    <div class="actions">
+      <a class="button solid" href="#install" data-event="Hero install">Install</a>
+      <a class="button" href="#plates">See the plates</a>
+    </div>
+    </div>
+    <div class="art"><Mosaic /></div>
+  </section>
+
+  <section id="plates" class="section gallery-section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mark">The collection</p>
+        <h2>{plateRange()}</h2>
+        <p>Each plate hangs still, as it does while you read. Rest the pointer on one, or move to it with the keyboard, to see it move.</p>
+      </div>
+      <div class="gallery">
+        {THEMES.map(theme => <Tile theme={theme} />)}
+      </div>
+    </div>
+  </section>
+
+  <section id="principles" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mark">Principles</p>
+        <h2>Measured for reading</h2>
+        <p>People read in these themes for hours. Every plate is held to the same 22 rules and measured before it is added. These numbers come from the plates themselves.</p>
+      </div>
+      <ol class="principles">
+        {
+          principles.map(item => (
+            <li>
+              <p class="figure">{item.figure}</p>
+              <p class="mark">{item.label}</p>
+              <p class="text">{item.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section id="install" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mark">Install</p>
+        <h2>Hang one in your app</h2>
+        <p>Free and open source under the MIT License. One plugin holds every plate, and you switch between them with a word.</p>
+      </div>
+      <Install />
+    </div>
+  </section>
+</Base>
+
+<script>
+  // A plate moves while it has the pointer or focus, and holds still again when it loses them.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+  const setMoving = (tile: Element, moving: boolean) => {
+    const host = tile.querySelector('[data-scene]')
+    const svg = host?.shadowRoot?.querySelector('svg')
+    svg?.classList.toggle('still', !moving || reduce.matches)
+  }
+
+  for (const tile of document.querySelectorAll('[data-tile]')) {
+    tile.addEventListener('pointerenter', event => {
+      if ((event as PointerEvent).pointerType === 'mouse') setMoving(tile, true)
+    })
+    tile.addEventListener('pointerleave', () => setMoving(tile, false))
+    tile.addEventListener('focus', () => setMoving(tile, true))
+    tile.addEventListener('blur', () => setMoving(tile, false))
+  }
+</script>
+
+<style>
+  .hero {
+    padding-block: clamp(72px, 10vw, 144px) clamp(64px, 9vw, 120px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 96px);
+  }
+
+  .intro {
+    display: grid;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .art {
+      display: none;
+    }
+  }
+
+  .hero h1 {
+    font-size: clamp(54px, 8vw, 116px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    max-width: 12ch;
+  }
+
+  .lede {
+    max-width: 36rem;
+    font-size: clamp(18px, 1.6vw, 21px);
+    color: var(--ink-2);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(40px, 4.5vw, 64px) clamp(20px, 3vw, 40px);
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 48px clamp(24px, 4vw, 56px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .principles li {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .figure {
+    font-family: var(--serif);
+    font-size: clamp(36px, 3.4vw, 46px);
+    line-height: 1.1;
+  }
+
+  .principles .text {
+    margin-top: 8px;
+    color: var(--ink-2);
+    font-size: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
