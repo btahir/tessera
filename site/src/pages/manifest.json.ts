@@ -23,5 +23,5 @@ export const GET: APIRoute = () =>
       null,
       2,
     ),
-    { headers: { 'Content-Type': 'application/manifest+json' } },
+    { headers: { 'Content-Type': 'application/json' } },
   )
