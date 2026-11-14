@@ -1,5 +1,6 @@
 {
   "name": "tessera",
+  "description": "Rooms to read in. Sixteen themes for the Claude Code desktop app, each one still while you read.",
   "owner": {
     "name": "Tessera"
   },

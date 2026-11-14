@@ -99,7 +99,16 @@ for (const theme of themes) {
 await mkdir(join(root, '.claude-plugin'), { recursive: true })
 await Bun.write(
   join(root, '.claude-plugin/marketplace.json'),
-  `${JSON.stringify({ name: 'tessera', owner: { name: 'Tessera' }, plugins: entries }, null, 2)}\n`,
+  `${JSON.stringify(
+    {
+      name: 'tessera',
+      description: 'Rooms to read in. Sixteen themes for the Claude Code desktop app, each one still while you read.',
+      owner: { name: 'Tessera' },
+      plugins: entries,
+    },
+    null,
+    2,
+  )}\n`,
 )
 
 console.log(`packed ${entries.length} plugins: ${entries.map(entry => entry.name).join(', ')}`)
