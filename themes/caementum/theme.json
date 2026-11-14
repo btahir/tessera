@@ -1,0 +1,33 @@
+{
+  "name": "caementum",
+  "numeral": "XI",
+  "title": "Caementum",
+  "meaning": "concrete",
+  "family": "bold",
+  "kin": [],
+  "vibe": "raw, heavy, plain",
+  "tagline": "Heavy concrete slabs stacked at the edges, with one small red square.",
+  "story": "Raw concrete in flat slabs. By night the page is a mid grey hall and the blocks at its edges cast hard dark shadows. By day the same blocks are pale board formed concrete with the marks of the planks still in them. While Claude works, a slab slides one step along the grid and stops, slowly, like a heavy door. When the answer is ready nothing moves.",
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Pouring",
+    "Setting",
+    "Curing",
+    "Casting",
+    "Bracing",
+    "Stacking"
+  ],
+  "suffix": " =",
+  "alt": "Grey concrete blocks with hard shadows stacked at the left and right edges, and one small red square",
+  "chime": "One dull knock of a wooden mallet on a thick concrete wall, short and heavy, a low thud with almost no ring, dry, no music, under one second",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "The room tone of a large empty concrete hall, still air, a faint low hum of distant ventilation, a soft wide reverb, calm and even, no voices, no footsteps"
+  },
+  "prompt": "Make me a Claude Code theme called Caementum: raw concrete in the brutalist manner. Neutral concrete greys with almost no tint, a mid dark grey page in dark mode and pale raw concrete in light mode, and one signal red as the only loud color. Heavy flat rectangular slabs stacked off the left and right edges like the corner of a building, thick dark outlines, hard offset shadows as solid darker shapes, the horizontal stripes of board formed concrete, square tie holes, and one small red square. No gradients, no curves, everything on a strict grid, a quiet middle for reading. While Claude works one or two slabs slide a single grid step and stop, slowly. Blunt one word spinner words, a dull knock on concrete after long turns, and the room tone of an empty concrete hall as the bed."
+}

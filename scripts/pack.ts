@@ -18,6 +18,10 @@ const runtimeDir = join(root, 'runtime')
 
 const themes = await loadThemes()
 
+// The theme a fresh install opens on.
+const FIRST = 'pluvia'
+const opening = [...themes].sort((a, b) => Number(b.name === FIRST) - Number(a.name === FIRST))
+
 // What the runtime reads: plain data, with the scene already drawn to a string.
 const themesModule = (command: string, packed: LoadedTheme[]) => {
   const data = packed.map(theme => ({
@@ -30,6 +34,8 @@ const themesModule = (command: string, packed: LoadedTheme[]) => {
     glass: theme.glass,
     scene: theme.scene,
     chime: theme.chimeFile === null ? null : `chimes/${theme.name}.mp3`,
+    bed: theme.bedFile === null ? null : `beds/${theme.name}.mp3`,
+    suffix: theme.suffix ?? null,
   }))
 
   return [
@@ -46,6 +52,8 @@ const themesModule = (command: string, packed: LoadedTheme[]) => {
     '  glass: { blur: number; opacity: number }',
     '  scene: string',
     '  chime: string | null',
+    '  bed: string | null',
+    '  suffix: string | null',
     '}',
     '',
     `export const COMMAND = ${JSON.stringify(command)}`,
@@ -77,6 +85,11 @@ const writePlugin = async (name: string, description: string, packed: LoadedThem
       await mkdir(join(dir, 'chimes'), { recursive: true })
       await cp(theme.chimeFile, join(dir, 'chimes', `${theme.name}.mp3`))
     }
+
+    if (theme.bedFile !== null) {
+      await mkdir(join(dir, 'beds'), { recursive: true })
+      await cp(theme.bedFile, join(dir, 'beds', `${theme.name}.mp3`))
+    }
   }
 
   return { name, source: `./plugins/${name}`, description }
@@ -88,7 +101,7 @@ const entries = [
   await writePlugin(
     'tessera',
     `Tessera: all ${themes.length} themes in one plugin. Type /tessera and a name to change the room.`,
-    themes,
+    opening,
   ),
 ]
 

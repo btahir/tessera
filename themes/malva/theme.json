@@ -1,0 +1,36 @@
+{
+  "name": "malva",
+  "numeral": "VIII",
+  "title": "Malva",
+  "meaning": "mallow",
+  "family": "essential",
+  "kin": [
+    "Catppuccin",
+    "Rosé Pine"
+  ],
+  "vibe": "soft, cozy, sweet",
+  "tagline": "A cafe table from above, with a cup of milky coffee in one corner and a folded napkin in the other.",
+  "story": "A small cafe table seen from above, drawn in soft rounded shapes. A lavender cup on a peach saucer sits in one lower corner with a swirl of milk in the coffee, and a folded sage napkin with a spoon rests in the opposite upper corner, with a few crumbs and two sugar cubes nearby. By day the table is a milky latte with a rose tint, and by night a warm mauve charcoal. While Claude works the milk swirl turns slowly and thin curls of steam rise from the cup and fade. When the answer is ready the cup goes still.",
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Stirring",
+    "Steeping",
+    "Warming up",
+    "Sipping slowly",
+    "Swirling the milk",
+    "Saving you a seat"
+  ],
+  "suffix": " ~",
+  "alt": "A coffee cup on a saucer and a folded napkin on a cafe table, seen from above",
+  "chime": "One soft tap of a ceramic cup set down on a saucer, gentle and warm, a short round ring, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "Mellow lo-fi electric piano chords, slow and soft, a cozy cafe mood with a light gentle rhythm, instrumental"
+  },
+  "prompt": "Make me a Claude Code theme called Malva: a cozy cafe table seen from above. A warm mauve charcoal page by night and a milky latte page with a rose tint by day, with pastel accents in lavender, peach, sage, butter and rose. Draw in soft flat rounded shapes: a lavender cup on a peach saucer with a swirl of milk in one lower corner, a folded napkin with a spoon in the opposite upper corner, and a few crumbs. Keep the middle of the table clear. While Claude works let the milk swirl turn slowly and thin curls of steam rise and fade. Use small warm spinner words and a soft ceramic cup tap after long turns."
+}

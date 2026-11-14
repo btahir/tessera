@@ -39,7 +39,7 @@ const FONTS = `
   @font-face{font-family:Sans;src:url(${font('@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2')}) format('woff2');font-weight:400 700}
 `
 
-const NUMBER_WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen']
+const NUMBER_WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty-one', 'twenty-two', 'twenty-three', 'twenty-four', 'twenty-five']
 const countWord = (count: number) => NUMBER_WORDS[count] ?? String(count)
 const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
 
@@ -74,7 +74,10 @@ const shoot = async (browser: Page, html: string, path: string, size = { width: 
 
 /** The home image: the mark and the name, beside every plate in a grid, light and dark in turn. */
 const homeImage = async () => {
-  const columns = Math.min(4, Math.max(1, Math.ceil(Math.sqrt(themes.length))))
+  const columns = Math.min(6, Math.max(1, Math.ceil(Math.sqrt(themes.length))))
+  const gap = 12
+  const tile = Math.floor((640 - gap * (columns - 1)) / columns)
+  const art = tile - 12
   const tiles = await Promise.all(
     themes.map(async (theme, index) => {
       const modes = modesOf(theme)
@@ -86,15 +89,15 @@ const homeImage = async () => {
   )
   const css = `
     body{background:#f1eee8;color:#2c2823}
-    .left{position:absolute;left:72px;top:0;bottom:0;width:390px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+    .left{position:absolute;left:64px;top:0;bottom:0;width:400px;display:flex;flex-direction:column;justify-content:center;gap:22px}
     .brand{display:flex;align-items:center;gap:18px}
     .brand svg{width:58px;height:58px}
     h1{font:400 96px/1 Serif,Georgia,serif;letter-spacing:-.02em;margin:0}
     p{margin:0;font-size:27px;line-height:1.35;color:#4b453d}
     .site{font-size:19px;letter-spacing:.12em;text-transform:uppercase;color:#655e55;margin-top:6px}
-    .grid{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(${columns},150px);gap:14px}
+    .grid{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(${columns},${tile}px);gap:${gap}px}
     .tile{background:#f7f5f0;padding:6px;border:1px solid rgba(44,40,35,.12);box-shadow:0 10px 24px -16px rgba(60,45,30,.45)}
-    .art{position:relative;width:138px;height:86px;overflow:hidden}
+    .art{position:relative;width:${art}px;height:${Math.round((art * 10) / 16)}px;overflow:hidden}
   `
   const body = `
     <div class="left">

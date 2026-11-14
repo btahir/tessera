@@ -1,6 +1,6 @@
 // Pictures of the built site, to judge it by eye, and a check for sideways scroll on a phone.
 //
-//   bun scripts/shots.ts <output folder> [plate name]     (after `bun run build`)
+//   bun scripts/shots.ts <output folder> [plate names...]     (after `bun run build`)
 //
 // Serves dist/ on a free port for as long as it runs, then stops.
 
@@ -8,10 +8,12 @@ import { mkdir } from 'node:fs/promises'
 import { join, normalize } from 'node:path'
 import { chromium } from 'playwright'
 
-const [out, plate = 'pluvia'] = process.argv.slice(2)
+const [out, ...named] = process.argv.slice(2)
+const platesToShoot = named.length > 0 ? named : ['pluvia']
+const plate = platesToShoot[0]!
 
 if (out === undefined) {
-  console.error('usage: bun scripts/shots.ts <output folder> [plate name]')
+  console.error('usage: bun scripts/shots.ts <output folder> [plate names...]')
   process.exit(2)
 }
 
@@ -36,7 +38,7 @@ for (const width of [1440, 390]) {
     const page = await context.newPage()
     page.on('pageerror', error => problems.push(`${width} ${scheme}: ${error.message}`))
 
-    for (const [name, path] of [['home', '/'], [plate, `/${plate}/`]] as const) {
+    for (const [name, path] of [['home', '/'], ...platesToShoot.map(name => [name, `/${name}/`])]) {
       await page.goto(`http://localhost:${server.port}${path}`, { waitUntil: 'networkidle' })
       await page.evaluate(() => document.fonts.ready)
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)

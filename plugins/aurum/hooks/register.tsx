@@ -4,10 +4,13 @@
 // `themes.ts`. A single-theme plugin carries one theme. The `tessera` plugin
 // carries all of them and switches between them by name.
 
-import type { Register, ThemeSetArgs } from 'claude-code'
+import type { Hook, Register, ThemeSetArgs } from 'claude-code'
 
 import { makeColors } from './make-colors.js'
 import { COMMAND, THEMES, type Theme } from './themes'
+
+// What every hook is handed first: the engine.
+type Engine = Parameters<Hook<'turn.start'>>[0]
 
 // A turn this long may have lost your attention, so it ends with a chime.
 const LONG_TURN_MS = 20_000
@@ -36,7 +39,7 @@ const lookOf = (theme: Theme): ThemeSetArgs => {
 const find = (name: unknown) => THEMES.find(theme => theme.name === name)
 
 const help = (current: Theme) => {
-  const switches = `/${COMMAND} still stops the motion and /${COMMAND} move starts it. /${COMMAND} quiet mutes the chime and /${COMMAND} sound brings it back.`
+  const switches = `/${COMMAND} still stops the motion and /${COMMAND} move starts it. For sound, /${COMMAND} quiet is silence, /${COMMAND} sound is a chime after long turns, and /${COMMAND} music adds the room's own sound while Claude works.`
 
   if (!isCollection) {
     return `${current.title}. ${switches}`
@@ -51,22 +54,43 @@ export const register: Register = on => {
   // The person's choices, kept across sessions.
   let current: Theme = THEMES[0]!
   let hasMotion = true
-  let hasSound = true
+  // quiet: no sound. sound: a chime after long turns. music: the chime, and the bed while working.
+  let sound: 'quiet' | 'sound' | 'music' = 'sound'
   // The scene moves only while the main loop is working.
   let isWorking = false
   let turns = 0
+  // Stops the bed that is playing, when one is.
+  let bed: AbortController | undefined
+
+  const stopBed = () => {
+    bed?.abort()
+    bed = undefined
+  }
+
+  // The room's own sound, looped quietly for as long as the turn runs.
+  const startBed = ($: Engine) => {
+    stopBed()
+
+    if (sound !== 'music' || current.bed === null || !isWorking) {
+      return
+    }
+
+    bed = new AbortController()
+    void $.audio.play({ asset: current.bed }, { shouldLoop: true, gain: 0.3, signal: bed.signal }).catch(() => undefined)
+  }
 
   on('session.start', async ($, e, next) => {
     current = find(await $.store.get('theme')) ?? current
     hasMotion = (await $.store.get('motion')) !== false
-    hasSound = (await $.store.get('sound')) !== false
+    const stored = await $.store.get('sound')
+    sound = stored === 'quiet' || stored === 'music' ? stored : 'sound'
 
     await $.command.register({
       name: COMMAND,
       description: isCollection
-        ? 'Tessera themes: pick one by name, or still, move, quiet, sound'
-        : `${current.title} theme: still, move, quiet or sound`,
-      argumentHint: isCollection ? 'name | still | move | quiet | sound' : 'still | move | quiet | sound',
+        ? 'Tessera themes: pick one by name, or still, move, quiet, sound, music'
+        : `${current.title} theme: still, move, quiet, sound or music`,
+      argumentHint: isCollection ? 'name | still | move | quiet | sound | music' : 'still | move | quiet | sound | music',
     })
 
     await $.theme.set(lookOf(current))
@@ -85,11 +109,18 @@ export const register: Register = on => {
       return { text: hasMotion ? `${current.title} moves while Claude works.` : `${current.title} holds still.` }
     }
 
-    if (word === 'quiet' || word === 'sound') {
-      hasSound = word === 'sound'
-      await $.store.set('sound', hasSound)
+    if (word === 'quiet' || word === 'sound' || word === 'music') {
+      sound = word
+      await $.store.set('sound', sound)
+      startBed($)
 
-      return { text: hasSound ? `${current.title} chimes after long turns.` : `${current.title} is quiet.` }
+      const said = {
+        quiet: `${current.title} is quiet.`,
+        sound: `${current.title} chimes after long turns.`,
+        music: `${current.title} plays while Claude works, and chimes after long turns.`,
+      }
+
+      return { text: said[word] }
     }
 
     const chosen = isCollection ? find(word) : undefined
@@ -102,6 +133,7 @@ export const register: Register = on => {
     await $.store.set('theme', chosen.name)
     await $.theme.set(lookOf(chosen))
     $.ui.invalidate('ui.render')
+    startBed($)
 
     return { text: `${chosen.title}. ${chosen.tagline}` }
   })
@@ -129,13 +161,14 @@ export const register: Register = on => {
       return next(e)
     }
 
-    return next({ ...e, props: { ...e.props, word } })
+    return next({ ...e, props: { ...e.props, word, suffix: current.suffix ?? e.props.suffix } })
   })
 
   on('turn.start', ($, e, next) => {
     if (e.agentId === undefined) {
       isWorking = true
       $.ui.invalidate('ui.render')
+      startBed($)
     }
 
     return next(e)
@@ -149,11 +182,18 @@ export const register: Register = on => {
     isWorking = false
     turns += 1
     $.ui.invalidate('ui.render')
+    stopBed()
 
-    if (hasSound && current.chime !== null && e.reason === 'answer' && e.durationMs >= LONG_TURN_MS) {
+    if (sound !== 'quiet' && current.chime !== null && e.reason === 'answer' && e.durationMs >= LONG_TURN_MS) {
       // Not awaited: the chime plays while the answer settles.
       void $.audio.play({ asset: current.chime }, { gain: 0.5 }).catch(() => undefined)
     }
+
+    return next(e)
+  })
+
+  on('session.end', ($, e, next) => {
+    stopBed()
 
     return next(e)
   })

@@ -2,7 +2,7 @@
 
 A theme is three small files in `themes/<name>/`. The shared runtime in `runtime/` does everything else: it sets the colors, draws the scene, moves it only while Claude works, swaps the spinner word and plays the chime.
 
-Read `DESIGN.md` first. It has the 22 rules every theme is held to. `themes/pluvia/` is the reference theme.
+Read `DESIGN.md` first. It has the rules every theme is held to. `themes/pluvia/` is the reference theme.
 
 ## The files
 
@@ -11,21 +11,34 @@ Read `DESIGN.md` first. It has the 22 rules every theme is held to. `themes/pluv
 ```json
 {
   "name": "pluvia",
-  "numeral": "I",
+  "numeral": "XVI",
   "title": "Pluvia",
   "meaning": "rain",
-  "tagline": "Rain on a window, and a lit street through the glass.",
+  "family": "place",
+  "kin": [],
+  "vibe": "wet, quiet, late",
+  "tagline": "Rain on a window, and a lit city through the glass.",
   "story": "Three or four plain sentences. What you see by day, what you see by night, what moves while Claude works.",
   "modes": ["light", "dark"],
+  "contrast": "standard",
+  "accents": "muted",
   "words": ["Drizzling", "Pooling", "Pattering", "Gathering clouds", "Listening to the rain"],
-  "alt": "Rain falling past a window",
-  "chime": "A description of the sound that plays after a long turn. One short natural sound, soft, under 1.5 seconds, no music.",
+  "suffix": " ~",
+  "alt": "A rainy city at night seen through a window",
+  "chime": "The sound after a long turn. One short natural sound, soft, under 1.5 seconds, no music.",
+  "bed": { "kind": "ambience", "prompt": "The loop that plays while Claude works, for people who turn music on." },
   "prompt": "One paragraph a person could paste into Claude to make something like this theme."
 }
 ```
 
 - `name` is the folder name: lowercase letters only.
-- `words` are four to six spinner words in the theme's world. Each is one to three words and starts with a capital.
+- `family` is the wing it hangs in. `essential` is a clean default with little or no scene. `bold` is graphic and has attitude. `place` is a soft scene.
+- `kin` names well known themes whose fans should feel at home here, such as `["Nord"]`. Leave it empty when there is none. A kin theme is a starting mood, never a palette to copy.
+- `vibe` is three or four words for the mood. Everything else in the theme should agree with them: the colors, the art, the motion, the words and both sounds.
+- `contrast` sets the ranges the check holds the theme to. `low` is for calm, soft themes (body text 7:1 to 10:1). `standard` is 9:1 to 14:1. `high` is for stark themes on a near black or white page (14:1 and up).
+- `accents` is `muted` or `vivid`. Vivid lets the five role colors be loud.
+- `words` are four to six spinner words in the theme's world. Each is one to three words and starts with a capital. `suffix` is optional: one or two plain characters after the word, with a leading space.
+- `chime` and `bed` describe sounds for a sound model. The chime is one short sound. The bed is a calm loop: `ambience` for a place (rain, a fire, a room) or `music` for a soft instrumental. No voices, nothing with a strong beat.
 - `tagline` is one sentence that says what you will see. `story` is for the theme's page on the site.
 - Write plainly. No dashes used as punctuation, no hype words, no "not just X but Y".
 
@@ -37,6 +50,7 @@ Exports `PALETTE` and `GLASS`. See `themes/pluvia/palette.ts`.
 - `roles` are five colors: `accent`, `danger`, `success`, `warning`, `pro`. The app keeps each hue and sets its own lightness. Code is colored from them: keywords from `accent`, strings from `success`, literals from `pro`, names from `danger`, variables from `warning`.
 - Every color is six-digit hex.
 - `GLASS` is how the app frosts its panels over the scene: `blur` in points (16 to 24 works) and `opacity` from 0.6 to 0.75.
+- A high contrast theme adds `contrast: 'more'` to `PALETTE`, which asks the app for stronger borders and focus rings.
 
 ### `scene.ts`
 
@@ -45,7 +59,8 @@ Exports `SCENE`, one SVG document as a string. It is drawn behind the whole wind
 - Root: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">`. The window can be any shape, so the art is cropped from the center. Keep anything that must be seen within the middle 1200 by 700.
 - One `<style>` block holds every style, by class. No `style` attributes, no scripts, no event handlers, no outside files or fonts, no `<text>`.
 - Colors are CSS variables on `svg`, swapped for dark mode by exactly this rule: `@media (prefers-color-scheme:dark){svg{...}}`. Light values are the default.
-- Motion is CSS animation only. Include `.still .your-class{animation-play-state:paused}` for every animated class, and `@media (prefers-reduced-motion:reduce){...animation:none}`. The runtime adds the `still` class to the root whenever there is an answer to read.
+- A scene may be completely still. An essential theme can be a flat page with one soft shape.
+- Motion is CSS animation only. If anything moves, include `.still .your-class{animation-play-state:paused}` for every animated class, and `@media (prefers-reduced-motion:reduce){...animation:none}`. The runtime adds the `still` class to the root whenever there is an answer to read.
 - Spread starting positions with negative `animation-delay`, so the held frame looks composed and motion resumes from the same frame.
 - Every `id` starts with the theme's name and a dash, such as `pluvia-sky`.
 - Keep it under 40,000 characters if you can. The hard limit is 131,072.

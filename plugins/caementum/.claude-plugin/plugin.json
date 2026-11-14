@@ -1,0 +1,9 @@
+{
+  "name": "caementum",
+  "version": "1.0.0",
+  "description": "Caementum (concrete). Heavy concrete slabs stacked at the edges, with one small red square.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}

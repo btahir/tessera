@@ -1,0 +1,9 @@
+{
+  "name": "atramentum",
+  "version": "1.0.0",
+  "description": "Atramentum (ink). Black ink on white newsprint, with halftone dots in two corners.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}

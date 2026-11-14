@@ -1,13 +1,32 @@
 {
   "name": "aurum",
-  "numeral": "IX",
+  "numeral": "XV",
   "title": "Aurum",
   "meaning": "gold",
+  "family": "bold",
+  "kin": [],
+  "vibe": "warm, gilded, geometric",
   "tagline": "Gold fans and sunbursts in the corners of a warm black room.",
   "story": "Black and gold in the manner of the 1920s. By night a warm near black page holds gold fans in the top corners and stepped sunbursts rising from the bottom ones. By day the same drawing is brass on ivory. While Claude works, slow glints of light travel along the gold lines, and they hold still when the answer is ready.",
-  "modes": ["light", "dark"],
-  "words": ["Gilding", "Polishing brass", "Fanning out", "Catching the light", "Setting the stones"],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Gilding",
+    "Polishing brass",
+    "Fanning out",
+    "Catching the light",
+    "Setting the stones"
+  ],
+  "suffix": " *",
   "alt": "Gold fans and stepped sunbursts in the corners of a dark frame",
   "chime": "A small brass bell struck once with a soft felt mallet, warm and round, a gentle fading ring, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "Slow soft 1920s lounge piano with brushed drums, warm, distant, unhurried, instrumental"
+  },
   "prompt": "Make me a Claude Code theme called Aurum: black and gold in the spirit of 1920s decorative art. A warm near black page with gold fans, sunbursts and stepped lines in the four corners, ivory and brass for light mode, slow glints of light moving along the gold lines while Claude works, calm warm off white body text, spinner words about gold and brass, and a soft bell after long turns."
 }

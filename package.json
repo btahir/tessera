@@ -7,7 +7,10 @@
     "build": "bun scripts/build-site.ts",
     "pack": "bun scripts/pack.ts",
     "shot": "bun scripts/shot.ts",
-    "chimes": "bun scripts/chimes.ts"
+    "chimes": "bun scripts/chimes.ts",
+    "beds": "bun scripts/beds.ts",
+    "sheet": "bun scripts/sheet.ts",
+    "readme": "bun scripts/readme.ts"
   },
   "devDependencies": {
     "playwright": "1.64.1"

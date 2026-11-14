@@ -79,7 +79,9 @@ const ways = [
             </>
           )
         }{' '}
-        <code>/{PLUGIN} still</code> stops the motion and <code>/{PLUGIN} quiet</code> mutes the chime. Your choice is kept across sessions.
+        <code>/{PLUGIN} still</code> stops the motion. Sound has three levels: <code>/{PLUGIN} quiet</code> is silence,
+        <code>/{PLUGIN} sound</code> is a chime after long turns (the default), and <code>/{PLUGIN} music</code> adds the room's own
+        quiet loop while Claude works. Your choices are kept across sessions.
       </p>
     </div>
     {
@@ -87,7 +89,7 @@ const ways = [
         <div>
           <h3>{theme ? `Only ${theme.title}` : 'One plate only'}</h3>
           <p>
-            Each plate also installs by its own name. Its command is <code>/{example.name}</code>.
+            Each plate also installs by its own name, and its commands use that name, such as <code>/{example.name} still</code> or <code>/{example.name} music</code>.
           </p>
           <div class="line small">
             <code>{single}</code>

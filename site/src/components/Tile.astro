@@ -1,7 +1,7 @@
 ---
 // A plate in the gallery: the live scene held still, framed, with a catalogue caption.
 // It moves while the pointer rests on it or it has keyboard focus, as the app moves while Claude works.
-import { liveScene, type Theme } from '../lib/themes'
+import { kinLine, liveScene, type Theme } from '../lib/themes'
 import Scene from './Scene.astro'
 
 interface Props {
@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { theme } = Astro.props
+const kin = kinLine(theme)
 ---
 
 <a class="tile" href={`/${theme.name}/`} data-tile aria-label={`Plate ${theme.numeral}, ${theme.title}, “${theme.meaning}”. ${theme.tagline}`}>
@@ -19,6 +20,7 @@ const { theme } = Astro.props
     <span class="mark">Plate {theme.numeral}</span>
     <span class="title">{theme.title}</span>
     <span class="meaning">“{theme.meaning}”</span>
+    {kin && <span class="kin">{kin}</span>}
   </span>
 </a>
 
@@ -67,7 +69,7 @@ const { theme } = Astro.props
 
   .title {
     font-family: var(--serif);
-    font-size: clamp(20px, 1.9vw, 26px);
+    font-size: clamp(19px, 1.6vw, 23px);
     line-height: 1.2;
   }
 
@@ -76,6 +78,12 @@ const { theme } = Astro.props
     font-style: italic;
     color: var(--ink-2);
     font-size: 16px;
+  }
+
+  .kin {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--ink-3);
   }
 
   @media (prefers-reduced-motion: reduce) {

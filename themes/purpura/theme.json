@@ -1,0 +1,23 @@
+{
+  "name": "purpura",
+  "numeral": "II",
+  "title": "Purpura",
+  "meaning": "purple",
+  "family": "essential",
+  "kin": ["Dracula", "Shades of Purple"],
+  "vibe": "velvet, vivid, nocturnal",
+  "tagline": "Velvet curtains at the edges of a dark violet stage, with bright glints in the folds.",
+  "story": "A theatre after the doors close. By night a blue violet page is framed by plum velvet curtains down both sides, a swagged valance across the top, and soft stage light glowing pink and cyan in the low corners. By day the same stage is pale lilac with orchid velvet. While Claude works the curtains sway a little on their rods, light ripples across the folds and small glints pulse in purple, pink, cyan, green and orange.",
+  "modes": ["light", "dark"],
+  "contrast": "standard",
+  "accents": "vivid",
+  "words": ["Raising the curtain", "Taking the stage", "Rehearsing", "Waiting in the wings", "Setting the scene", "Dimming the house"],
+  "suffix": " *",
+  "alt": "Purple velvet curtains framing a dark stage with soft pink and cyan light in the corners",
+  "chime": "One low soft bell struck gently with a felt mallet in a large dark room, deep and round, a slow fading ring, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "Slow dark ambient organ pad, sustained low chords that swell and fade, warm and velvety, a quiet empty theatre at night, no drums, instrumental"
+  },
+  "prompt": "Make me a Claude Code theme called Purpura: a theatre at night in dark purple. A blue violet charcoal page with heavy velvet curtains drawn as flat vertical bands down the far left and right edges, a swagged valance across the top, soft pink and cyan stage light low in the corners and a few small glints. Loud joyful accents in purple, pink, cyan, green and orange. A pale lilac page with orchid velvet for light mode. While Claude works the curtains sway slightly and the glints pulse. Theatrical spinner words, one low soft bell after long turns, and a slow dark organ pad as music."
+}

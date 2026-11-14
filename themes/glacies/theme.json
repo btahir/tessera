@@ -1,0 +1,23 @@
+{
+  "name": "glacies",
+  "numeral": "VI",
+  "title": "Glacies",
+  "meaning": "ice",
+  "family": "essential",
+  "kin": ["Nord"],
+  "vibe": "cool, clean, quiet",
+  "tagline": "Flat planes of cut ice stacked in two corners of a cool grey page.",
+  "story": "A calm page the color of cold air, blue grey by night and a frosty off white by day. In the top left and bottom right corners, large flat facets of ice lean on each other like the planes of a cut crystal, a few close tones apart, edged with hairlines. While Claude works a slow sheen of light crosses the facets, one plane at a time. When the answer is ready the light holds where it is.",
+  "modes": ["light", "dark"],
+  "contrast": "low",
+  "accents": "muted",
+  "words": ["Cooling", "Settling", "Clearing", "Freezing over", "Holding still"],
+  "suffix": " .",
+  "alt": "Flat faceted planes of pale ice in two opposite corners of a blue grey page",
+  "chime": "One soft glassy ting, like a fingertip tapping a thin glass of ice water, clear and gentle, a short cool fading ring, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "Soft arctic wind over open ice, low and even, a steady cold hush with no gusts, no voices, no music"
+  },
+  "prompt": "Make me a Claude Code theme called Glacies: ice, calm and low contrast. A cool blue grey page in dark mode and a frosty off white in light mode, soft body text, frosted accents in glacier blue, pale teal, muted red, soft amber and dusty violet. In two opposite corners, stack large flat faceted polygons like the planes of cut ice, in a few close tones with hairline edges, and keep the middle plain. While Claude works let a slow sheen of light slide across the facets one plane at a time, use spare cold spinner words, and play one soft glassy ting after long turns."
+}

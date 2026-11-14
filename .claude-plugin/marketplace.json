@@ -8,7 +8,82 @@
     {
       "name": "tessera",
       "source": "./plugins/tessera",
-      "description": "Tessera: all 16 themes in one plugin. Type /tessera and a name to change the room."
+      "description": "Tessera: all 25 themes in one plugin. Type /tessera and a name to change the room."
+    },
+    {
+      "name": "cinis",
+      "source": "./plugins/cinis",
+      "description": "Cinis (ash). A plain graphite page with a faint lift of light in one corner."
+    },
+    {
+      "name": "purpura",
+      "source": "./plugins/purpura",
+      "description": "Purpura (purple). Velvet curtains at the edges of a dark violet stage, with bright glints in the folds."
+    },
+    {
+      "name": "indicum",
+      "source": "./plugins/indicum",
+      "description": "Indicum (indigo). A far city at 2am, flat blocks of towers low in the corners of a deep indigo page."
+    },
+    {
+      "name": "terra",
+      "source": "./plugins/terra",
+      "description": "Terra (earth). Flat bands of brick, mustard, moss, teal and plum sweep out of two corners of a warm page."
+    },
+    {
+      "name": "dulcis",
+      "source": "./plugins/dulcis",
+      "description": "Dulcis (sweet). Candy colored confetti in the corners of a warm dark page."
+    },
+    {
+      "name": "glacies",
+      "source": "./plugins/glacies",
+      "description": "Glacies (ice). Flat planes of cut ice stacked in two corners of a cool grey page."
+    },
+    {
+      "name": "sol",
+      "source": "./plugins/sol",
+      "description": "Sol (sun). A sundial drawn in fine lines, with a slow shadow crossing the hours."
+    },
+    {
+      "name": "malva",
+      "source": "./plugins/malva",
+      "description": "Malva (mallow). A cafe table from above, with a cup of milky coffee in one corner and a folded napkin in the other."
+    },
+    {
+      "name": "atramentum",
+      "source": "./plugins/atramentum",
+      "description": "Atramentum (ink). Black ink on white newsprint, with halftone dots in two corners."
+    },
+    {
+      "name": "fulgur",
+      "source": "./plugins/fulgur",
+      "description": "Fulgur (lightning). Neon circuit traces along the edges of a near black screen."
+    },
+    {
+      "name": "caementum",
+      "source": "./plugins/caementum",
+      "description": "Caementum (concrete). Heavy concrete slabs stacked at the edges, with one small red square."
+    },
+    {
+      "name": "forma",
+      "source": "./plugins/forma",
+      "description": "Forma (form). Flat circles, squares and triangles in red, blue and yellow, set in two corners of a warm white page."
+    },
+    {
+      "name": "phosphor",
+      "source": "./plugins/phosphor",
+      "description": "Phosphor (light-bringer). The soft glow of an old green screen, and the paper it printed on."
+    },
+    {
+      "name": "machina",
+      "source": "./plugins/machina",
+      "description": "Machina (machine). An engineer's blueprint, with gears and a compass rose drawn in the corners."
+    },
+    {
+      "name": "aurum",
+      "source": "./plugins/aurum",
+      "description": "Aurum (gold). Gold fans and sunbursts in the corners of a warm black room."
     },
     {
       "name": "pluvia",
@@ -19,11 +94,6 @@
       "name": "aurora",
       "source": "./plugins/aurora",
       "description": "Aurora (dawn). Northern lights over a snowy ridge on a long polar night."
-    },
-    {
-      "name": "phosphor",
-      "source": "./plugins/phosphor",
-      "description": "Phosphor (light-bringer). The soft glow of an old green screen, and the paper it printed on."
     },
     {
       "name": "abyssus",
@@ -46,16 +116,6 @@
       "description": "Ignis (fire). A hearth at night, with embers glowing low in the corners and sparks rising at the edges."
     },
     {
-      "name": "machina",
-      "source": "./plugins/machina",
-      "description": "Machina (machine). An engineer's blueprint, with gears and a compass rose drawn in the corners."
-    },
-    {
-      "name": "aurum",
-      "source": "./plugins/aurum",
-      "description": "Aurum (gold). Gold fans and sunbursts in the corners of a warm black room."
-    },
-    {
       "name": "silva",
       "source": "./plugins/silva",
       "description": "Silva (forest). Pine woods in mist, with fireflies at the edges of the trees."
@@ -66,24 +126,9 @@
       "description": "Scriptorium (writing room). A vellum page with painted vines in its margins, and a candle burning low at night."
     },
     {
-      "name": "meridies",
-      "source": "./plugins/meridies",
-      "description": "Meridies (midday). Sand dunes at noon under a large pale sun."
-    },
-    {
       "name": "hortus",
       "source": "./plugins/hortus",
       "description": "Hortus (garden). A greenhouse in soft daylight, with broad leaves reaching in from the edges."
-    },
-    {
-      "name": "nix",
-      "source": "./plugins/nix",
-      "description": "Nix (snow). Snow falling quietly past a bare branch, with drifts in the corners."
-    },
-    {
-      "name": "mare",
-      "source": "./plugins/mare",
-      "description": "Mare (sea). A quiet shore seen from above, with foam washing in at the edges."
     },
     {
       "name": "flos",

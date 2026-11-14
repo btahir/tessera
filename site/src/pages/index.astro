@@ -2,58 +2,79 @@
 import Install from '../components/Install.astro'
 import Mosaic from '../components/Mosaic.astro'
 import Tile from '../components/Tile.astro'
-import { REPO_URL, SITE_NAME, SITE_URL, abs } from '../config'
+import { PLUGIN, REPO_URL, SITE_NAME, SITE_URL, abs } from '../config'
 import Base from '../layouts/Base.astro'
-import { THEMES, capitalize, countWord, measured, plateRange, span } from '../lib/themes'
+import { LEVELS, THEMES, WINGS, capitalize, comingFrom, countWord, measured, plateRange, rangeOf, themesIn, vibeOf, type Level } from '../lib/themes'
 
 const count = THEMES.length
 const word = countWord(count)
 const plates = count === 1 ? 'plate' : 'plates'
 const m = measured()
-const lightSpan = span(m.lightMin, m.lightMax)
-const darkSpan = span(m.darkMin, m.darkMax)
-const bodySpan = m.bodyMin === m.bodyMax ? `${m.bodyMin}:1` : `${m.bodyMin} to ${m.bodyMax}:1`
+const wings = WINGS.map(wing => ({ ...wing, themes: themesIn(wing.family) })).filter(wing => wing.themes.length > 0)
+const finder = comingFrom()
 
-const title = `Tessera · ${capitalize(word)} themes for Claude Code, made to read in`
+const title = `Tessera · ${capitalize(word)} Claude Code themes to read in`
 const shareTitle = `Tessera · ${capitalize(word)} themes for Claude Code`
-const description = `${capitalize(word)} free themes for the Claude Code desktop app. Each draws a quiet scene that moves while Claude works and holds still while you read.`
+const description = `${capitalize(word)} free themes for the Claude Code desktop app, in ${countWord(wings.length)} wings. Each keeps text easy to read, and its scene holds still while you read.`
 
-const principles = [
-  {
-    figure: 'Still',
-    label: 'while you read',
-    text: 'The scene moves only while Claude is working. When the answer lands, it stops on the frame you were looking at. Type /tessera still and it stays still for good. A system set to reduce motion gets no motion at all.',
-  },
-  {
-    figure: bodySpan,
-    label: 'body text contrast',
-    text: `Measured in all ${m.readings} readings, every plate in every mode. Dark enough to read by day, soft enough that letters never glare at night.`,
-  },
+
+const bodyOf = (level: Level) => {
+  const { min, max } = m.levels[level]
+  if (min === null || max === null) return null
+  return min === max ? `${min}:1` : `${min} to ${max}:1`
+}
+const levelLines = (['low', 'standard', 'high'] as Level[])
+  .filter(level => m.levels[level].plates > 0)
+  .map(level => `${capitalize(countWord(m.levels[level].plates))} ${LEVELS[level].name.toLowerCase()}, measured at ${bodyOf(level)}`)
+
+const floors = [
   {
     figure: `${m.mutedMin}:1`,
     label: 'the faintest text, at its lowest',
-    text: 'Timestamps and tool summaries stay readable. The floor is 4.5:1 on the page and on panels. Terminal themes often let comments fall under 3:1.',
+    text: 'Timestamps and tool summaries stay readable: 4.5:1 or better on the page and on panels, 7:1 in a high contrast theme. Terminal themes often let comments fall under 3:1.',
   },
   {
-    figure: 'No white',
-    label: 'and no black',
-    text: [
-      lightSpan && `Light pages sit at ${lightSpan} lightness`,
-      darkSpan && `dark pages at ${darkSpan}`,
-    ]
-      .filter(Boolean)
-      .join(' and ')
-      .concat('. Every neutral carries a trace of the plate’s own hue.'),
+    figure: 'Still',
+    label: 'while you read',
+    text: `A scene moves only while Claude is working. When the answer lands, it stops on the frame you were looking at. /${PLUGIN} still keeps it still for good, and a system set to reduce motion gets none.`,
   },
   {
     figure: '1.6:1',
     label: 'the most contrast behind the words',
-    text: 'Detail and motion live at the edges and corners. The middle of each scene stays within 1.6:1 of the page, and the glass keeps text above 7:1 over its brightest point.',
+    text: 'Art lives at the edges and corners. The middle of each scene stays within 1.6:1 of the page, and text keeps its floor over the brightest point of the scene, with the glass over it.',
   },
   {
     figure: '20 s',
     label: 'before a chime',
-    text: 'A plate with a chime plays it only after a turn of 20 seconds or more, when you may have looked away. It is soft, lasts under a second and a half, and /tessera quiet turns it off.',
+    text: `The chime plays only after a turn of 20 seconds or more, when you may have looked away. It is soft and lasts under a second and a half. /${PLUGIN} quiet turns all sound off.`,
+  },
+  {
+    figure: 'Opt in',
+    label: 'music while Claude works',
+    text: `Type /${PLUGIN} music and the room plays its own quiet loop while Claude works. Silence means the answer is ready. It is off until you ask for it.`,
+  },
+  {
+    figure: '30°',
+    label: 'between any two roles',
+    text: 'Danger is a red, success a green, warning an amber, and their hues sit far enough apart to survive color blindness.',
+  },
+]
+
+const character = [
+  {
+    figure: 'Three levels',
+    label: 'of contrast',
+    text: `Low for calm themes, standard for most, high for stark ones. ${levelLines.join('. ')}.`,
+  },
+  {
+    figure: `${m.vivid} vivid`,
+    label: `and ${count - m.vivid} with calm accents`,
+    text: 'Calm accents stay soft on a dark page. Vivid ones go brighter for themes that want the color to speak.',
+  },
+  {
+    figure: 'A vibe',
+    label: 'in three or four words',
+    text: `${capitalize(vibeOf(THEMES[0]!).join(', '))}. Every color, shape, word and sound in a theme answers to its words.`,
   },
 ]
 
@@ -77,11 +98,13 @@ const ld = {
       about: 'Themes for the Claude Code desktop app',
       license: 'https://opensource.org/licenses/MIT',
       codeRepository: REPO_URL,
+      numberOfItems: count,
       hasPart: THEMES.map(theme => ({
         '@type': 'CreativeWork',
         name: `${theme.title} (Plate ${theme.numeral})`,
         url: abs(`/${theme.name}/`),
         description: theme.tagline,
+        genre: wings.find(wing => wing.family === theme.family)?.name,
       })),
     },
   ],
@@ -94,35 +117,84 @@ const ld = {
   description={description}
   path="/"
   image="/og/home.png"
-  imageAlt={`The ${word} Tessera plates in a grid`}
+  imageAlt={`The ${word} Tessera plates in a mosaic`}
   ld={ld}
 >
   <section class="hero wrap">
     <div class="intro">
-    <p class="mark">{capitalize(word)} {plates} for the Claude Code desktop app</p>
-    <h1>Rooms to read in.</h1>
-    <p class="lede">
-      Tessera is a free set of themes for Claude Code. Each one sets the colors and draws a quiet scene behind the conversation. The
-      scene moves while Claude works. When the answer lands, it holds still.
-    </p>
-    <div class="actions">
-      <a class="button solid" href="#install" data-event="Hero install">Install</a>
-      <a class="button" href="#plates">See the plates</a>
-    </div>
+      <p class="mark">{capitalize(word)} {plates} for the Claude Code desktop app</p>
+      <h1>Rooms to read in.</h1>
+      <p class="lede">
+        Tessera is a free set of themes for Claude Code. Each one sets the colors, and most draw a quiet scene behind the conversation.
+        The scene moves while Claude works. When the answer lands, it holds still.
+      </p>
+      <div class="actions">
+        <a class="button solid" href="#install" data-event="Hero install">Install</a>
+        <a class="button" href="#plates">See the plates</a>
+      </div>
     </div>
     <div class="art"><Mosaic /></div>
   </section>
 
-  <section id="plates" class="section gallery-section">
+  <section id="plates" class="section">
     <div class="wrap">
       <div class="section-head">
         <p class="mark">The collection</p>
         <h2>{plateRange()}</h2>
         <p>Each plate hangs still, as it does while you read. Rest the pointer on one, or move to it with the keyboard, to see it move.</p>
       </div>
-      <div class="gallery">
-        {THEMES.map(theme => <Tile theme={theme} />)}
-      </div>
+
+      <nav class="wings-nav" aria-label="Wings">
+        {
+          wings.map(wing => (
+            <a href={`#${wing.id}`}>
+              <span class="wing-name">{wing.name}</span>
+              <span class="mark">{rangeOf(wing.themes)}</span>
+              <span class="wing-line">{wing.line}</span>
+            </a>
+          ))
+        }
+      </nav>
+
+      {
+        finder.length > 0 && (
+          <aside class="finder" aria-labelledby="finder-title">
+            <p class="mark" id="finder-title">Coming from another theme</p>
+            <ul>
+              {finder.map(({ kin, themes }) => (
+                <li>
+                  <span class="kin">{kin}</span>
+                  <span class="arrow" aria-hidden="true">→</span>
+                  <span class="sr-only">try</span>
+                  <span class="to">
+                    {themes.map((theme, index) => (
+                      <>
+                        {index > 0 && <span class="sep">or </span>}
+                        <a href={`/${theme.name}/`}>{theme.title}</a>
+                      </>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )
+      }
+
+      {
+        wings.map(wing => (
+          <section class="wing" id={wing.id} aria-labelledby={`${wing.id}-title`}>
+            <header class="wing-head">
+              <h3 id={`${wing.id}-title`}>{wing.name}</h3>
+              <p class="mark">{rangeOf(wing.themes)}</p>
+              <p class="wing-line">{wing.line}</p>
+            </header>
+            <div class="gallery">
+              {wing.themes.map(theme => <Tile theme={theme} />)}
+            </div>
+          </section>
+        ))
+      }
     </div>
   </section>
 
@@ -131,11 +203,16 @@ const ld = {
       <div class="section-head">
         <p class="mark">Principles</p>
         <h2>Measured for reading</h2>
-        <p>People read in these themes for hours. Every plate is held to the same 22 rules and measured before it is added. These numbers come from the plates themselves.</p>
+        <p>
+          A theme is a whole mood, and people read in it for hours. So every plate keeps the same floors, and each one chooses its own
+          character above them. All {m.readings} readings below come from the plates themselves.
+        </p>
       </div>
+
+      <h3 class="group">Floors every theme keeps</h3>
       <ol class="principles">
         {
-          principles.map(item => (
+          floors.map(item => (
             <li>
               <p class="figure">{item.figure}</p>
               <p class="mark">{item.label}</p>
@@ -144,6 +221,27 @@ const ld = {
           ))
         }
       </ol>
+
+      <h3 class="group">Character each theme chooses</h3>
+      <ol class="principles">
+        {
+          character.map(item => (
+            <li>
+              <p class="figure">{item.figure}</p>
+              <p class="mark">{item.label}</p>
+              <p class="text">{item.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="limits">
+        <h3>What a theme cannot change</h3>
+        <p>
+          The app's fonts, its layout and its permission prompts stay the app's own. A theme works with color, the scene behind the
+          conversation, the frosting over it, the spinner's words, code highlighting and sound.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -193,16 +291,6 @@ const ld = {
     gap: 24px;
   }
 
-  @media (max-width: 900px) {
-    .hero {
-      grid-template-columns: minmax(0, 1fr);
-    }
-
-    .art {
-      display: none;
-    }
-  }
-
   .hero h1 {
     font-size: clamp(54px, 8vw, 116px);
     line-height: 0.98;
@@ -223,10 +311,106 @@ const ld = {
     margin-top: 12px;
   }
 
+  .wings-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .wings-nav a {
+    display: grid;
+    gap: 4px;
+    padding: 18px 20px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+
+  .wings-nav a:hover {
+    border-color: var(--rule-strong);
+    background: var(--mat);
+  }
+
+  .wing-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .wing-line {
+    color: var(--ink-2);
+    font-size: 16px;
+  }
+
+  .finder {
+    padding: 24px 0 8px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .finder ul {
+    columns: 3 220px;
+    column-gap: 40px;
+    margin: 14px 0 12px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .finder li {
+    break-inside: avoid;
+    padding: 5px 0;
+    font-size: 16px;
+  }
+
+  .kin {
+    color: var(--ink-2);
+  }
+
+  .arrow {
+    margin: 0 8px;
+    color: var(--ink-3);
+  }
+
+  .to a {
+    font-family: var(--serif);
+    font-size: 18px;
+  }
+
+  .sep {
+    color: var(--ink-3);
+    margin: 0 2px 0 6px;
+  }
+
+  .wing {
+    padding-top: clamp(56px, 7vw, 96px);
+    scroll-margin-top: 16px;
+  }
+
+  .wing-head {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+
+  .wing-head h3 {
+    font-size: clamp(30px, 3.4vw, 42px);
+  }
+
   .gallery {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(40px, 4.5vw, 64px) clamp(20px, 3vw, 40px);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(36px, 4vw, 56px) clamp(16px, 2vw, 28px);
+  }
+
+  .group {
+    font-size: clamp(24px, 2.4vw, 30px);
+    margin: 0 0 28px;
+  }
+
+  .principles + .group {
+    margin-top: clamp(56px, 7vw, 88px);
   }
 
   .principles {
@@ -258,7 +442,44 @@ const ld = {
     font-size: 16px;
   }
 
+  .limits {
+    max-width: 44rem;
+    margin-top: clamp(56px, 7vw, 88px);
+    padding: 28px 32px;
+    background: var(--mat);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+  }
+
+  .limits h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .limits p {
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 1100px) {
+    .gallery {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .art {
+      display: none;
+    }
+
+    .wings-nav {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
     .gallery {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }

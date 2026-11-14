@@ -1,13 +1,33 @@
 {
   "name": "ignis",
-  "numeral": "VII",
+  "numeral": "XXI",
   "title": "Ignis",
   "meaning": "fire",
+  "family": "place",
+  "kin": [
+    "Gruvbox"
+  ],
+  "vibe": "warm, close, crackling",
   "tagline": "A hearth at night, with embers glowing low in the corners and sparks rising at the edges.",
   "story": "Warm charcoal brown at night, with a bed of coals in each bottom corner and their glow climbing the walls. By day it is ash and cream, a room lit by a fire in daylight, with only a soft ember tint low in the corners. While Claude works the sparks rise and fade along the edges and the coals breathe slowly. When the answer is ready the fire holds still.",
-  "modes": ["light", "dark"],
-  "words": ["Kindling", "Stoking the fire", "Banking the coals", "Tending the hearth", "Warming up"],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Kindling",
+    "Stoking the fire",
+    "Banking the coals",
+    "Tending the hearth",
+    "Warming up"
+  ],
   "alt": "Glowing coals in the corners of a dark room, with sparks rising",
   "chime": "A single log settling in a fireplace, a soft wooden knock and a short crackle of embers, warm and quiet, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "A fireplace crackling softly, warm and close, no voices"
+  },
   "prompt": "Make me a Claude Code theme called Ignis: a hearth at night. Warm charcoal brown in dark mode and ash and cream in light mode, glowing coals in the two bottom corners, sparks that rise along the outer edges while Claude works, spinner words about tending a fire, and a soft chime of a settling log after long turns."
 }

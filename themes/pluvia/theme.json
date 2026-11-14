@@ -1,13 +1,32 @@
 {
   "name": "pluvia",
-  "numeral": "I",
+  "numeral": "XVI",
   "title": "Pluvia",
   "meaning": "rain",
+  "family": "place",
+  "kin": [],
+  "vibe": "wet, quiet, late",
   "tagline": "Rain on a window, and a lit city through the glass.",
   "story": "You look out through a tall window with a pane on each side. By day a grey drizzle washes the city pale behind a white painted frame. By night towers and street lights blur into soft discs of amber, blue and red, and drops bead on the dark glass. While Claude works the rain falls, the lights breathe and a few drops run down the pane. When the answer is ready it all holds still.",
-  "modes": ["light", "dark"],
-  "words": ["Drizzling", "Pooling", "Pattering", "Gathering clouds", "Listening to the rain"],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Drizzling",
+    "Pooling",
+    "Pattering",
+    "Gathering clouds",
+    "Listening to the rain"
+  ],
+  "suffix": " ~",
   "alt": "A rainy city at night seen through a window",
   "chime": "Two soft water drops falling into a still pool, gentle, warm, a short natural echo, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "Steady gentle rain against a window pane, soft and close, no thunder"
+  },
   "prompt": "Make me a Claude Code theme called Pluvia: rain on a window. Slate blues in both modes. Show a window frame with a clear middle pane and two side panes, a blurred skyline low in the corners, street lights as soft out of focus discs with reflections on a wet road, and drops beaded on the side panes. Let thin rain fall and a few drops run down the glass while Claude works, keep the middle quiet, use spinner words about rain, and play a soft chime after long turns."
 }

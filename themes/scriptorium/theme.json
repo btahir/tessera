@@ -1,13 +1,32 @@
 {
   "name": "scriptorium",
-  "numeral": "XI",
+  "numeral": "XXIII",
   "title": "Scriptorium",
   "meaning": "writing room",
+  "family": "place",
+  "kin": [],
+  "vibe": "studious, candlelit, patient",
   "tagline": "A vellum page with painted vines in its margins, and a candle burning low at night.",
   "story": "By day the page is cream vellum, framed by vine scrollwork in red, blue and gold that curls in from the corners and runs down the margins. By night it is the same desk by candlelight: warm brown, the vines turned to dim gold lines, and a candle glowing in the lower left corner. While Claude works the candle light breathes slowly and a few motes of dust drift near the edges. When the answer is ready the room holds still.",
-  "modes": ["light", "dark"],
-  "words": ["Inking", "Gilding", "Ruling the page", "Trimming the quill", "Copying out", "Letting it dry"],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Inking",
+    "Gilding",
+    "Ruling the page",
+    "Trimming the quill",
+    "Copying out",
+    "Letting it dry"
+  ],
   "alt": "A cream vellum page framed by painted vine scrollwork",
   "chime": "A quill pen set down in a wooden tray with a soft wooden tap, then a faint brush of paper, warm and close, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "A quiet stone room, a quill scratching on parchment now and then, a candle flame flickering softly"
+  },
   "prompt": "Make me a Claude Code theme called Scriptorium: a monk's writing desk. Cream vellum in light mode with vine scrollwork in muted red, blue and gold around the edges, and the same room by candlelight in dark mode with the vines as dim gold lines. Keep the middle quiet for reading, let the candle glow breathe and dust drift while Claude works, use spinner words about copying a manuscript, and play a soft quill tap after long turns."
 }

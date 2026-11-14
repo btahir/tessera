@@ -14,6 +14,14 @@ import { contrast, luminance, mix, oklch, rgb, type Rgb } from './color'
 import { DARK_RULE, forceMode, loadThemes, root } from './themes'
 
 const { makeColors } = await import(join(root, 'runtime/make-colors.js'))
+
+// The ranges each contrast level is held to: the page's lightness per mode,
+// body text on the page, the floor for body text anywhere, and muted text.
+const LEVELS: Record<string, { page: Record<'light' | 'dark', [number, number]>; body: [number, number]; floor: number; muted: number }> = {
+  low: { page: { dark: [0.22, 0.34], light: [0.9, 0.97] }, body: [7, 10], floor: 6, muted: 4.5 },
+  standard: { page: { dark: [0.2, 0.3], light: [0.93, 0.98] }, body: [9, 14], floor: 7, muted: 4.5 },
+  high: { page: { dark: [0.08, 0.2], light: [0.97, 1] }, body: [14, 21], floor: 12, muted: 7 },
+}
 const themes = await loadThemes(process.argv[2])
 
 const browser = await chromium.launch()
@@ -93,7 +101,7 @@ for (const theme of themes) {
 
   const fail = (rule: number, why: string) => {
     failures += 1
-    console.error(`  FAIL rule ${rule}: ${why}`)
+    console.error(rule === 0 ? `  FAIL: ${why}` : `  FAIL rule ${rule}: ${why}`)
   }
 
   console.log(`${name}`)
@@ -104,39 +112,44 @@ for (const theme of themes) {
     fail(0, line)
   }
 
-  // Rule 20 and 22: the words a person reads.
-  for (const key of ['numeral', 'title', 'meaning', 'tagline', 'story', 'alt', 'chime', 'prompt'] as const) {
-    if (typeof meta[key] !== 'string' || meta[key].length === 0) fail(22, `theme.json needs "${key}"`)
+  // Rules 23 and 24: the words a person reads.
+  for (const key of ['numeral', 'title', 'meaning', 'vibe', 'tagline', 'story', 'alt', 'chime', 'prompt'] as const) {
+    if (typeof meta[key] !== 'string' || meta[key].length === 0) fail(24, `theme.json needs "${key}"`)
   }
-  if (!Array.isArray(meta.words) || meta.words.length < 4) fail(20, 'theme.json needs at least four spinner words')
-  if (name !== meta.name) fail(22, `theme.json says "${meta.name}", the folder says "${name}"`)
+  if (!Array.isArray(meta.words) || meta.words.length < 4) fail(23, 'theme.json needs at least four spinner words')
+  if (!['essential', 'bold', 'place'].includes(meta.family)) fail(24, 'theme.json "family" must be essential, bold or place')
+  if (!Array.isArray(meta.kin)) fail(24, 'theme.json needs "kin", a list that may be empty')
+  if (!['muted', 'vivid'].includes(meta.accents)) fail(18, 'theme.json "accents" must be muted or vivid')
+  if (typeof meta.bed?.prompt !== 'string' || !['ambience', 'music'].includes(meta.bed.kind)) fail(23, 'theme.json needs "bed": { kind: ambience or music, prompt }')
+  if (name !== meta.name) fail(24, `theme.json says "${meta.name}", the folder says "${name}"`)
 
-  // Rule 7: roles stay 30 degrees of hue apart.
+  // Rule 9: roles stay 30 degrees of hue apart.
   const roles = Object.entries(PALETTE.roles).map(([role, hex]) => ({ role, ...oklch(rgb(hex)) }))
   for (const [i, a] of roles.entries()) {
     for (const b of roles.slice(i + 1)) {
       const gap = Math.min(Math.abs(a.hue - b.hue), 360 - Math.abs(a.hue - b.hue))
-      if (gap < 30) fail(7, `${a.role} and ${b.role} are ${gap.toFixed(0)} degrees of hue apart, need 30`)
+      if (gap < 30) fail(9, `${a.role} and ${b.role} are ${gap.toFixed(0)} degrees of hue apart, need 30`)
     }
   }
 
-  // Rule 17 and 15: one SVG, no scripts, both modes, reduced motion.
-  if (SCENE.length > 131072) fail(17, `scene is ${SCENE.length} characters, over 131072`)
-  if (/<script|\son[a-z]+=|href="http|url\(http/i.test(SCENE)) fail(17, 'scene has a script, an event handler or an outside file')
-  if (!SCENE.includes('preserveAspectRatio="xMidYMid slice"')) fail(17, 'scene root needs preserveAspectRatio="xMidYMid slice"')
-  if (meta.modes.length === 2 && !SCENE.includes(DARK_RULE)) fail(17, `scene serves both modes without a "${DARK_RULE}" rule`)
-  if (!SCENE.includes('@media (prefers-reduced-motion:reduce)')) fail(15, 'scene has no "@media (prefers-reduced-motion:reduce)" rule')
+  // Rules 15, 7 and 5: one SVG, no scripts, both modes, reduced motion, still on demand.
+  if (SCENE.length > 131072) fail(15, `scene is ${SCENE.length} characters, over 131072`)
+  if (/<script|\son[a-z]+=|href="http|url\(http/i.test(SCENE)) fail(15, 'scene has a script, an event handler or an outside file')
+  if (!SCENE.includes('preserveAspectRatio="xMidYMid slice"')) fail(15, 'scene root needs preserveAspectRatio="xMidYMid slice"')
+  if (meta.modes.length === 2 && !SCENE.includes(DARK_RULE)) fail(15, `scene serves both modes without a "${DARK_RULE}" rule`)
+  const isAnimated = /animation\s*:/.test(SCENE)
+  if (isAnimated && !SCENE.includes('@media (prefers-reduced-motion:reduce)')) fail(7, 'scene has no "@media (prefers-reduced-motion:reduce)" rule')
   for (const [, id] of SCENE.matchAll(/\sid="([^"]+)"/g)) {
-    if (!id!.startsWith(`${name}-`)) fail(17, `scene id "${id}" must start with "${name}-", so two scenes can share a page`)
+    if (!id!.startsWith(`${name}-`)) fail(15, `scene id "${id}" must start with "${name}-", so two scenes can share a page`)
   }
-  if (/\sstyle="/.test(SCENE)) fail(17, 'scene uses a style attribute: put every style in the <style> block, by class')
-  if (!SCENE.includes('.still')) fail(10, 'scene has no ".still" rule that pauses its animations')
+  if (/\sstyle="/.test(SCENE)) fail(15, 'scene uses a style attribute: put every style in the <style> block, by class')
+  if (isAnimated && !SCENE.includes('.still')) fail(5, 'scene has no ".still" rule that pauses its animations')
 
   for (const mode of meta.modes) {
     const anchors = PALETTE[mode]?.gray.anchors
 
     if (anchors === undefined) {
-      fail(9, `theme.json lists ${mode} but palette.ts has no ${mode} colors`)
+      fail(22, `theme.json lists ${mode} but palette.ts has no ${mode} colors`)
       continue
     }
 
@@ -146,31 +159,41 @@ for (const theme of themes) {
     const muted = rgb(anchors['text-muted'] ?? anchors['text-primary']!)
     const { lightness, chroma } = oklch(page0)
 
-    // Rule 1 and 2: the page is tinted, never black or white.
-    const [low, high] = mode === 'dark' ? [0.2, 0.3] : [0.93, 0.98]
-    if (lightness < low || lightness > high) fail(1, `${mode} surface-0 lightness is ${lightness.toFixed(3)}, want ${low} to ${high}`)
-    if (chroma < 0.005 || chroma > 0.05) fail(2, `${mode} surface-0 chroma is ${chroma.toFixed(3)}, want 0.005 to 0.05`)
+    // What the theme's declared contrast level allows.
+    const level = LEVELS[meta.contrast]
 
-    // Rule 3 and 4: text contrast on every surface.
+    if (level === undefined) {
+      fail(1, `theme.json "contrast" must be low, standard or high`)
+      continue
+    }
+
+    // Rule 11: the page sits in its level's range and is never loud.
+    const [low, high] = level.page[mode]
+    if (lightness < low || lightness > high) fail(11, `${mode} surface-0 lightness is ${lightness.toFixed(3)}, want ${low} to ${high} for ${meta.contrast} contrast`)
+    if (chroma > 0.06) fail(11, `${mode} surface-0 chroma is ${chroma.toFixed(3)}, keep it at or under 0.06`)
+
+    // Rules 1 and 2: text contrast on every surface.
     const body = contrast(primary, page0)
-    if (body < 9 || body > 14) fail(3, `${mode} text-primary on surface-0 is ${body.toFixed(1)}:1, want 9 to 14`)
+    const [least, most] = level.body
+    if (body < least || body > most) fail(1, `${mode} text-primary on surface-0 is ${body.toFixed(1)}:1, want ${least} to ${most} for ${meta.contrast} contrast`)
     for (const surface of ['surface-1', 'surface-2', 'surface-3']) {
       const ratio = contrast(primary, color(surface))
-      if (ratio < 7) fail(3, `${mode} text-primary on ${surface} is ${ratio.toFixed(1)}:1, need 7`)
+      if (ratio < level.floor) fail(1, `${mode} text-primary on ${surface} is ${ratio.toFixed(1)}:1, need ${level.floor}`)
     }
     for (const surface of ['surface-0', 'surface-2']) {
       const ratio = contrast(muted, color(surface))
-      if (ratio < 4.5) fail(4, `${mode} text-muted on ${surface} is ${ratio.toFixed(1)}:1, need 4.5`)
+      if (ratio < level.muted) fail(2, `${mode} text-muted on ${surface} is ${ratio.toFixed(1)}:1, need ${level.muted}`)
     }
 
-    // Rule 8: muted accents on dark.
+    // Rule 18: accents on dark stay under their cap, calm or loud.
     if (mode === 'dark') {
+      const cap = meta.accents === 'vivid' ? 0.27 : 0.17
       for (const role of roles) {
-        if (role.chroma > 0.17) fail(8, `${role.role} chroma is ${role.chroma.toFixed(3)}, keep it at or under 0.17 for dark mode`)
+        if (role.chroma > cap) fail(18, `${role.role} chroma is ${role.chroma.toFixed(3)}, keep it at or under ${cap} for ${meta.accents} accents`)
       }
     }
 
-    // Rules 12 and 13: the scene's own pixels, in this mode.
+    // Rules 3 and 4: the scene's own pixels, in this mode.
     const forced = forceMode(SCENE, mode)
     const panel = color('surface-1')
     let worstPrimary = 21
@@ -190,9 +213,9 @@ for (const theme of themes) {
       loudest = Math.max(loudest, (lightest + 0.05) / (pageLuminance + 0.05), (pageLuminance + 0.05) / (darkest + 0.05))
     }
 
-    if (worstPrimary < 7) fail(12, `${mode} text-primary drops to ${worstPrimary.toFixed(1)}:1 over the scene under glass, need 7`)
-    if (worstMuted < 4.5) fail(12, `${mode} text-muted drops to ${worstMuted.toFixed(1)}:1 over the scene under glass, need 4.5`)
-    if (loudest > 1.6) fail(13, `${mode} scene reaches ${loudest.toFixed(2)}:1 against the page in the center, keep it at or under 1.6`)
+    if (worstPrimary < level.floor) fail(3, `${mode} text-primary drops to ${worstPrimary.toFixed(1)}:1 over the scene under glass, need ${level.floor}`)
+    if (worstMuted < 4.5) fail(3, `${mode} text-muted drops to ${worstMuted.toFixed(1)}:1 over the scene under glass, need 4.5`)
+    if (loudest > 1.6) fail(4, `${mode} scene reaches ${loudest.toFixed(2)}:1 against the page in the center, keep it at or under 1.6`)
 
     notes.push(
       `${mode}: page L ${lightness.toFixed(2)}, body ${body.toFixed(1)}:1, muted ${contrast(muted, page0).toFixed(1)}:1, under glass ${worstPrimary.toFixed(1)}:1 and ${worstMuted.toFixed(1)}:1, center ${loudest.toFixed(2)}:1`,

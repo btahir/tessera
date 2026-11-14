@@ -1,0 +1,22 @@
+{
+  "name": "cinis",
+  "numeral": "I",
+  "title": "Cinis",
+  "meaning": "ash",
+  "family": "essential",
+  "kin": ["GitHub Dark", "One Dark"],
+  "vibe": "plain, calm, exact",
+  "tagline": "A plain graphite page with a faint lift of light in one corner.",
+  "story": "Cinis is a neutral page with no scenery. By night it is graphite grey, by day a clean near white, both with almost no tint. A very soft lift of light rests in the top left corner and a soft shade in the bottom right, with one hairline along the top edge. While Claude works the two tones breathe so slowly you may not notice, and they hold still when the answer is ready.",
+  "modes": ["light", "dark"],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": ["Thinking", "Reading", "Working it out", "Checking", "Writing it down"],
+  "alt": "A flat graphite page with a soft light corner and a soft dark corner",
+  "chime": "One soft tick of a small wooden block tapped once, dry and close, a very short natural decay, no music, under one second",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "Quiet room tone in a still, empty study, a faint even air hush, no voices, no clock, nothing that changes"
+  },
+  "prompt": "Make me a Claude Code theme called Cinis: a plain neutral default with no scenery. Graphite grey in dark mode and a clean near white in light mode, with almost no tint. Five muted, evenly weighted accent colors for code. The scene is a flat page with one very large soft light tone in the top left corner, a soft shade in the bottom right and a single hairline along the top edge, breathing so slowly it is barely seen while Claude works. Plain spinner words like Thinking and Reading, and one soft wooden tick after long turns."
+}

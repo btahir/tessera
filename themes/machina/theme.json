@@ -1,13 +1,34 @@
 {
   "name": "machina",
-  "numeral": "VIII",
+  "numeral": "XIV",
   "title": "Machina",
   "meaning": "machine",
+  "family": "bold",
+  "kin": [
+    "Cobalt"
+  ],
+  "vibe": "precise, cool, drafted",
   "tagline": "An engineer's blueprint, with gears and a compass rose drawn in the corners.",
   "story": "By night the page is blueprint navy with a fine grid and pale drawings at the edges: meshed gears, a compass rose, arcs and dimension lines. By day it is cool drafting paper inked in blue. While Claude works the lines draw themselves again and the large gear turns slowly. When the answer is ready the drawing holds still.",
-  "modes": ["light", "dark"],
-  "words": ["Drafting", "Measuring twice", "Turning the gears", "Setting the compass", "Inking the lines"],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Drafting",
+    "Measuring twice",
+    "Turning the gears",
+    "Setting the compass",
+    "Inking the lines"
+  ],
+  "suffix": " +",
   "alt": "A blueprint with gears, arcs and a compass rose in the corners",
   "chime": "A small brass drafting compass clicking shut, then a soft single tick of a gear, quiet and dry, no music, under one second",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "A quiet workshop, the soft slow ticking of a clockwork mechanism and gentle gear clicks, calm and even"
+  },
   "prompt": "Make me a Claude Code theme called Machina: an engineer's blueprint. Navy blueprint with a faint grid in dark mode and cool drafting paper with blue ink in light mode. Gears, arcs, dimension lines and a compass rose drawn in thin pale lines at the corners, a quiet middle for reading, lines that draw themselves and one gear that turns slowly while Claude works, spinner words about drafting, and a soft click after long turns."
 }

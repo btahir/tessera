@@ -1,0 +1,23 @@
+{
+  "name": "dulcis",
+  "numeral": "V",
+  "title": "Dulcis",
+  "meaning": "sweet",
+  "family": "essential",
+  "kin": ["Monokai"],
+  "vibe": "bright, playful, sharp",
+  "tagline": "Candy colored confetti in the corners of a warm dark page.",
+  "story": "A flat page of warm olive dark with cut paper confetti gathered in the four corners: dots, short bars, quarter rings, triangles and squiggles in hot pink, lime, tangerine, sky blue and violet. The scatter thins to nothing toward the middle, so the words sit on a plain page. By day the page turns warm white and the paper takes deeper inks. While Claude works each piece bobs and turns on its own slow rhythm, and when the answer is ready they all hold still.",
+  "modes": ["light", "dark"],
+  "contrast": "standard",
+  "accents": "vivid",
+  "words": ["Sprinkling", "Unwrapping", "Tossing confetti", "Mixing colors", "Sweetening", "Cutting shapes"],
+  "suffix": " *",
+  "alt": "Bright paper confetti scattered in the corners of a dark olive page",
+  "chime": "One bright soft marimba note struck with a felt mallet, warm wooden tone, gentle attack, short natural decay, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "Light gentle marimba and glockenspiel pattern, playful and quiet, soft mallets, slow bouncy melody, no drums, instrumental"
+  },
+  "prompt": "Make me a Claude Code theme called Dulcis: candy colors on a warm dark page. An olive charcoal page in dark mode and a warm white one in light mode, with hot pink keywords, lime strings, violet literals and tangerine variables. Scatter flat cut paper confetti in the four corners (dots, short bars, quarter rings, triangles, squiggles) that thins to nothing toward the middle, with no gradients or blur. Let each piece bob and turn slowly while Claude works, use cheerful spinner words, and play one soft marimba note after long turns."
+}

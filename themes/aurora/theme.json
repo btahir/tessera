@@ -1,13 +1,33 @@
 {
   "name": "aurora",
-  "numeral": "II",
+  "numeral": "XVII",
   "title": "Aurora",
   "meaning": "dawn",
+  "family": "place",
+  "kin": [
+    "Nord"
+  ],
+  "vibe": "cold, vast, luminous",
   "tagline": "Northern lights over a snowy ridge on a long polar night.",
   "story": "Polar teal in both modes. By night, green and violet curtains of light hang from the upper corners over a dark sky with a few stars, and low ridges of snow with small spruce trees sit in the bottom corners. By day the same lights are faint pastel veils over a pale dawn. While Claude works the curtains drift and slowly brighten and dim, and they hold still when the answer is ready.",
-  "modes": ["light", "dark"],
-  "words": ["Shimmering", "Drifting", "Glowing", "Waiting for the lights", "Watching the sky"],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Shimmering",
+    "Drifting",
+    "Glowing",
+    "Waiting for the lights",
+    "Watching the sky"
+  ],
   "alt": "Green and violet northern lights over a snowy ridge",
   "chime": "A soft breath of cold wind with one faint, high, glassy ring fading slowly, gentle, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "A slow ethereal ambient pad with cold shimmering tones, wide and calm, no beat, instrumental"
+  },
   "prompt": "Make me a Claude Code theme called Aurora: northern lights over snow. Polar teal in both modes, slow green and violet curtains of light at the top corners, low snowy ridges with small spruce trees in the bottom corners, pale pastel veils by day, spinner words about the night sky, and a soft chime after long turns."
 }

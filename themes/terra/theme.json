@@ -1,0 +1,22 @@
+{
+  "name": "terra",
+  "numeral": "IV",
+  "title": "Terra",
+  "meaning": "earth",
+  "family": "essential",
+  "kin": ["Gruvbox"],
+  "vibe": "warm, retro, grounded",
+  "tagline": "Flat bands of brick, mustard, moss, teal and plum sweep out of two corners of a warm page.",
+  "story": "A 1970s print poster on a warm page. By night the page is a brown charcoal and the bands are earthy inks; by day it is a cream paperback and the same inks sit on it like a record sleeve. A sun sits in the top left and bottom right corners, ringed by flat bands with rounded ends, and a light speckle runs over the paper. While Claude works the bands sway a few degrees around their corner, and they hold still when the answer is ready.",
+  "modes": ["light", "dark"],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": ["Taking it easy", "Kicking back", "Easy does it", "Letting it ride", "Spinning a record", "Mellowing out"],
+  "alt": "Flat concentric bands in earthy colors sweeping out of two opposite corners of a warm page",
+  "chime": "One soft thumb piano note, a single kalimba tine plucked gently, warm wooden body, round and low, short natural fade, no other sounds, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "Mellow 1970s electric piano loop, slow soft chords, warm tape tone, gentle tremolo, no drums, unhurried and calm, instrumental"
+  },
+  "prompt": "Make me a Claude Code theme called Terra: a warm retro page in the spirit of a 1970s print poster. A brown charcoal page by night and a cream paperback page by day. Flat concentric quarter circle bands in brick red, mustard, moss green, dusty teal and plum sweep out of the top left and bottom right corners around a small sun, with rounded ends and a light paper speckle, no gradients. Let the bands sway a few degrees around their corner while Claude works, keep the middle plain, use laid back spinner words, play one soft thumb piano note after long turns and a slow mellow electric piano loop while it works."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "forma",
+  "numeral": "XII",
+  "title": "Forma",
+  "meaning": "form",
+  "family": "bold",
+  "kin": [],
+  "vibe": "primary, geometric, optimistic",
+  "tagline": "Flat circles, squares and triangles in red, blue and yellow, set in two corners of a warm white page.",
+  "story": "Primary colors and pure geometry, in the spirit of the modernist design schools of the 1920s. By day a warm off white page holds a blue circle, a yellow square and a red quarter ring in the top left corner, and a red circle, a yellow triangle and a blue arc in the bottom right, tied together by thin black lines and small grids of dots. By night the page turns to charcoal and the same shapes deepen so the text stays easy to read. While Claude works the shapes turn or slide along straight lines one at a time, like a hanging mobile, and they hold still when the answer is ready.",
+  "modes": ["light", "dark"],
+  "contrast": "standard",
+  "accents": "vivid",
+  "words": ["Composing", "Squaring up", "Drawing circles", "Building", "Setting the grid", "Making"],
+  "alt": "A blue circle, a red circle, a yellow square and triangle and thin black lines in two corners of a pale page",
+  "chime": "One clear soft xylophone note struck gently with a felt mallet, bright and round, a short natural ring that fades, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "Minimalist repeating piano pattern, soft and bright, a few clear notes in a gentle steady loop, major key, calm, instrumental, no drums"
+  },
+  "prompt": "Make me a Claude Code theme called Forma, in the spirit of 1920s modernist design schools. A warm off white page in light mode and a charcoal page in dark mode. In the top left and bottom right corners place a few large flat shapes in a strong red, blue and yellow: a circle, a square, a triangle and a quarter ring, with thin black lines and a small grid of dots, balanced like a poster. No gradients or blur. While Claude works let one shape at a time turn or slide slowly along a straight path, like a mobile. Use blue for the accent, red for danger, yellow for warning, spinner words about making and building, and a soft xylophone note after long turns."
+}

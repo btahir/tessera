@@ -1,44 +1,52 @@
 # How a Tessera theme is designed
 
-People read in these themes for hours. A theme earns its place by being comfortable first and pretty second. These rules come from measuring 19 terminal and editor themes people choose to live in, and from reading research. `bun scripts/check.ts` enforces the ones marked **checked**.
+A theme is a whole vibe: colors, art, motion, words and sound that all say the same thing. People also read in it for hours. So there are two kinds of rule here. **Floors** protect reading and apply to every theme. **Character** is what makes a theme itself, and each theme chooses.
 
-## Colors
+`bun scripts/check.ts` enforces the rules marked **checked**.
 
-1. **No black, no white.** A dark page (`surface-0`) sits at OKLCH lightness 0.20 to 0.30. A light page sits at 0.93 to 0.98. Popular dark themes cluster near 0.27. **checked**
-2. **Tint every neutral.** Take all surfaces and text from one hue, with chroma between 0.005 and 0.05 on the page. Grey with no hue looks dead, and more chroma than that tires the eye. **checked**
-3. **Body text contrast between 9:1 and 14:1.** The floor for any text level on any surface is 7:1 for `text-primary`. Above 14:1 on a dark page, text starts to glare. Most loved themes land at 9 to 13. **checked**
-4. **Muted text stays readable: 4.5:1 or better** on `surface-0` and `surface-2`. Terminal themes often drop comments under 3:1, and that is their most common complaint. Here muted text carries tool summaries and timestamps. **checked**
-5. **Rank text by lightness, not hue.** Primary, secondary and muted are three steps of the same hue. Eyes separate lightness far better than hue.
-6. **Surfaces sit close together.** Each surface is a few percent of lightness from the next, so a card reads as paper on paper.
-7. **Roles keep their meaning.** Danger is a red, success a green, warning an amber. Tune them toward the theme, and keep at least 30 degrees of hue between any two roles so they survive color blindness and never read as the same color. **checked**
-8. **Mute accents on dark.** Saturated color on a dark page vibrates. Keep role chroma at or under 0.17 in dark mode. **checked**
-9. **Both modes, same idea.** Dark is a second telling of the idea (lamp-lit paper, not inverted paper). Keep the same lightness steps between text levels in both, so contrast feels the same after a switch.
+## Three wings
 
-## The scene behind the text
+- **Essentials.** Clean defaults with little or no scenery. If you want a neutral grey, a deep purple, a navy, a warm retro, a pastel or a high contrast theme, start here.
+- **Bold.** Graphic themes with attitude: neon, concrete, primary shapes, a green screen, a blueprint, gold.
+- **Places.** Soft scenes: rain on a window, a forest in mist, a greenhouse.
 
-10. **Still while you read.** A scene moves only while Claude is working. When the answer lands, the scene stops. A reading study found animated backgrounds slow reading, and nobody reads while the spinner runs.
-11. **The middle stays quiet.** Detail and motion live at the edges and corners. The center column, where the words are, holds only soft gradients. Nothing sits at the foot, where the message box is.
-12. **Readable over the worst pixel.** With the glass over it, `text-primary` keeps 7:1 and `text-muted` keeps 4.5:1 over the brightest and the darkest point of the scene, at six moments of its animation. **checked**
-13. **Low contrast inside the scene.** No scene element differs from the page by more than 1.6:1 in the center half of the frame. Fine sharp texture behind text crowds the letters. **checked**
-14. **Slow and small.** Nothing flashes. No element blinks faster than once in two seconds. Large shapes take eight seconds or more per cycle.
-15. **Reduced motion means none.** Every scene has a `prefers-reduced-motion` rule that stops all animation. **checked**
-16. **One switch turns it off.** `/tessera still` stops motion for good and `/tessera quiet` stops sound. A theme installed alone answers to its own name, such as `/pluvia still`. Motion longer than five seconds needs an off switch people can find.
-17. **One SVG, both modes.** Colors are CSS variables, swapped by exactly `@media (prefers-color-scheme:dark)`. No scripts, no outside files, under 131,072 characters. **checked**
+Many themes name their **kin**: well known themes whose fans should feel at home. Kin is a mood to honor. The colors and art are Tessera's own.
 
-## Sound
+## Floors: every theme
 
-18. **Sound is a signal, not decoration.** The chime plays only when a turn took 20 seconds or longer, the point where you may have looked away. Short turns stay silent.
-19. **Short and soft.** Under 1.5 seconds, gain 0.5 or lower, no sharp attack.
+1. **Text reads without effort.** Each theme declares a contrast level, and body text on the page must sit in its range: `low` 7:1 to 10:1, `standard` 9:1 to 14:1, `high` 14:1 and up. **checked**
+2. **Muted text stays readable.** At least 4.5:1 on the page and on panels, and 7:1 in a high contrast theme. Many terminal themes drop comments under 3:1, and that is their most common complaint. Here muted text carries tool summaries and timestamps. **checked**
+3. **Readable over the worst pixel.** With the glass over the scene, body and muted text keep their floors over the brightest and the darkest point of the scene, at six moments of its animation. **checked**
+4. **The middle stays quiet.** Nothing in the center half of the frame differs from the page by more than 1.6:1. Art lives at the edges and corners. Nothing sits at the foot, where the message box is. **checked**
+5. **Still while you read.** A scene moves only while Claude is working. When the answer lands, it stops. A reading study found animated backgrounds slow reading, and nobody reads while the spinner runs.
+6. **Nothing flashes.** No element blinks faster than once in two seconds. Pulses may travel, the screen never strobes.
+7. **Reduced motion means none.** Every moving scene stops under the system's reduced motion setting. **checked**
+8. **Off switches.** `/tessera still` stops motion for good. `/tessera quiet` stops all sound. A theme installed alone answers to its own name, such as `/pluvia still`.
+9. **Roles keep their meaning.** Danger is a red, success a green, warning an amber, and any two roles sit at least 30 degrees of hue apart, so they survive color blindness. **checked**
+10. **Rank text by lightness, not hue.** Primary, secondary and muted are three steps of one hue. Eyes separate lightness far better than hue.
+11. **The page is never loud.** Page chroma stays at or under 0.06, and its lightness stays in the range its contrast level allows. **checked**
+12. **Sound is a signal.** The chime plays only after a turn of 20 seconds or more, when you may have looked away. It is under 1.5 seconds and soft.
+13. **Music is opt in.** The bed, a quiet loop of the room's own sound, plays only for people who type `/tessera music`, and only while Claude works. Silence means the answer is ready.
+14. **The spinner keeps real information.** Theme words replace only the generic "Working". When the app names the step it is on, that name stays.
+15. **One SVG, both modes.** No scripts, no outside files, under 131,072 characters, colors swapped by one `prefers-color-scheme` rule. **checked**
 
-## Words
+## Character: each theme chooses
 
-20. **The spinner keeps real information.** Theme words replace only the generic "Working". When the app names the step it is on, that name stays.
+16. **A vibe in three or four words.** "Wet, quiet, late." "Raw, heavy, plain." Every other choice answers to those words.
+17. **A contrast level.** Low for calm themes, standard for most, high for stark ones. Developers who choose dark themes often prefer less contrast than tools ship with, and some need far more. Both get a theme.
+18. **Calm or vivid accents.** Muted accents stay at or under 0.17 chroma on a dark page. Vivid ones may reach 0.27. **checked**
+19. **A tint, or none.** A neutral grey page is as valid as a tinted one.
+20. **An art style.** Soft illustration, flat cut paper, thin line drawing, hard slabs, halftone dots. Pick one and hold it. A flat style uses no gradients, a soft one no hard rules.
+21. **A way of moving, or stillness.** Drifting, drawing itself, sliding along a grid, pulsing along a wire. An essential theme may not move at all.
+22. **Both modes, same idea.** Dark is a second telling of the idea (lamp lit paper, not inverted paper). A theme leads with the mode that suits it.
+23. **Words, a chime and a bed in its own voice.** Spinner words from the theme's world, one short sound, one loop.
+24. **A Latin name and a plain line.** One Latin word, its meaning, and one sentence that says what you will see.
+25. **Your own art.** Take the spirit of a place, an era or a well loved theme. Never a company's logo, artwork, font or product look, and never another theme's hex values.
 
-## Names and art
+## What a theme cannot change
 
-21. **Your own art.** Take the spirit of a place or an era. Never a company's logo, artwork, font or product look.
-22. **A Latin name and a plain line.** One Latin word, its meaning, and one sentence that says what you will see.
+The app's fonts, its layout and its permission prompts stay the app's own. A theme works with color, the scene behind the conversation, the frosting over it, the spinner's words, code highlighting and sound.
 
 ## Where the numbers come from
 
-Background lightness, chroma and contrast were measured on Solarized, Selenized, Gruvbox, Nord, Dracula, One Dark, Tokyo Night, Catppuccin, Rosé Pine, Everforest, Kanagawa, GitHub and Monokai. The reading and motion rules lean on Piepenbrock and colleagues on light and dark polarity, Material's dark theme guidance, the Modus themes' contrast work, Nikita Prokopov's (tonsky) essay on syntax highlighting, a 2022 OsloMet study on animated backgrounds, and WCAG 2.2.2.
+Background lightness, chroma and contrast were measured on Solarized, Selenized, Gruvbox, Nord, Dracula, One Dark, Tokyo Night, Catppuccin, Rosé Pine, Everforest, Kanagawa, GitHub and Monokai. Their dark pages sit between 0.18 and 0.33 lightness and their body text between 4:1 and 16:1, most between 9:1 and 13:1. The reading and motion rules lean on Piepenbrock and colleagues on light and dark polarity, Material's dark theme guidance, the Modus themes' contrast work, Nikita Prokopov's essay on syntax highlighting, a 2022 OsloMet study on animated backgrounds, and WCAG 2.2.2.

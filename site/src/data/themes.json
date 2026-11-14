@@ -1,125 +1,819 @@
 [
   {
-    "name": "pluvia",
+    "name": "cinis",
     "numeral": "I",
-    "title": "Pluvia",
-    "meaning": "rain",
-    "tagline": "Rain on a window, and a lit city through the glass.",
-    "story": "You look out through a tall window with a pane on each side. By day a grey drizzle washes the city pale behind a white painted frame. By night towers and street lights blur into soft discs of amber, blue and red, and drops bead on the dark glass. While Claude works the rain falls, the lights breathe and a few drops run down the pane. When the answer is ready it all holds still.",
-    "words": [
-      "Drizzling",
-      "Pooling",
-      "Pattering",
-      "Gathering clouds",
-      "Listening to the rain"
+    "title": "Cinis",
+    "meaning": "ash",
+    "family": "essential",
+    "kin": [
+      "GitHub Dark",
+      "One Dark"
     ],
-    "alt": "A rainy city at night seen through a window",
-    "prompt": "Make me a Claude Code theme called Pluvia: rain on a window. Slate blues in both modes. Show a window frame with a clear middle pane and two side panes, a blurred skyline low in the corners, street lights as soft out of focus discs with reflections on a wet road, and drops beaded on the side panes. Let thin rain fall and a few drops run down the glass while Claude works, keep the middle quiet, use spinner words about rain, and play a soft chime after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 18,
-      "opacity": 0.66
-    },
-    "roles": {
-      "accent": "#4a8fc7",
-      "danger": "#c9605a",
-      "success": "#4d9a78",
-      "warning": "#b98a3a",
-      "pro": "#8b78c2"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#e4e9ed",
-          "surface-1": "#ebeff2",
-          "surface-2": "#f3f5f7",
-          "text-primary": "#222d39",
-          "text-secondary": "#404e5d",
-          "text-muted": "#556373"
-        },
-        "bodyContrast": 11.4,
-        "mutedContrast": 5,
-        "pageLightness": 0.93
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#18212b",
-          "surface-1": "#1c2631",
-          "surface-2": "#202b37",
-          "surface-3": "#24303d",
-          "text-primary": "#dde5ee",
-          "text-secondary": "#bac6d3",
-          "text-muted": "#9dabbb"
-        },
-        "bodyContrast": 12.8,
-        "mutedContrast": 7,
-        "pageLightness": 0.24
-      }
-    }
-  },
-  {
-    "name": "aurora",
-    "numeral": "II",
-    "title": "Aurora",
-    "meaning": "dawn",
-    "tagline": "Northern lights over a snowy ridge on a long polar night.",
-    "story": "Polar teal in both modes. By night, green and violet curtains of light hang from the upper corners over a dark sky with a few stars, and low ridges of snow with small spruce trees sit in the bottom corners. By day the same lights are faint pastel veils over a pale dawn. While Claude works the curtains drift and slowly brighten and dim, and they hold still when the answer is ready.",
+    "vibe": "plain, calm, exact",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "A plain graphite page with a faint lift of light in one corner.",
+    "story": "Cinis is a neutral page with no scenery. By night it is graphite grey, by day a clean near white, both with almost no tint. A very soft lift of light rests in the top left corner and a soft shade in the bottom right, with one hairline along the top edge. While Claude works the two tones breathe so slowly you may not notice, and they hold still when the answer is ready.",
     "words": [
-      "Shimmering",
-      "Drifting",
-      "Glowing",
-      "Waiting for the lights",
-      "Watching the sky"
+      "Thinking",
+      "Reading",
+      "Working it out",
+      "Checking",
+      "Writing it down"
     ],
-    "alt": "Green and violet northern lights over a snowy ridge",
-    "prompt": "Make me a Claude Code theme called Aurora: northern lights over snow. Polar teal in both modes, slow green and violet curtains of light at the top corners, low snowy ridges with small spruce trees in the bottom corners, pale pastel veils by day, spinner words about the night sky, and a soft chime after long turns.",
+    "alt": "A flat graphite page with a soft light corner and a soft dark corner",
+    "prompt": "Make me a Claude Code theme called Cinis: a plain neutral default with no scenery. Graphite grey in dark mode and a clean near white in light mode, with almost no tint. Five muted, evenly weighted accent colors for code. The scene is a flat page with one very large soft light tone in the top left corner, a soft shade in the bottom right and a single hairline along the top edge, breathing so slowly it is barely seen while Claude works. Plain spinner words like Thinking and Reading, and one soft wooden tick after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 20,
       "opacity": 0.7
     },
     "roles": {
-      "accent": "#32a0c5",
-      "danger": "#cd605a",
-      "success": "#42b079",
-      "warning": "#d09945",
-      "pro": "#9675cc"
+      "accent": "#78a6d5",
+      "danger": "#cf7f7c",
+      "success": "#7cb48a",
+      "warning": "#d1aa6e",
+      "pro": "#ab91c9"
     },
     "modes": {
       "light": {
         "anchors": {
-          "surface-0": "#e0efef",
-          "surface-1": "#e7f3f3",
-          "surface-2": "#eef7f8",
-          "text-primary": "#182f34",
-          "text-secondary": "#314d52",
-          "text-muted": "#456267"
+          "surface-0": "#f4f7fa",
+          "surface-1": "#f7f9fc",
+          "surface-2": "#f9fbfd",
+          "text-primary": "#2a2d30",
+          "text-secondary": "#45484c",
+          "text-muted": "#5d6165"
         },
-        "bodyContrast": 11.9,
-        "mutedContrast": 5.6,
-        "pageLightness": 0.94
+        "bodyContrast": 12.9,
+        "mutedContrast": 5.8,
+        "pageLightness": 0.97
       },
       "dark": {
         "anchors": {
-          "surface-0": "#0e2628",
-          "surface-1": "#132b2d",
-          "surface-2": "#183032",
-          "surface-3": "#1d3538",
-          "text-primary": "#d3e6e6",
-          "text-secondary": "#afc6c7",
-          "text-muted": "#91acad"
+          "surface-0": "#202225",
+          "surface-1": "#25272a",
+          "surface-2": "#2a2c2f",
+          "surface-3": "#303235",
+          "text-primary": "#dde0e3",
+          "text-secondary": "#bbbec2",
+          "text-muted": "#a0a3a7"
         },
-        "bodyContrast": 12.2,
-        "mutedContrast": 6.6,
+        "bodyContrast": 12,
+        "mutedContrast": 6.3,
         "pageLightness": 0.25
       }
     }
   },
   {
-    "name": "phosphor",
+    "name": "purpura",
+    "numeral": "II",
+    "title": "Purpura",
+    "meaning": "purple",
+    "family": "essential",
+    "kin": [
+      "Dracula",
+      "Shades of Purple"
+    ],
+    "vibe": "velvet, vivid, nocturnal",
+    "contrast": "standard",
+    "accents": "vivid",
+    "tagline": "Velvet curtains at the edges of a dark violet stage, with bright glints in the folds.",
+    "story": "A theatre after the doors close. By night a blue violet page is framed by plum velvet curtains down both sides, a swagged valance across the top, and soft stage light glowing pink and cyan in the low corners. By day the same stage is pale lilac with orchid velvet. While Claude works the curtains sway a little on their rods, light ripples across the folds and small glints pulse in purple, pink, cyan, green and orange.",
+    "words": [
+      "Raising the curtain",
+      "Taking the stage",
+      "Rehearsing",
+      "Waiting in the wings",
+      "Setting the scene",
+      "Dimming the house"
+    ],
+    "alt": "Purple velvet curtains framing a dark stage with soft pink and cyan light in the corners",
+    "prompt": "Make me a Claude Code theme called Purpura: a theatre at night in dark purple. A blue violet charcoal page with heavy velvet curtains drawn as flat vertical bands down the far left and right edges, a swagged valance across the top, soft pink and cyan stage light low in the corners and a few small glints. Loud joyful accents in purple, pink, cyan, green and orange. A pale lilac page with orchid velvet for light mode. While Claude works the curtains sway slightly and the glints pulse. Theatrical spinner words, one low soft bell after long turns, and a slow dark organ pad as music.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.68
+    },
+    "roles": {
+      "accent": "#b167f7",
+      "danger": "#f84b7c",
+      "success": "#40d868",
+      "warning": "#fb8d41",
+      "pro": "#2ad5e5"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f2edfd",
+          "surface-1": "#f6f3ff",
+          "surface-2": "#faf8ff",
+          "text-primary": "#292344",
+          "text-secondary": "#474266",
+          "text-muted": "#605b80"
+        },
+        "bodyContrast": 12.9,
+        "mutedContrast": 5.5,
+        "pageLightness": 0.95
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#212033",
+          "surface-1": "#262539",
+          "surface-2": "#2a2a3e",
+          "surface-3": "#2f2f44",
+          "text-primary": "#e4e3f1",
+          "text-secondary": "#c6c4da",
+          "text-muted": "#aaa7c3"
+        },
+        "bodyContrast": 12.6,
+        "mutedContrast": 6.8,
+        "pageLightness": 0.25
+      }
+    }
+  },
+  {
+    "name": "indicum",
     "numeral": "III",
+    "title": "Indicum",
+    "meaning": "indigo",
+    "family": "essential",
+    "kin": [
+      "Tokyo Night",
+      "Night Owl"
+    ],
+    "vibe": "urban, late, focused",
+    "contrast": "standard",
+    "accents": "vivid",
+    "tagline": "A far city at 2am, flat blocks of towers low in the corners of a deep indigo page.",
+    "story": "A deep indigo navy page with a far city low in the two bottom corners, drawn as flat blocks with a lit side and a grid of tiny square windows. A few windows burn warm orange, a few cool cyan, and two antenna masts carry red lights. By day the same towers stand pale blue grey under a cool sky. While Claude works a few windows switch on and off slowly and the antenna lights pulse. When the answer is ready the city holds still.",
+    "words": [
+      "Night shift",
+      "Lights on",
+      "Still up",
+      "Working late",
+      "Holding the line",
+      "On watch"
+    ],
+    "alt": "Flat blocks of distant towers with small lit windows and red antenna lights in the corners of a navy page",
+    "prompt": "Make me a Claude Code theme called Indicum: a far city at 2am. A deep indigo navy page in dark mode and a cool pale blue grey page in light mode, with accents in soft electric blue, cyan, warm orange, mint and rose. Draw stacked flat rectangles of distant tower blocks low in the two bottom corners, each with a lit side and a grid of tiny square windows, and one or two thin antenna masts with red lights. Keep the middle a plain soft gradient. While Claude works let a few windows switch on and off slowly and the antenna lights pulse. Use short night shift spinner words and a soft low electronic blip after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.68
+    },
+    "roles": {
+      "accent": "#66a5ff",
+      "danger": "#ee6e91",
+      "success": "#5ed8a9",
+      "warning": "#f99549",
+      "pro": "#47d2e8"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#e8edf5",
+          "surface-1": "#edf2f8",
+          "surface-2": "#f2f6fb",
+          "text-primary": "#262f47",
+          "text-secondary": "#3e4862",
+          "text-muted": "#55607b"
+        },
+        "bodyContrast": 11.3,
+        "mutedContrast": 5.3,
+        "pageLightness": 0.94
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#171c33",
+          "surface-1": "#1b2139",
+          "surface-2": "#20263d",
+          "surface-3": "#262c44",
+          "text-primary": "#dadff1",
+          "text-secondary": "#bdc3d8",
+          "text-muted": "#a0a7be"
+        },
+        "bodyContrast": 12.6,
+        "mutedContrast": 7,
+        "pageLightness": 0.23
+      }
+    }
+  },
+  {
+    "name": "terra",
+    "numeral": "IV",
+    "title": "Terra",
+    "meaning": "earth",
+    "family": "essential",
+    "kin": [
+      "Gruvbox"
+    ],
+    "vibe": "warm, retro, grounded",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "Flat bands of brick, mustard, moss, teal and plum sweep out of two corners of a warm page.",
+    "story": "A 1970s print poster on a warm page. By night the page is a brown charcoal and the bands are earthy inks; by day it is a cream paperback and the same inks sit on it like a record sleeve. A sun sits in the top left and bottom right corners, ringed by flat bands with rounded ends, and a light speckle runs over the paper. While Claude works the bands sway a few degrees around their corner, and they hold still when the answer is ready.",
+    "words": [
+      "Taking it easy",
+      "Kicking back",
+      "Easy does it",
+      "Letting it ride",
+      "Spinning a record",
+      "Mellowing out"
+    ],
+    "alt": "Flat concentric bands in earthy colors sweeping out of two opposite corners of a warm page",
+    "prompt": "Make me a Claude Code theme called Terra: a warm retro page in the spirit of a 1970s print poster. A brown charcoal page by night and a cream paperback page by day. Flat concentric quarter circle bands in brick red, mustard, moss green, dusty teal and plum sweep out of the top left and bottom right corners around a small sun, with rounded ends and a light paper speckle, no gradients. Let the bands sway a few degrees around their corner while Claude works, keep the middle plain, use laid back spinner words, play one soft thumb piano note after long turns and a slow mellow electric piano loop while it works.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.72
+    },
+    "roles": {
+      "accent": "#4f8e98",
+      "danger": "#c3573f",
+      "success": "#7d9341",
+      "warning": "#c99a30",
+      "pro": "#a1638b"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f3e8d1",
+          "surface-1": "#f6eddb",
+          "surface-2": "#f9f3e5",
+          "text-primary": "#2f2619",
+          "text-secondary": "#4f4433",
+          "text-muted": "#5a4d3d"
+        },
+        "bodyContrast": 12.2,
+        "mutedContrast": 6.7,
+        "pageLightness": 0.93
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#2b2620",
+          "surface-1": "#302a23",
+          "surface-2": "#352e27",
+          "surface-3": "#3a332b",
+          "text-primary": "#ecdfc6",
+          "text-secondary": "#d3c5ac",
+          "text-muted": "#bcae96"
+        },
+        "bodyContrast": 11.4,
+        "mutedContrast": 6.9,
+        "pageLightness": 0.27
+      }
+    }
+  },
+  {
+    "name": "dulcis",
+    "numeral": "V",
+    "title": "Dulcis",
+    "meaning": "sweet",
+    "family": "essential",
+    "kin": [
+      "Monokai"
+    ],
+    "vibe": "bright, playful, sharp",
+    "contrast": "standard",
+    "accents": "vivid",
+    "tagline": "Candy colored confetti in the corners of a warm dark page.",
+    "story": "A flat page of warm olive dark with cut paper confetti gathered in the four corners: dots, short bars, quarter rings, triangles and squiggles in hot pink, lime, tangerine, sky blue and violet. The scatter thins to nothing toward the middle, so the words sit on a plain page. By day the page turns warm white and the paper takes deeper inks. While Claude works each piece bobs and turns on its own slow rhythm, and when the answer is ready they all hold still.",
+    "words": [
+      "Sprinkling",
+      "Unwrapping",
+      "Tossing confetti",
+      "Mixing colors",
+      "Sweetening",
+      "Cutting shapes"
+    ],
+    "alt": "Bright paper confetti scattered in the corners of a dark olive page",
+    "prompt": "Make me a Claude Code theme called Dulcis: candy colors on a warm dark page. An olive charcoal page in dark mode and a warm white one in light mode, with hot pink keywords, lime strings, violet literals and tangerine variables. Scatter flat cut paper confetti in the four corners (dots, short bars, quarter rings, triangles, squiggles) that thins to nothing toward the middle, with no gradients or blur. Let each piece bob and turn slowly while Claude works, use cheerful spinner words, and play one soft marimba note after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 18,
+      "opacity": 0.68
+    },
+    "roles": {
+      "accent": "#f85da5",
+      "danger": "#f75e51",
+      "success": "#98dc38",
+      "warning": "#ff971e",
+      "pro": "#b48df4"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f3f0e7",
+          "surface-1": "#f8f5ee",
+          "surface-2": "#faf8f2",
+          "text-primary": "#28271c",
+          "text-secondary": "#444337",
+          "text-muted": "#5c5c4e"
+        },
+        "bodyContrast": 13.2,
+        "mutedContrast": 6,
+        "pageLightness": 0.95
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#24231a",
+          "surface-1": "#29281f",
+          "surface-2": "#2e2d24",
+          "surface-3": "#333229",
+          "text-primary": "#e3e2d3",
+          "text-secondary": "#cacabb",
+          "text-muted": "#aead9e"
+        },
+        "bodyContrast": 12.1,
+        "mutedContrast": 7,
+        "pageLightness": 0.25
+      }
+    }
+  },
+  {
+    "name": "glacies",
+    "numeral": "VI",
+    "title": "Glacies",
+    "meaning": "ice",
+    "family": "essential",
+    "kin": [
+      "Nord"
+    ],
+    "vibe": "cool, clean, quiet",
+    "contrast": "low",
+    "accents": "muted",
+    "tagline": "Flat planes of cut ice stacked in two corners of a cool grey page.",
+    "story": "A calm page the color of cold air, blue grey by night and a frosty off white by day. In the top left and bottom right corners, large flat facets of ice lean on each other like the planes of a cut crystal, a few close tones apart, edged with hairlines. While Claude works a slow sheen of light crosses the facets, one plane at a time. When the answer is ready the light holds where it is.",
+    "words": [
+      "Cooling",
+      "Settling",
+      "Clearing",
+      "Freezing over",
+      "Holding still"
+    ],
+    "alt": "Flat faceted planes of pale ice in two opposite corners of a blue grey page",
+    "prompt": "Make me a Claude Code theme called Glacies: ice, calm and low contrast. A cool blue grey page in dark mode and a frosty off white in light mode, soft body text, frosted accents in glacier blue, pale teal, muted red, soft amber and dusty violet. In two opposite corners, stack large flat faceted polygons like the planes of cut ice, in a few close tones with hairline edges, and keep the middle plain. While Claude works let a slow sheen of light slide across the facets one plane at a time, use spare cold spinner words, and play one soft glassy ting after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.7
+    },
+    "roles": {
+      "accent": "#71add0",
+      "danger": "#c87976",
+      "success": "#78baac",
+      "warning": "#d4ad71",
+      "pro": "#a08dc3"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#e5ecf3",
+          "surface-1": "#ebf1f7",
+          "surface-2": "#f1f6fa",
+          "text-primary": "#36414d",
+          "text-secondary": "#4b5763",
+          "text-muted": "#5c6774"
+        },
+        "bodyContrast": 8.7,
+        "mutedContrast": 4.8,
+        "pageLightness": 0.94
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#242c35",
+          "surface-1": "#29313a",
+          "surface-2": "#2e363f",
+          "surface-3": "#343b44",
+          "text-primary": "#ccd6de",
+          "text-secondary": "#aeb9c2",
+          "text-muted": "#a0abb5"
+        },
+        "bodyContrast": 9.6,
+        "mutedContrast": 6,
+        "pageLightness": 0.29
+      }
+    }
+  },
+  {
+    "name": "sol",
+    "numeral": "VII",
+    "title": "Sol",
+    "meaning": "sun",
+    "family": "essential",
+    "kin": [
+      "Solarized"
+    ],
+    "vibe": "balanced, sunlit, measured",
+    "contrast": "low",
+    "accents": "muted",
+    "tagline": "A sundial drawn in fine lines, with a slow shadow crossing the hours.",
+    "story": "A sundial is drawn in thin lines from the top right corner: rings, hour marks and a long shadow cast by the gnomon. A smaller set of rings answers it from the bottom left. By day the lines are soft teal and bronze on warm cream, and by night the same drawing sits on a deep teal page, like one room at two hours. While Claude works the shadow crosses the hour marks very slowly, and it stops where it is when the answer is ready.",
+    "words": [
+      "Measuring",
+      "Counting the hours",
+      "Reading the shadow",
+      "Keeping time",
+      "Marking noon",
+      "Turning slowly"
+    ],
+    "alt": "Thin sundial rings and hour marks in two corners, with a long shadow line",
+    "prompt": "Make me a Claude Code theme called Sol: a sundial drawn as precise thin line geometry. Low contrast, a deep teal page by night and a warm cream page by day, with the same lightness steps between text levels in both. Draw concentric arcs and hour ticks radiating from one corner, a long thin gnomon shadow, and a small matching set of arcs in the opposite corner, lines only. Accents on an even wheel: yellow, orange red, magenta, blue and sea green, all muted. Let the shadow sweep very slowly across the hour marks while Claude works, keep the middle quiet, use spinner words about time and measure, and play one soft singing bowl tone after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.68
+    },
+    "roles": {
+      "accent": "#4498ca",
+      "danger": "#d36c6b",
+      "success": "#54ac8a",
+      "warning": "#c7ac4b",
+      "pro": "#a171c3"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f3ebd5",
+          "surface-1": "#f7f0dd",
+          "surface-2": "#faf5e6",
+          "text-primary": "#494230",
+          "text-secondary": "#5c5541",
+          "text-muted": "#6e6650"
+        },
+        "bodyContrast": 8.4,
+        "mutedContrast": 4.8,
+        "pageLightness": 0.94
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#0c333c",
+          "surface-1": "#153841",
+          "surface-2": "#1c3d45",
+          "surface-3": "#23424a",
+          "text-primary": "#c9d7db",
+          "text-secondary": "#b1c1c5",
+          "text-muted": "#9daeb3"
+        },
+        "bodyContrast": 9.2,
+        "mutedContrast": 5.9,
+        "pageLightness": 0.3
+      }
+    }
+  },
+  {
+    "name": "malva",
+    "numeral": "VIII",
+    "title": "Malva",
+    "meaning": "mallow",
+    "family": "essential",
+    "kin": [
+      "Catppuccin",
+      "Rosé Pine"
+    ],
+    "vibe": "soft, cozy, sweet",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "A cafe table from above, with a cup of milky coffee in one corner and a folded napkin in the other.",
+    "story": "A small cafe table seen from above, drawn in soft rounded shapes. A lavender cup on a peach saucer sits in one lower corner with a swirl of milk in the coffee, and a folded sage napkin with a spoon rests in the opposite upper corner, with a few crumbs and two sugar cubes nearby. By day the table is a milky latte with a rose tint, and by night a warm mauve charcoal. While Claude works the milk swirl turns slowly and thin curls of steam rise from the cup and fade. When the answer is ready the cup goes still.",
+    "words": [
+      "Stirring",
+      "Steeping",
+      "Warming up",
+      "Sipping slowly",
+      "Swirling the milk",
+      "Saving you a seat"
+    ],
+    "alt": "A coffee cup on a saucer and a folded napkin on a cafe table, seen from above",
+    "prompt": "Make me a Claude Code theme called Malva: a cozy cafe table seen from above. A warm mauve charcoal page by night and a milky latte page with a rose tint by day, with pastel accents in lavender, peach, sage, butter and rose. Draw in soft flat rounded shapes: a lavender cup on a peach saucer with a swirl of milk in one lower corner, a folded napkin with a spoon in the opposite upper corner, and a few crumbs. Keep the middle of the table clear. While Claude works let the milk swirl turn slowly and thin curls of steam rise and fade. Use small warm spinner words and a soft ceramic cup tap after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.68
+    },
+    "roles": {
+      "accent": "#ad93dc",
+      "danger": "#e08e97",
+      "success": "#83b386",
+      "warning": "#e2a074",
+      "pro": "#d0bc72"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f6e5de",
+          "surface-1": "#f9ebe5",
+          "surface-2": "#fbf1ec",
+          "text-primary": "#3d2a2f",
+          "text-secondary": "#54404a",
+          "text-muted": "#665156"
+        },
+        "bodyContrast": 10.9,
+        "mutedContrast": 6,
+        "pageLightness": 0.93
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#29212f",
+          "surface-1": "#2e2635",
+          "surface-2": "#332a3a",
+          "surface-3": "#382f3f",
+          "text-primary": "#e3dbe8",
+          "text-secondary": "#cbc2d0",
+          "text-muted": "#b6adbd"
+        },
+        "bodyContrast": 11.5,
+        "mutedContrast": 7.2,
+        "pageLightness": 0.26
+      }
+    }
+  },
+  {
+    "name": "atramentum",
+    "numeral": "IX",
+    "title": "Atramentum",
+    "meaning": "ink",
+    "family": "essential",
+    "kin": [
+      "GitHub High Contrast",
+      "Modus"
+    ],
+    "vibe": "stark, exact, printed",
+    "contrast": "high",
+    "accents": "vivid",
+    "tagline": "Black ink on white newsprint, with halftone dots in two corners.",
+    "story": "A printed page with no words on it. By day it is black ink on white newsprint, by night off white on near black. Two opposite corners hold fields of halftone dots that shrink toward the middle, a heavy rule and a thin rule run along the top like a masthead, and a registration cross sits in a corner. While Claude works the dots swell and shrink in a slow wave, and they hold still when the answer is ready.",
+    "words": [
+      "Setting type",
+      "Inking the plate",
+      "Pulling a proof",
+      "Locking the forme",
+      "Running the press"
+    ],
+    "alt": "Halftone dots in two corners of a plain printed page, with a rule along the top",
+    "prompt": "Make me a Claude Code theme called Atramentum: ink. High contrast for reading, black ink on white paper by day and off white on near black by night, neutrals with almost no tint, and strong clear blue, red, green, amber and violet accents. The scene is flat newsprint with no gradients or blur: fields of halftone dots in two opposite corners that shrink toward the middle, a heavy rule and a thin rule along the top like a masthead with no words, and a registration cross in a corner. While Claude works the dots swell and shrink in a slow wave. Use print shop spinner words and one soft typewriter key as the chime.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.75
+    },
+    "roles": {
+      "accent": "#1f5fd6",
+      "danger": "#d42c2c",
+      "success": "#1e7f45",
+      "warning": "#d08a00",
+      "pro": "#7a3fd1"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f8f8f6",
+          "surface-1": "#fbfbf9",
+          "surface-2": "#fdfdfc",
+          "text-primary": "#131312",
+          "text-secondary": "#2b2b29",
+          "text-muted": "#464644"
+        },
+        "bodyContrast": 17.5,
+        "mutedContrast": 8.9,
+        "pageLightness": 0.98
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#111211",
+          "surface-1": "#161716",
+          "surface-2": "#1b1c1b",
+          "surface-3": "#212220",
+          "text-primary": "#edece7",
+          "text-secondary": "#cfcec8",
+          "text-muted": "#adaca6"
+        },
+        "bodyContrast": 15.9,
+        "mutedContrast": 8.3,
+        "pageLightness": 0.18
+      }
+    }
+  },
+  {
+    "name": "fulgur",
+    "numeral": "X",
+    "title": "Fulgur",
+    "meaning": "lightning",
+    "family": "bold",
+    "kin": [
+      "Synthwave '84",
+      "Cyberpunk"
+    ],
+    "vibe": "electric, fast, neon",
+    "contrast": "high",
+    "accents": "vivid",
+    "tagline": "Neon circuit traces along the edges of a near black screen.",
+    "story": "A near black page with a blue-violet cast, wired at the edges. Thin neon traces run in from the sides and turn at right angles into small square pads and a chip. A row of chevrons points right at the top, a segmented level meter sits in the lower left and a fine perspective grid runs low in the lower right. By day the page is a pale cool grey and the neon is deepened, like the same city in daylight. While Claude works, short bright pulses race along the traces and the meter climbs and falls. When the answer is ready it all holds still.",
+    "words": [
+      "Routing",
+      "Overclocking",
+      "Patching in",
+      "Jacking the grid",
+      "Spiking",
+      "Rerouting"
+    ],
+    "alt": "Neon circuit traces, chevrons, a level meter and a perspective grid at the edges of a near black frame",
+    "prompt": "Make me a Claude Code theme called Fulgur: lightning, electric and neon. A near black page with a blue-violet cast and high contrast text. Neon accents in hot magenta, electric cyan, acid yellow, laser green and violet. Hard edged flat art at the edges only: thin circuit traces that turn at right angles into small square pads, a row of chevrons, a segmented level meter in a corner and a fine perspective grid low in another. By day a pale cool grey page with the same neon deepened. While Claude works, short pulses travel along the traces and the meter climbs and falls, with nothing that flashes. Keep the middle quiet, use clipped technical spinner words, and play a soft low synth zap after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 18,
+      "opacity": 0.7
+    },
+    "roles": {
+      "accent": "#22e3f2",
+      "danger": "#ff2f7e",
+      "success": "#3dfa78",
+      "warning": "#f2e33a",
+      "pro": "#a464ff"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f4f5fa",
+          "surface-1": "#f8f9fc",
+          "surface-2": "#fbfbfd",
+          "text-primary": "#14122a",
+          "text-secondary": "#2e2b48",
+          "text-muted": "#46435f"
+        },
+        "bodyContrast": 16.8,
+        "mutedContrast": 8.7,
+        "pageLightness": 0.97
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#0e0c1a",
+          "surface-1": "#131124",
+          "surface-2": "#18152b",
+          "surface-3": "#1d1a33",
+          "text-primary": "#f2effe",
+          "text-secondary": "#c9c5e6",
+          "text-muted": "#a7a3c8"
+        },
+        "bodyContrast": 17.1,
+        "mutedContrast": 8,
+        "pageLightness": 0.16
+      }
+    }
+  },
+  {
+    "name": "caementum",
+    "numeral": "XI",
+    "title": "Caementum",
+    "meaning": "concrete",
+    "family": "bold",
+    "kin": [],
+    "vibe": "raw, heavy, plain",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "Heavy concrete slabs stacked at the edges, with one small red square.",
+    "story": "Raw concrete in flat slabs. By night the page is a mid grey hall and the blocks at its edges cast hard dark shadows. By day the same blocks are pale board formed concrete with the marks of the planks still in them. While Claude works, a slab slides one step along the grid and stops, slowly, like a heavy door. When the answer is ready nothing moves.",
+    "words": [
+      "Pouring",
+      "Setting",
+      "Curing",
+      "Casting",
+      "Bracing",
+      "Stacking"
+    ],
+    "alt": "Grey concrete blocks with hard shadows stacked at the left and right edges, and one small red square",
+    "prompt": "Make me a Claude Code theme called Caementum: raw concrete in the brutalist manner. Neutral concrete greys with almost no tint, a mid dark grey page in dark mode and pale raw concrete in light mode, and one signal red as the only loud color. Heavy flat rectangular slabs stacked off the left and right edges like the corner of a building, thick dark outlines, hard offset shadows as solid darker shapes, the horizontal stripes of board formed concrete, square tie holes, and one small red square. No gradients, no curves, everything on a strict grid, a quiet middle for reading. While Claude works one or two slabs slide a single grid step and stop, slowly. Blunt one word spinner words, a dull knock on concrete after long turns, and the room tone of an empty concrete hall as the bed.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 18,
+      "opacity": 0.66
+    },
+    "roles": {
+      "accent": "#c8473c",
+      "danger": "#b04476",
+      "success": "#4f9a6a",
+      "warning": "#c49530",
+      "pro": "#7d7aa8"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#ece9e3",
+          "surface-1": "#f0eee9",
+          "surface-2": "#f4f3ef",
+          "text-primary": "#2a2826",
+          "text-secondary": "#3f3d39",
+          "text-muted": "#4f4d48"
+        },
+        "bodyContrast": 12.1,
+        "mutedContrast": 7,
+        "pageLightness": 0.93
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#2c2a27",
+          "surface-1": "#312f2c",
+          "surface-2": "#363431",
+          "surface-3": "#3b3936",
+          "text-primary": "#dddad5",
+          "text-secondary": "#c1beb8",
+          "text-muted": "#adaaa4"
+        },
+        "bodyContrast": 10.3,
+        "mutedContrast": 6.2,
+        "pageLightness": 0.29
+      }
+    }
+  },
+  {
+    "name": "forma",
+    "numeral": "XII",
+    "title": "Forma",
+    "meaning": "form",
+    "family": "bold",
+    "kin": [],
+    "vibe": "primary, geometric, optimistic",
+    "contrast": "standard",
+    "accents": "vivid",
+    "tagline": "Flat circles, squares and triangles in red, blue and yellow, set in two corners of a warm white page.",
+    "story": "Primary colors and pure geometry, in the spirit of the modernist design schools of the 1920s. By day a warm off white page holds a blue circle, a yellow square and a red quarter ring in the top left corner, and a red circle, a yellow triangle and a blue arc in the bottom right, tied together by thin black lines and small grids of dots. By night the page turns to charcoal and the same shapes deepen so the text stays easy to read. While Claude works the shapes turn or slide along straight lines one at a time, like a hanging mobile, and they hold still when the answer is ready.",
+    "words": [
+      "Composing",
+      "Squaring up",
+      "Drawing circles",
+      "Building",
+      "Setting the grid",
+      "Making"
+    ],
+    "alt": "A blue circle, a red circle, a yellow square and triangle and thin black lines in two corners of a pale page",
+    "prompt": "Make me a Claude Code theme called Forma, in the spirit of 1920s modernist design schools. A warm off white page in light mode and a charcoal page in dark mode. In the top left and bottom right corners place a few large flat shapes in a strong red, blue and yellow: a circle, a square, a triangle and a quarter ring, with thin black lines and a small grid of dots, balanced like a poster. No gradients or blur. While Claude works let one shape at a time turn or slide slowly along a straight path, like a mobile. Use blue for the accent, red for danger, yellow for warning, spinner words about making and building, and a soft xylophone note after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 18,
+      "opacity": 0.72
+    },
+    "roles": {
+      "accent": "#2f5fd0",
+      "danger": "#d63a2b",
+      "success": "#3a9a4e",
+      "warning": "#e5ad12",
+      "pro": "#8b52c8"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f2eee4",
+          "surface-1": "#f6f3ec",
+          "surface-2": "#faf8f3",
+          "text-primary": "#2a2823",
+          "text-secondary": "#3f3c34",
+          "text-muted": "#514e45"
+        },
+        "bodyContrast": 12.7,
+        "mutedContrast": 7.2,
+        "pageLightness": 0.95
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#252420",
+          "surface-1": "#2a2925",
+          "surface-2": "#2f2e29",
+          "surface-3": "#35342e",
+          "text-primary": "#e5e1d6",
+          "text-secondary": "#cbc6b9",
+          "text-muted": "#b6b1a4"
+        },
+        "bodyContrast": 11.9,
+        "mutedContrast": 7.3,
+        "pageLightness": 0.26
+      }
+    }
+  },
+  {
+    "name": "phosphor",
+    "numeral": "XIII",
     "title": "Phosphor",
     "meaning": "light-bringer",
+    "family": "bold",
+    "kin": [
+      "classic green terminals"
+    ],
+    "vibe": "humming, retro, late",
+    "contrast": "standard",
+    "accents": "muted",
     "tagline": "The soft glow of an old green screen, and the paper it printed on.",
     "story": "By night the page is a green-black screen with a soft glow pooled in its rounded corners, faint scanlines near the edges and the ghost of old lines burned into the glass. By day it is pale green printout paper with ruled bands and feed holes down both sides. While Claude works a slow sweep line crosses the screen, the corner glow breathes and the paper feeds up a little. When the answer is ready, everything holds still.",
     "words": [
@@ -132,6 +826,7 @@
     "alt": "A green glowing screen with rounded corners, and green ruled printout paper with feed holes",
     "prompt": "Make me a Claude Code theme called Phosphor: the glow of an old green monitor. Dark mode is a green-black screen with soft glow in the rounded corners, faint scanlines at the edges and one slow sweep line. Light mode is pale green ruled printout paper with feed holes down the sides that feeds up slowly while Claude works. Soft green-tinted text, spinner words about old screens and printers, and a quiet chime after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 18,
       "opacity": 0.66
@@ -174,242 +869,17 @@
     }
   },
   {
-    "name": "abyssus",
-    "numeral": "IV",
-    "title": "Abyssus",
-    "meaning": "the deep",
-    "tagline": "Deep blue water, with jellyfish glowing softly at the edges.",
-    "story": "Ocean blue in both modes. By night you are far below the surface, and jellyfish glow at the edges of the frame while specks of drifting matter hang in the dark. By day the water is shallow and pale, sun rays fall from the top edge and the same jellyfish show as faint pale shapes. While Claude works the jellyfish pulse and rise slowly, and the specks drift upward. When the answer is ready the water holds still.",
-    "words": [
-      "Sinking deeper",
-      "Drifting",
-      "Pulsing",
-      "Sounding the depths",
-      "Rising slowly"
-    ],
-    "alt": "Glowing jellyfish drifting in deep blue water",
-    "prompt": "Make me a Claude Code theme called Abyssus: the deep sea. Deep ocean blue in dark mode with softly glowing jellyfish at the outer edges and tiny drifting particles, pale sunlit shallow water in light mode with soft rays from the top. Keep the middle calm for reading. While Claude works the jellyfish pulse and drift upward and the particles rise. Spinner words about the deep, and a soft bubble sound after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 20,
-      "opacity": 0.7
-    },
-    "roles": {
-      "accent": "#2e9fc9",
-      "danger": "#cf6963",
-      "success": "#4ba280",
-      "warning": "#c59542",
-      "pro": "#9d78c6"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#e0f2fa",
-          "surface-1": "#e7f6fc",
-          "surface-2": "#eff9fe",
-          "text-primary": "#133040",
-          "text-secondary": "#304d5e",
-          "text-muted": "#476576"
-        },
-        "bodyContrast": 12,
-        "mutedContrast": 5.4,
-        "pageLightness": 0.95
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#052636",
-          "surface-1": "#0b2a3a",
-          "surface-2": "#122f3e",
-          "surface-3": "#183341",
-          "text-primary": "#d9e9f3",
-          "text-secondary": "#b5cbd8",
-          "text-muted": "#98b1bf"
-        },
-        "bodyContrast": 12.6,
-        "mutedContrast": 7,
-        "pageLightness": 0.25
-      }
-    }
-  },
-  {
-    "name": "nox",
-    "numeral": "V",
-    "title": "Nox",
-    "meaning": "night",
-    "tagline": "A clear night sky over low hills, with stars gathered at the edges.",
-    "story": "By night the sky is violet indigo, the stars gather toward the corners and a low line of hills rests in the bottom corners. By day it is the hour before sunrise: pale lavender, a thin moon near one corner and the last few stars. While Claude works the stars brighten and dim slowly and now and then a meteor crosses a corner. When the answer is ready the sky holds still.",
-    "words": [
-      "Stargazing",
-      "Counting stars",
-      "Waiting for dawn",
-      "Tracing the sky",
-      "Watching for meteors"
-    ],
-    "alt": "A night sky of stars over low hills",
-    "prompt": "Make me a Claude Code theme called Nox: a clear night sky. Violet indigo at night with stars gathered toward the corners and low hills in the bottom corners, pale lavender before sunrise with a thin moon and a few last stars. Keep the middle calm, let the stars brighten and dim slowly and a meteor cross a corner while Claude works, use spinner words about the night sky, and play a soft bell tone after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 20,
-      "opacity": 0.66
-    },
-    "roles": {
-      "accent": "#8388e0",
-      "danger": "#d46565",
-      "success": "#4ca77b",
-      "warning": "#d09945",
-      "pro": "#bc6cab"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#edeaf9",
-          "surface-1": "#f2f0fc",
-          "surface-2": "#f7f6fd",
-          "text-primary": "#292440",
-          "text-secondary": "#47445f",
-          "text-muted": "#57546d"
-        },
-        "bodyContrast": 12.5,
-        "mutedContrast": 6.1,
-        "pageLightness": 0.94
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#201f34",
-          "surface-1": "#242439",
-          "surface-2": "#29283f",
-          "surface-3": "#2e2d44",
-          "text-primary": "#dcdcee",
-          "text-secondary": "#bbbbd1",
-          "text-muted": "#a3a3bb"
-        },
-        "bodyContrast": 11.9,
-        "mutedContrast": 6.5,
-        "pageLightness": 0.25
-      }
-    }
-  },
-  {
-    "name": "vesper",
-    "numeral": "VI",
-    "title": "Vesper",
-    "meaning": "evening",
-    "tagline": "The last light of evening over a wide plain, with a sun half set at the edge.",
-    "story": "A wide plain at the end of the day. By day it is an early dusk in peach and rose. By night the sky turns plum, a magenta and amber afterglow lies low in the corners, and a sun sits half below the horizon. While Claude works, the lines of the plain glide slowly toward you and bands drift down the sun. When the answer is ready, the evening holds still.",
-    "words": [
-      "Settling",
-      "Fading to dusk",
-      "Following the horizon",
-      "Watching the afterglow",
-      "Waiting for the first star"
-    ],
-    "alt": "A plum evening sky over a plain of thin lines, with a sun half set in one corner",
-    "prompt": "Make me a Claude Code theme called Vesper: the last light of evening over a wide plain. A plum dusk in dark mode and a peach and rose early dusk in light mode, a magenta and amber afterglow low in the corners, a sun half set near one lower corner, and a perspective grid of thin lines in the bottom corners that glides slowly toward the viewer while Claude works. Keep the middle quiet, the accents muted, add spinner words about evening, and a soft chime after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 16,
-      "opacity": 0.7
-    },
-    "roles": {
-      "accent": "#c66ca1",
-      "danger": "#c86459",
-      "success": "#52a27a",
-      "warning": "#d09945",
-      "pro": "#8b80ca"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#f5e4eb",
-          "surface-1": "#f8eaf0",
-          "surface-2": "#fbf2f6",
-          "text-primary": "#3c2632",
-          "text-secondary": "#533947",
-          "text-muted": "#6a4f5d"
-        },
-        "bodyContrast": 11.3,
-        "mutedContrast": 5.9,
-        "pageLightness": 0.93
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#2a1c28",
-          "surface-1": "#2f212e",
-          "surface-2": "#352533",
-          "surface-3": "#3b2a39",
-          "text-primary": "#eee0ec",
-          "text-secondary": "#d6c4d3",
-          "text-muted": "#beaabc"
-        },
-        "bodyContrast": 12.7,
-        "mutedContrast": 7.5,
-        "pageLightness": 0.25
-      }
-    }
-  },
-  {
-    "name": "ignis",
-    "numeral": "VII",
-    "title": "Ignis",
-    "meaning": "fire",
-    "tagline": "A hearth at night, with embers glowing low in the corners and sparks rising at the edges.",
-    "story": "Warm charcoal brown at night, with a bed of coals in each bottom corner and their glow climbing the walls. By day it is ash and cream, a room lit by a fire in daylight, with only a soft ember tint low in the corners. While Claude works the sparks rise and fade along the edges and the coals breathe slowly. When the answer is ready the fire holds still.",
-    "words": [
-      "Kindling",
-      "Stoking the fire",
-      "Banking the coals",
-      "Tending the hearth",
-      "Warming up"
-    ],
-    "alt": "Glowing coals in the corners of a dark room, with sparks rising",
-    "prompt": "Make me a Claude Code theme called Ignis: a hearth at night. Warm charcoal brown in dark mode and ash and cream in light mode, glowing coals in the two bottom corners, sparks that rise along the outer edges while Claude works, spinner words about tending a fire, and a soft chime of a settling log after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 20,
-      "opacity": 0.68
-    },
-    "roles": {
-      "accent": "#d67f45",
-      "danger": "#c94f58",
-      "success": "#7f9f58",
-      "warning": "#c4a83e",
-      "pro": "#a77ab0"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#f0e7dd",
-          "surface-1": "#f4ede5",
-          "surface-2": "#f9f4ee",
-          "text-primary": "#2e231c",
-          "text-secondary": "#4e3f34",
-          "text-muted": "#65544a"
-        },
-        "bodyContrast": 12.5,
-        "mutedContrast": 5.9,
-        "pageLightness": 0.93
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#2a211c",
-          "surface-1": "#2f2520",
-          "surface-2": "#342a24",
-          "surface-3": "#3a2f28",
-          "text-primary": "#efe1d4",
-          "text-secondary": "#d3c0b0",
-          "text-muted": "#bfab9b"
-        },
-        "bodyContrast": 12.3,
-        "mutedContrast": 7.1,
-        "pageLightness": 0.26
-      }
-    }
-  },
-  {
     "name": "machina",
-    "numeral": "VIII",
+    "numeral": "XIV",
     "title": "Machina",
     "meaning": "machine",
+    "family": "bold",
+    "kin": [
+      "Cobalt"
+    ],
+    "vibe": "precise, cool, drafted",
+    "contrast": "standard",
+    "accents": "muted",
     "tagline": "An engineer's blueprint, with gears and a compass rose drawn in the corners.",
     "story": "By night the page is blueprint navy with a fine grid and pale drawings at the edges: meshed gears, a compass rose, arcs and dimension lines. By day it is cool drafting paper inked in blue. While Claude works the lines draw themselves again and the large gear turns slowly. When the answer is ready the drawing holds still.",
     "words": [
@@ -422,6 +892,7 @@
     "alt": "A blueprint with gears, arcs and a compass rose in the corners",
     "prompt": "Make me a Claude Code theme called Machina: an engineer's blueprint. Navy blueprint with a faint grid in dark mode and cool drafting paper with blue ink in light mode. Gears, arcs, dimension lines and a compass rose drawn in thin pale lines at the corners, a quiet middle for reading, lines that draw themselves and one gear that turns slowly while Claude works, spinner words about drafting, and a soft click after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 18,
       "opacity": 0.64
@@ -465,9 +936,14 @@
   },
   {
     "name": "aurum",
-    "numeral": "IX",
+    "numeral": "XV",
     "title": "Aurum",
     "meaning": "gold",
+    "family": "bold",
+    "kin": [],
+    "vibe": "warm, gilded, geometric",
+    "contrast": "standard",
+    "accents": "muted",
     "tagline": "Gold fans and sunbursts in the corners of a warm black room.",
     "story": "Black and gold in the manner of the 1920s. By night a warm near black page holds gold fans in the top corners and stepped sunbursts rising from the bottom ones. By day the same drawing is brass on ivory. While Claude works, slow glints of light travel along the gold lines, and they hold still when the answer is ready.",
     "words": [
@@ -480,6 +956,7 @@
     "alt": "Gold fans and stepped sunbursts in the corners of a dark frame",
     "prompt": "Make me a Claude Code theme called Aurum: black and gold in the spirit of 1920s decorative art. A warm near black page with gold fans, sunbursts and stepped lines in the four corners, ivory and brass for light mode, slow glints of light moving along the gold lines while Claude works, calm warm off white body text, spinner words about gold and brass, and a soft bell after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 18,
       "opacity": 0.66
@@ -522,10 +999,407 @@
     }
   },
   {
+    "name": "pluvia",
+    "numeral": "XVI",
+    "title": "Pluvia",
+    "meaning": "rain",
+    "family": "place",
+    "kin": [],
+    "vibe": "wet, quiet, late",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "Rain on a window, and a lit city through the glass.",
+    "story": "You look out through a tall window with a pane on each side. By day a grey drizzle washes the city pale behind a white painted frame. By night towers and street lights blur into soft discs of amber, blue and red, and drops bead on the dark glass. While Claude works the rain falls, the lights breathe and a few drops run down the pane. When the answer is ready it all holds still.",
+    "words": [
+      "Drizzling",
+      "Pooling",
+      "Pattering",
+      "Gathering clouds",
+      "Listening to the rain"
+    ],
+    "alt": "A rainy city at night seen through a window",
+    "prompt": "Make me a Claude Code theme called Pluvia: rain on a window. Slate blues in both modes. Show a window frame with a clear middle pane and two side panes, a blurred skyline low in the corners, street lights as soft out of focus discs with reflections on a wet road, and drops beaded on the side panes. Let thin rain fall and a few drops run down the glass while Claude works, keep the middle quiet, use spinner words about rain, and play a soft chime after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 18,
+      "opacity": 0.66
+    },
+    "roles": {
+      "accent": "#4a8fc7",
+      "danger": "#c9605a",
+      "success": "#4d9a78",
+      "warning": "#b98a3a",
+      "pro": "#8b78c2"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#e4e9ed",
+          "surface-1": "#ebeff2",
+          "surface-2": "#f3f5f7",
+          "text-primary": "#222d39",
+          "text-secondary": "#404e5d",
+          "text-muted": "#556373"
+        },
+        "bodyContrast": 11.4,
+        "mutedContrast": 5,
+        "pageLightness": 0.93
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#18212b",
+          "surface-1": "#1c2631",
+          "surface-2": "#202b37",
+          "surface-3": "#24303d",
+          "text-primary": "#dde5ee",
+          "text-secondary": "#bac6d3",
+          "text-muted": "#9dabbb"
+        },
+        "bodyContrast": 12.8,
+        "mutedContrast": 7,
+        "pageLightness": 0.24
+      }
+    }
+  },
+  {
+    "name": "aurora",
+    "numeral": "XVII",
+    "title": "Aurora",
+    "meaning": "dawn",
+    "family": "place",
+    "kin": [
+      "Nord"
+    ],
+    "vibe": "cold, vast, luminous",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "Northern lights over a snowy ridge on a long polar night.",
+    "story": "Polar teal in both modes. By night, green and violet curtains of light hang from the upper corners over a dark sky with a few stars, and low ridges of snow with small spruce trees sit in the bottom corners. By day the same lights are faint pastel veils over a pale dawn. While Claude works the curtains drift and slowly brighten and dim, and they hold still when the answer is ready.",
+    "words": [
+      "Shimmering",
+      "Drifting",
+      "Glowing",
+      "Waiting for the lights",
+      "Watching the sky"
+    ],
+    "alt": "Green and violet northern lights over a snowy ridge",
+    "prompt": "Make me a Claude Code theme called Aurora: northern lights over snow. Polar teal in both modes, slow green and violet curtains of light at the top corners, low snowy ridges with small spruce trees in the bottom corners, pale pastel veils by day, spinner words about the night sky, and a soft chime after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.7
+    },
+    "roles": {
+      "accent": "#32a0c5",
+      "danger": "#cd605a",
+      "success": "#42b079",
+      "warning": "#d09945",
+      "pro": "#9675cc"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#e0efef",
+          "surface-1": "#e7f3f3",
+          "surface-2": "#eef7f8",
+          "text-primary": "#182f34",
+          "text-secondary": "#314d52",
+          "text-muted": "#456267"
+        },
+        "bodyContrast": 11.9,
+        "mutedContrast": 5.6,
+        "pageLightness": 0.94
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#0e2628",
+          "surface-1": "#132b2d",
+          "surface-2": "#183032",
+          "surface-3": "#1d3538",
+          "text-primary": "#d3e6e6",
+          "text-secondary": "#afc6c7",
+          "text-muted": "#91acad"
+        },
+        "bodyContrast": 12.2,
+        "mutedContrast": 6.6,
+        "pageLightness": 0.25
+      }
+    }
+  },
+  {
+    "name": "abyssus",
+    "numeral": "XVIII",
+    "title": "Abyssus",
+    "meaning": "the deep",
+    "family": "place",
+    "kin": [],
+    "vibe": "deep, slow, weightless",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "Deep blue water, with jellyfish glowing softly at the edges.",
+    "story": "Ocean blue in both modes. By night you are far below the surface, and jellyfish glow at the edges of the frame while specks of drifting matter hang in the dark. By day the water is shallow and pale, sun rays fall from the top edge and the same jellyfish show as faint pale shapes. While Claude works the jellyfish pulse and rise slowly, and the specks drift upward. When the answer is ready the water holds still.",
+    "words": [
+      "Sinking deeper",
+      "Drifting",
+      "Pulsing",
+      "Sounding the depths",
+      "Rising slowly"
+    ],
+    "alt": "Glowing jellyfish drifting in deep blue water",
+    "prompt": "Make me a Claude Code theme called Abyssus: the deep sea. Deep ocean blue in dark mode with softly glowing jellyfish at the outer edges and tiny drifting particles, pale sunlit shallow water in light mode with soft rays from the top. Keep the middle calm for reading. While Claude works the jellyfish pulse and drift upward and the particles rise. Spinner words about the deep, and a soft bubble sound after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.7
+    },
+    "roles": {
+      "accent": "#2e9fc9",
+      "danger": "#cf6963",
+      "success": "#4ba280",
+      "warning": "#c59542",
+      "pro": "#9d78c6"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#e0f2fa",
+          "surface-1": "#e7f6fc",
+          "surface-2": "#eff9fe",
+          "text-primary": "#133040",
+          "text-secondary": "#304d5e",
+          "text-muted": "#476576"
+        },
+        "bodyContrast": 12,
+        "mutedContrast": 5.4,
+        "pageLightness": 0.95
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#052636",
+          "surface-1": "#0b2a3a",
+          "surface-2": "#122f3e",
+          "surface-3": "#183341",
+          "text-primary": "#d9e9f3",
+          "text-secondary": "#b5cbd8",
+          "text-muted": "#98b1bf"
+        },
+        "bodyContrast": 12.6,
+        "mutedContrast": 7,
+        "pageLightness": 0.25
+      }
+    }
+  },
+  {
+    "name": "nox",
+    "numeral": "XIX",
+    "title": "Nox",
+    "meaning": "night",
+    "family": "place",
+    "kin": [],
+    "vibe": "clear, still, open",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "A clear night sky over low hills, with stars gathered at the edges.",
+    "story": "By night the sky is violet indigo, the stars gather toward the corners and a low line of hills rests in the bottom corners. By day it is the hour before sunrise: pale lavender, a thin moon near one corner and the last few stars. While Claude works the stars brighten and dim slowly and now and then a meteor crosses a corner. When the answer is ready the sky holds still.",
+    "words": [
+      "Stargazing",
+      "Counting stars",
+      "Waiting for dawn",
+      "Tracing the sky",
+      "Watching for meteors"
+    ],
+    "alt": "A night sky of stars over low hills",
+    "prompt": "Make me a Claude Code theme called Nox: a clear night sky. Violet indigo at night with stars gathered toward the corners and low hills in the bottom corners, pale lavender before sunrise with a thin moon and a few last stars. Keep the middle calm, let the stars brighten and dim slowly and a meteor cross a corner while Claude works, use spinner words about the night sky, and play a soft bell tone after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.66
+    },
+    "roles": {
+      "accent": "#8388e0",
+      "danger": "#d46565",
+      "success": "#4ca77b",
+      "warning": "#d09945",
+      "pro": "#bc6cab"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#edeaf9",
+          "surface-1": "#f2f0fc",
+          "surface-2": "#f7f6fd",
+          "text-primary": "#292440",
+          "text-secondary": "#47445f",
+          "text-muted": "#57546d"
+        },
+        "bodyContrast": 12.5,
+        "mutedContrast": 6.1,
+        "pageLightness": 0.94
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#201f34",
+          "surface-1": "#242439",
+          "surface-2": "#29283f",
+          "surface-3": "#2e2d44",
+          "text-primary": "#dcdcee",
+          "text-secondary": "#bbbbd1",
+          "text-muted": "#a3a3bb"
+        },
+        "bodyContrast": 11.9,
+        "mutedContrast": 6.5,
+        "pageLightness": 0.25
+      }
+    }
+  },
+  {
+    "name": "vesper",
+    "numeral": "XX",
+    "title": "Vesper",
+    "meaning": "evening",
+    "family": "place",
+    "kin": [
+      "Rosé Pine"
+    ],
+    "vibe": "warm, fading, wide",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "The last light of evening over a wide plain, with a sun half set at the edge.",
+    "story": "A wide plain at the end of the day. By day it is an early dusk in peach and rose. By night the sky turns plum, a magenta and amber afterglow lies low in the corners, and a sun sits half below the horizon. While Claude works, the lines of the plain glide slowly toward you and bands drift down the sun. When the answer is ready, the evening holds still.",
+    "words": [
+      "Settling",
+      "Fading to dusk",
+      "Following the horizon",
+      "Watching the afterglow",
+      "Waiting for the first star"
+    ],
+    "alt": "A plum evening sky over a plain of thin lines, with a sun half set in one corner",
+    "prompt": "Make me a Claude Code theme called Vesper: the last light of evening over a wide plain. A plum dusk in dark mode and a peach and rose early dusk in light mode, a magenta and amber afterglow low in the corners, a sun half set near one lower corner, and a perspective grid of thin lines in the bottom corners that glides slowly toward the viewer while Claude works. Keep the middle quiet, the accents muted, add spinner words about evening, and a soft chime after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 16,
+      "opacity": 0.7
+    },
+    "roles": {
+      "accent": "#c66ca1",
+      "danger": "#c86459",
+      "success": "#52a27a",
+      "warning": "#d09945",
+      "pro": "#8b80ca"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f5e4eb",
+          "surface-1": "#f8eaf0",
+          "surface-2": "#fbf2f6",
+          "text-primary": "#3c2632",
+          "text-secondary": "#533947",
+          "text-muted": "#6a4f5d"
+        },
+        "bodyContrast": 11.3,
+        "mutedContrast": 5.9,
+        "pageLightness": 0.93
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#2a1c28",
+          "surface-1": "#2f212e",
+          "surface-2": "#352533",
+          "surface-3": "#3b2a39",
+          "text-primary": "#eee0ec",
+          "text-secondary": "#d6c4d3",
+          "text-muted": "#beaabc"
+        },
+        "bodyContrast": 12.7,
+        "mutedContrast": 7.5,
+        "pageLightness": 0.25
+      }
+    }
+  },
+  {
+    "name": "ignis",
+    "numeral": "XXI",
+    "title": "Ignis",
+    "meaning": "fire",
+    "family": "place",
+    "kin": [
+      "Gruvbox"
+    ],
+    "vibe": "warm, close, crackling",
+    "contrast": "standard",
+    "accents": "muted",
+    "tagline": "A hearth at night, with embers glowing low in the corners and sparks rising at the edges.",
+    "story": "Warm charcoal brown at night, with a bed of coals in each bottom corner and their glow climbing the walls. By day it is ash and cream, a room lit by a fire in daylight, with only a soft ember tint low in the corners. While Claude works the sparks rise and fade along the edges and the coals breathe slowly. When the answer is ready the fire holds still.",
+    "words": [
+      "Kindling",
+      "Stoking the fire",
+      "Banking the coals",
+      "Tending the hearth",
+      "Warming up"
+    ],
+    "alt": "Glowing coals in the corners of a dark room, with sparks rising",
+    "prompt": "Make me a Claude Code theme called Ignis: a hearth at night. Warm charcoal brown in dark mode and ash and cream in light mode, glowing coals in the two bottom corners, sparks that rise along the outer edges while Claude works, spinner words about tending a fire, and a soft chime of a settling log after long turns.",
+    "hasChime": true,
+    "hasBed": true,
+    "glass": {
+      "blur": 20,
+      "opacity": 0.68
+    },
+    "roles": {
+      "accent": "#d67f45",
+      "danger": "#c94f58",
+      "success": "#7f9f58",
+      "warning": "#c4a83e",
+      "pro": "#a77ab0"
+    },
+    "modes": {
+      "light": {
+        "anchors": {
+          "surface-0": "#f0e7dd",
+          "surface-1": "#f4ede5",
+          "surface-2": "#f9f4ee",
+          "text-primary": "#2e231c",
+          "text-secondary": "#4e3f34",
+          "text-muted": "#65544a"
+        },
+        "bodyContrast": 12.5,
+        "mutedContrast": 5.9,
+        "pageLightness": 0.93
+      },
+      "dark": {
+        "anchors": {
+          "surface-0": "#2a211c",
+          "surface-1": "#2f2520",
+          "surface-2": "#342a24",
+          "surface-3": "#3a2f28",
+          "text-primary": "#efe1d4",
+          "text-secondary": "#d3c0b0",
+          "text-muted": "#bfab9b"
+        },
+        "bodyContrast": 12.3,
+        "mutedContrast": 7.1,
+        "pageLightness": 0.26
+      }
+    }
+  },
+  {
     "name": "silva",
-    "numeral": "X",
+    "numeral": "XXII",
     "title": "Silva",
     "meaning": "forest",
+    "family": "place",
+    "kin": [
+      "Everforest"
+    ],
+    "vibe": "misty, green, hushed",
+    "contrast": "standard",
+    "accents": "muted",
     "tagline": "Pine woods in mist, with fireflies at the edges of the trees.",
     "story": "Deep forest green in both modes. By day the pines stand in morning fog, sage and pale green, each row softer than the one in front of it. By night they turn to dark layers in a green-black mist, and a few fireflies glow among the nearest trunks. While Claude works the mist drifts slowly sideways and the fireflies light and fade. When the answer is ready the woods hold still.",
     "words": [
@@ -538,6 +1412,7 @@
     "alt": "Rows of pine trees fading into mist, with a few fireflies",
     "prompt": "Make me a Claude Code theme called Silva: a pine forest in mist. Deep blue green in both modes, layered pine silhouettes at the left and right edges fading into fog, a quiet middle for the conversation, mist that drifts sideways and a few fireflies that glow while Claude works, spinner words about the woods, and a soft chime after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 18,
       "opacity": 0.63
@@ -581,9 +1456,14 @@
   },
   {
     "name": "scriptorium",
-    "numeral": "XI",
+    "numeral": "XXIII",
     "title": "Scriptorium",
     "meaning": "writing room",
+    "family": "place",
+    "kin": [],
+    "vibe": "studious, candlelit, patient",
+    "contrast": "standard",
+    "accents": "muted",
     "tagline": "A vellum page with painted vines in its margins, and a candle burning low at night.",
     "story": "By day the page is cream vellum, framed by vine scrollwork in red, blue and gold that curls in from the corners and runs down the margins. By night it is the same desk by candlelight: warm brown, the vines turned to dim gold lines, and a candle glowing in the lower left corner. While Claude works the candle light breathes slowly and a few motes of dust drift near the edges. When the answer is ready the room holds still.",
     "words": [
@@ -597,6 +1477,7 @@
     "alt": "A cream vellum page framed by painted vine scrollwork",
     "prompt": "Make me a Claude Code theme called Scriptorium: a monk's writing desk. Cream vellum in light mode with vine scrollwork in muted red, blue and gold around the edges, and the same room by candlelight in dark mode with the vines as dim gold lines. Keep the middle quiet for reading, let the candle glow breathe and dust drift while Claude works, use spinner words about copying a manuscript, and play a soft quill tap after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 18,
       "opacity": 0.72
@@ -639,68 +1520,15 @@
     }
   },
   {
-    "name": "meridies",
-    "numeral": "XII",
-    "title": "Meridies",
-    "meaning": "midday",
-    "tagline": "Sand dunes at noon under a large pale sun.",
-    "story": "Warm sand in light mode, with terracotta dunes low in the corners and a large pale sun in the upper corner. In dark mode it is the same desert at night: cool sand, a small moon, a few stars, and the dunes as dark shapes. While Claude works, thin lines of heat waver above the dunes and their shadows drift slowly. When the answer is ready the desert holds still.",
-    "words": [
-      "Basking",
-      "Shimmering",
-      "Drifting sand",
-      "Crossing dunes",
-      "Waiting out the heat"
-    ],
-    "alt": "Sand dunes under a large pale sun",
-    "prompt": "Make me a Claude Code theme called Meridies: the desert at midday. Warm sand colors in light mode, terracotta dunes low in the corners and a large pale sun toward one upper corner. In dark mode show the same desert at night under a moon. Keep the middle of the window calm, let heat shimmer waver above the dunes while Claude works, use spinner words about heat and sand, and play a soft chime after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 18,
-      "opacity": 0.7
-    },
-    "roles": {
-      "accent": "#008b96",
-      "danger": "#c3513d",
-      "success": "#4d8b50",
-      "warning": "#cd9219",
-      "pro": "#7d5fad"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#fae9dc",
-          "surface-1": "#fceee3",
-          "surface-2": "#fdf3eb",
-          "text-primary": "#3a261b",
-          "text-secondary": "#523d32",
-          "text-muted": "#6a5448"
-        },
-        "bodyContrast": 12.1,
-        "mutedContrast": 6,
-        "pageLightness": 0.94
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#28201a",
-          "surface-1": "#2d241f",
-          "surface-2": "#322924",
-          "surface-3": "#38302a",
-          "text-primary": "#e8ded2",
-          "text-secondary": "#c8bbaf",
-          "text-muted": "#b0a295"
-        },
-        "bodyContrast": 12.1,
-        "mutedContrast": 6.4,
-        "pageLightness": 0.25
-      }
-    }
-  },
-  {
     "name": "hortus",
-    "numeral": "XIII",
+    "numeral": "XXIV",
     "title": "Hortus",
     "meaning": "garden",
+    "family": "place",
+    "kin": [],
+    "vibe": "green, humid, bright",
+    "contrast": "standard",
+    "accents": "muted",
     "tagline": "A greenhouse in soft daylight, with broad leaves reaching in from the edges.",
     "story": "Leaf green in both modes. By day, light comes through the glass panes and split leaves, ferns and trailing vines lean in from the corners. By night it is the same conservatory under the moon, the leaves gone to deep green shapes against a pale glow. The leaves sway on slow, uneven rhythms while Claude works and hold still when the answer is ready.",
     "words": [
@@ -714,6 +1542,7 @@
     "alt": "Large leaves and ferns at the edges of a greenhouse",
     "prompt": "Make me a Claude Code theme called Hortus: a greenhouse. Leaf green in both modes, soft daylight through glass panes with large split leaves, ferns and trailing vines reaching in from the corners, the same room under moonlight at night, leaves that sway slowly while Claude works, spinner words about tending plants, and a soft chime of water dripping from leaves after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 18,
       "opacity": 0.7
@@ -756,126 +1585,17 @@
     }
   },
   {
-    "name": "nix",
-    "numeral": "XIV",
-    "title": "Nix",
-    "meaning": "snow",
-    "tagline": "Snow falling quietly past a bare branch, with drifts in the corners.",
-    "story": "A pale blue grey winter day, with soft drifts in the lower corners and a bare branch holding a line of snow. At night the same drifts turn pale blue and one warm lamp glows behind the branch. While Claude works the flakes come down slowly, drifting a little sideways, and they hold still when the answer is ready.",
-    "words": [
-      "Snowing",
-      "Drifting",
-      "Settling",
-      "Falling softly",
-      "Gathering on the branch"
-    ],
-    "alt": "Snow falling past a bare branch over drifts",
-    "prompt": "Make me a Claude Code theme called Nix: quiet snowfall. Icy, nearly neutral blue greys in both modes. By day soft drifts sit in the lower corners and a bare branch reaches in from the top right; by night the drifts turn pale blue under one warm lamp. Slow flakes fall with a slight sideways drift while Claude works and stay faint through the middle. Spinner words about snow, and a soft chime after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 20,
-      "opacity": 0.66
-    },
-    "roles": {
-      "accent": "#5685ad",
-      "danger": "#bd615b",
-      "success": "#4b9779",
-      "warning": "#c08e43",
-      "pro": "#8475b0"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#e9f0f4",
-          "surface-1": "#eef3f7",
-          "surface-2": "#f4f7fa",
-          "text-primary": "#262f36",
-          "text-secondary": "#434c52",
-          "text-muted": "#545c62"
-        },
-        "bodyContrast": 11.8,
-        "mutedContrast": 5.9,
-        "pageLightness": 0.95
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#1b2126",
-          "surface-1": "#20262b",
-          "surface-2": "#252b30",
-          "surface-3": "#2a3035",
-          "text-primary": "#d7dfe5",
-          "text-secondary": "#bac2c8",
-          "text-muted": "#a4acb1"
-        },
-        "bodyContrast": 12.1,
-        "mutedContrast": 7.1,
-        "pageLightness": 0.24
-      }
-    }
-  },
-  {
-    "name": "mare",
-    "numeral": "XV",
-    "title": "Mare",
-    "meaning": "sea",
-    "tagline": "A quiet shore seen from above, with foam washing in at the edges.",
-    "story": "By day you look down on pale sand and clear water that deepens toward the corners of the frame. By night it is the same shore in deep blue, with a soft path of moonlight on the water at the right edge. While Claude works, the lines of foam wash in and fall back on a slow rhythm. When the answer is ready, the sea holds still.",
-    "words": [
-      "Washing in",
-      "Drifting",
-      "Ebbing",
-      "Combing the shore",
-      "Waiting for the tide"
-    ],
-    "alt": "Pale sand and clear water seen from above, with foam at the edges",
-    "prompt": "Make me a Claude Code theme called Mare: a quiet shore seen from above. Pale sand and clear azure water by day, deep blue water with a path of moonlight by night. Bands of water and thin white foam wash in across the bottom corners and up the edges while Claude works, and the middle stays calm for reading. Spinner words about the sea, and a soft wave sound after long turns.",
-    "hasChime": true,
-    "glass": {
-      "blur": 20,
-      "opacity": 0.68
-    },
-    "roles": {
-      "accent": "#2f93b8",
-      "danger": "#c85f55",
-      "success": "#3f9a6e",
-      "warning": "#b8892f",
-      "pro": "#8a76c4"
-    },
-    "modes": {
-      "light": {
-        "anchors": {
-          "surface-0": "#e2f2f5",
-          "surface-1": "#e9f6f9",
-          "surface-2": "#f1fafb",
-          "text-primary": "#153036",
-          "text-secondary": "#2c474e",
-          "text-muted": "#405c62"
-        },
-        "bodyContrast": 12.1,
-        "mutedContrast": 6.2,
-        "pageLightness": 0.95
-      },
-      "dark": {
-        "anchors": {
-          "surface-0": "#10252c",
-          "surface-1": "#152a31",
-          "surface-2": "#1a2f36",
-          "surface-3": "#20343b",
-          "text-primary": "#d3e5ea",
-          "text-secondary": "#b3c8ce",
-          "text-muted": "#97aeb4"
-        },
-        "bodyContrast": 12.2,
-        "mutedContrast": 6.8,
-        "pageLightness": 0.25
-      }
-    }
-  },
-  {
     "name": "flos",
-    "numeral": "XVI",
+    "numeral": "XXV",
     "title": "Flos",
     "meaning": "flower",
+    "family": "place",
+    "kin": [
+      "Catppuccin"
+    ],
+    "vibe": "soft, light, spring",
+    "contrast": "standard",
+    "accents": "muted",
     "tagline": "A flowering branch in spring, reaching in from the corner.",
     "story": "Warm white with a blush of rose. By day a branch of pale blossom leans in from the top right corner, and a few loose petals rest near the edges. By night the same branch stands dark against a plum sky, its flowers pale under a low moon. While Claude works, petals let go and drift down the sides of the window, turning as they fall, and they stop when the answer is ready.",
     "words": [
@@ -888,6 +1608,7 @@
     "alt": "A flowering branch with petals drifting down",
     "prompt": "Make me a Claude Code theme called Flos: a blossoming branch in spring. Warm white with a blush tint by day and a plum night after dark, a flowering branch reaching in from the top right corner with pale blossoms, loose petals that drift down the edges and turn slowly while Claude works, spinner words about flowers opening, and a soft wind chime after long turns.",
     "hasChime": true,
+    "hasBed": true,
     "glass": {
       "blur": 20,
       "opacity": 0.72

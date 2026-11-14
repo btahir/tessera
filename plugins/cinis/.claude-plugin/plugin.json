@@ -1,0 +1,9 @@
+{
+  "name": "cinis",
+  "version": "1.0.0",
+  "description": "Cinis (ash). A plain graphite page with a faint lift of light in one corner.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}

@@ -3,7 +3,7 @@ import Install from '../../components/Install.astro'
 import Plate from '../../components/Plate.astro'
 import { REPO_URL, SITE_NAME, SITE_URL, abs } from '../../config'
 import Base from '../../layouts/Base.astro'
-import { ANCHOR_LABELS, ROLE_LABELS, THEMES, capitalize, modesOf, type Theme } from '../../lib/themes'
+import { ANCHOR_LABELS, LEVELS, ROLE_LABELS, THEMES, capitalize, kinLine, modesOf, vibeOf, wingOf, type Theme } from '../../lib/themes'
 
 export const getStaticPaths = () =>
   THEMES.map((theme, index) => ({
@@ -25,12 +25,17 @@ const { theme, previous, next } = Astro.props
 const modes = modesOf(theme)
 const both = modes.length === 2
 const path = `/${theme.name}/`
+const vibe = vibeOf(theme)
+const kin = kinLine(theme)
+const wing = wingOf(theme)
+const level = LEVELS[theme.contrast]
+const bodies = modes.map(mode => `${theme.modes[mode]!.bodyContrast}:1 in ${mode}`).join(' and ')
 
 const title = `${theme.title}, Plate ${theme.numeral} · Tessera theme for Claude Code`.length <= 60
   ? `${theme.title}, Plate ${theme.numeral} · Tessera theme for Claude Code`
   : `${theme.title}, Plate ${theme.numeral} · Tessera`
 const shareTitle = `${theme.title} · Plate ${theme.numeral} of Tessera`
-const description = `${theme.tagline} ${theme.title} (“${theme.meaning}”) is a free theme for the Claude Code desktop app, in ${both ? 'light and dark' : `${modes[0]} mode`}.`.slice(0, 200)
+const description = `${theme.tagline} ${theme.title} (“${theme.meaning}”) is a free ${level.name.toLowerCase()} theme for the Claude Code desktop app.`
 
 const ld = {
   '@context': 'https://schema.org',
@@ -43,8 +48,8 @@ const ld = {
   url: abs(path),
   image: abs(`/og/${theme.name}.png`),
   inLanguage: 'en',
-  genre: 'Theme',
-  keywords: ['Claude Code theme', theme.title, theme.meaning, ...theme.words].join(', '),
+  genre: wing ? `${wing.name} theme` : 'Theme',
+  keywords: ['Claude Code theme', theme.title, theme.meaning, ...vibe, ...theme.kin.map(name => `${name} alternative`)].join(', '),
   license: 'https://opensource.org/licenses/MIT',
   isAccessibleForFree: true,
   position: THEMES.indexOf(theme) + 1,
@@ -70,10 +75,12 @@ const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LAB
 >
   <article class="plate-page" data-plate={theme.name}>
     <header class="wrap head">
-      <nav class="crumbs mark" aria-label="Breadcrumb"><a href="/#plates">Tessera</a> <span aria-hidden="true">/</span> Plate {theme.numeral}</nav>
+      <nav class="crumbs mark" aria-label="Breadcrumb"><a href="/#plates">Tessera</a> <span aria-hidden="true">/</span> {wing && <><a href={`/#${wing.id}`}>{wing.name}</a> <span aria-hidden="true">/</span></>} Plate {theme.numeral}</nav>
       <h1>{theme.title}</h1>
       <p class="meaning">“{theme.meaning}”</p>
+      <p class="vibe">{vibe.map(word => <span>{word}</span>)}</p>
       <p class="tagline">{theme.tagline}</p>
+      {kin && <p class="kinline">{kin}, you will feel at home here.</p>}
     </header>
 
     <div class="wrap">
@@ -102,6 +109,14 @@ const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LAB
               </button>
             )
           }
+          {
+            theme.hasBed && (
+              <button class="button" type="button" data-bed data-event="Hear music" data-event-plate={theme.name} aria-pressed="false">
+                <span class="label">Play the music</span>
+                <audio preload="none" loop src={`/beds/${theme.name}.mp3`} />
+              </button>
+            )
+          }
           <p class="alt">{theme.alt}. Held still, as it is while you read.</p>
         </figcaption>
       </figure>
@@ -122,6 +137,11 @@ const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LAB
             <p class="note">After a turn of 20 seconds or more, {theme.title} plays a soft chime under a second and a half long.</p>
           ) : (
             <p class="note">{theme.title} has no chime. Long turns end in silence.</p>
+          )
+        }
+        {
+          theme.hasBed && (
+            <p class="note">With <code>/tessera music</code>, a quiet loop of its own plays while Claude works and stops when the answer is ready. It is off until you ask for it.</p>
           )
         }
       </section>
@@ -160,6 +180,7 @@ const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LAB
         </div>
 
         <p class="mark sub">Measured</p>
+        <p class="level"><strong>{level.name}.</strong> Body text is held at {level.range}. Here it measures {bodies}. {theme.accents === 'vivid' ? 'Vivid accents.' : 'Calm accents.'}</p>
         <table class="measured">
           <thead>
             <tr>
@@ -186,7 +207,7 @@ const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LAB
             </tr>
           </tbody>
         </table>
-        <p class="note">Contrast is the WCAG ratio. Body text is held between 9:1 and 14:1 and muted text at 4.5:1 or better. Lightness is OKLCH, where 0% is black and 100% is white.</p>
+        <p class="note">Contrast is the WCAG ratio. Muted text is held at {theme.contrast === 'high' ? '7:1' : '4.5:1'} or better. Lightness is OKLCH, where 0% is black and 100% is white.</p>
       </section>
     </div>
 
@@ -277,6 +298,27 @@ const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LAB
     reduce.addEventListener('change', syncReduce)
     syncReduce()
 
+    // The bed: the room's loop, as /tessera music plays it while Claude works.
+    const bed = showcase.querySelector<HTMLButtonElement>('[data-bed]')
+    const loop = bed?.querySelector('audio')
+    if (bed && loop) {
+      loop.volume = 0.5
+      const setBed = (on: boolean) => {
+        bed.setAttribute('aria-pressed', String(on))
+        const label = bed.querySelector('.label')
+        if (label) label.textContent = on ? 'Stop the music' : 'Play the music'
+      }
+      bed.addEventListener('click', () => {
+        if (loop.paused) {
+          void loop.play().then(() => setBed(true)).catch(() => setBed(false))
+        } else {
+          loop.pause()
+          setBed(false)
+        }
+      })
+      loop.addEventListener('pause', () => setBed(false))
+    }
+
     // The chime, at the gain the app plays it.
     const audio = chime?.querySelector('audio')
     if (chime && audio) {
@@ -319,6 +361,39 @@ const roles = Object.entries(theme.roles).map(([key, hex]) => ({ label: ROLE_LAB
     font-style: italic;
     font-size: clamp(22px, 2.4vw, 30px);
     color: var(--ink-2);
+  }
+
+  .vibe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.28em;
+    margin-top: 18px;
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.2;
+  }
+
+  .vibe span:not(:last-child)::after {
+    content: ',';
+  }
+
+  .vibe span:last-child::after {
+    content: '.';
+  }
+
+  .kinline {
+    margin-top: 6px;
+    color: var(--ink-3);
+    font-size: 16px;
+  }
+
+  .level {
+    color: var(--ink-2);
+  }
+
+  .level strong {
+    color: var(--ink);
+    font-weight: 600;
   }
 
   .tagline {

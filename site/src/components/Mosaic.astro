@@ -1,10 +1,12 @@
 ---
-// The hero mosaic: every plate as a small framed stone, held still. Images, not inline scenes,
+// The hero mosaic: every plate as a small framed stone, in a square grid, held still. Images, not inline scenes,
 // so the page carries each scene once (in the gallery). A stone moves on hover or focus.
 import { THEMES, modesOf } from '../lib/themes'
+
+const columns = Math.max(1, Math.ceil(Math.sqrt(THEMES.length)))
 ---
 
-<ul class="mosaic" aria-label="The plates">
+<ul class="mosaic" aria-label="The plates" style={`--columns:${columns}`}>
   {
     THEMES.map(theme => {
       const modes = modesOf(theme)
@@ -50,8 +52,8 @@ import { THEMES, modesOf } from '../lib/themes'
 <style>
   .mosaic {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(8px, 1vw, 14px);
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    gap: clamp(6px, 0.8vw, 12px);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -59,7 +61,7 @@ import { THEMES, modesOf } from '../lib/themes'
 
   a {
     display: block;
-    padding: 5px;
+    padding: 4px;
     background: var(--mat);
     border: 1px solid var(--rule);
     box-shadow: var(--shadow);

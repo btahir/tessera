@@ -1,0 +1,23 @@
+{
+  "name": "fulgur",
+  "numeral": "X",
+  "title": "Fulgur",
+  "meaning": "lightning",
+  "family": "bold",
+  "kin": ["Synthwave '84", "Cyberpunk"],
+  "vibe": "electric, fast, neon",
+  "tagline": "Neon circuit traces along the edges of a near black screen.",
+  "story": "A near black page with a blue-violet cast, wired at the edges. Thin neon traces run in from the sides and turn at right angles into small square pads and a chip. A row of chevrons points right at the top, a segmented level meter sits in the lower left and a fine perspective grid runs low in the lower right. By day the page is a pale cool grey and the neon is deepened, like the same city in daylight. While Claude works, short bright pulses race along the traces and the meter climbs and falls. When the answer is ready it all holds still.",
+  "modes": ["light", "dark"],
+  "contrast": "high",
+  "accents": "vivid",
+  "words": ["Routing", "Overclocking", "Patching in", "Jacking the grid", "Spiking", "Rerouting"],
+  "suffix": " >>",
+  "alt": "Neon circuit traces, chevrons, a level meter and a perspective grid at the edges of a near black frame",
+  "chime": "One short soft synth zap, low and rounded, a quick downward sweep with a gentle fade, warm analog tone, no harsh edge, under 1 second",
+  "bed": {
+    "kind": "music",
+    "prompt": "Dark slow synth bass pulse with a soft muted arpeggio on top, about 80 beats per minute, low and steady, no drums, instrumental"
+  },
+  "prompt": "Make me a Claude Code theme called Fulgur: lightning, electric and neon. A near black page with a blue-violet cast and high contrast text. Neon accents in hot magenta, electric cyan, acid yellow, laser green and violet. Hard edged flat art at the edges only: thin circuit traces that turn at right angles into small square pads, a row of chevrons, a segmented level meter in a corner and a fine perspective grid low in another. By day a pale cool grey page with the same neon deepened. While Claude works, short pulses travel along the traces and the meter climbs and falls, with nothing that flashes. Keep the middle quiet, use clipped technical spinner words, and play a soft low synth zap after long turns."
+}

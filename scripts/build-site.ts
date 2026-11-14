@@ -5,6 +5,7 @@
 //   site/src/data/themes.json          every theme's words, colors and measured contrast
 //   site/public/scenes/<name>.<mode>.svg   each scene with one mode forced
 //   site/public/chimes/<name>.mp3      each chime
+//   site/public/beds/<name>.mp3        each loop that plays while Claude works
 
 import { cp, mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
@@ -18,6 +19,7 @@ const themes = await loadThemes()
 await mkdir(join(siteDir, 'src/data'), { recursive: true })
 await mkdir(join(siteDir, 'public/scenes'), { recursive: true })
 await mkdir(join(siteDir, 'public/chimes'), { recursive: true })
+await mkdir(join(siteDir, 'public/beds'), { recursive: true })
 
 const data = []
 
@@ -43,17 +45,27 @@ for (const theme of themes) {
     await cp(theme.chimeFile, join(siteDir, 'public/chimes', `${theme.name}.mp3`))
   }
 
+  if (theme.bedFile !== null) {
+    await cp(theme.bedFile, join(siteDir, 'public/beds', `${theme.name}.mp3`))
+  }
+
   data.push({
     name: theme.name,
     numeral: theme.numeral,
     title: theme.title,
     meaning: theme.meaning,
+    family: theme.family,
+    kin: theme.kin,
+    vibe: theme.vibe,
+    contrast: theme.contrast,
+    accents: theme.accents,
     tagline: theme.tagline,
     story: theme.story,
     words: theme.words,
     alt: theme.alt,
     prompt: theme.prompt,
     hasChime: theme.chimeFile !== null,
+    hasBed: theme.bedFile !== null,
     glass: theme.glass,
     roles: theme.palette.roles,
     modes,

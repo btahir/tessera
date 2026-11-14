@@ -1,13 +1,31 @@
 {
   "name": "abyssus",
-  "numeral": "IV",
+  "numeral": "XVIII",
   "title": "Abyssus",
   "meaning": "the deep",
+  "family": "place",
+  "kin": [],
+  "vibe": "deep, slow, weightless",
   "tagline": "Deep blue water, with jellyfish glowing softly at the edges.",
   "story": "Ocean blue in both modes. By night you are far below the surface, and jellyfish glow at the edges of the frame while specks of drifting matter hang in the dark. By day the water is shallow and pale, sun rays fall from the top edge and the same jellyfish show as faint pale shapes. While Claude works the jellyfish pulse and rise slowly, and the specks drift upward. When the answer is ready the water holds still.",
-  "modes": ["light", "dark"],
-  "words": ["Sinking deeper", "Drifting", "Pulsing", "Sounding the depths", "Rising slowly"],
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "standard",
+  "accents": "muted",
+  "words": [
+    "Sinking deeper",
+    "Drifting",
+    "Pulsing",
+    "Sounding the depths",
+    "Rising slowly"
+  ],
   "alt": "Glowing jellyfish drifting in deep blue water",
   "chime": "One soft low bubble rising and breaking at the surface of calm water, muffled and round, a faint watery tail, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "Deep underwater ambience, a slow low rumble and soft distant bubbles, calm"
+  },
   "prompt": "Make me a Claude Code theme called Abyssus: the deep sea. Deep ocean blue in dark mode with softly glowing jellyfish at the outer edges and tiny drifting particles, pale sunlit shallow water in light mode with soft rays from the top. Keep the middle calm for reading. While Claude works the jellyfish pulse and drift upward and the particles rise. Spinner words about the deep, and a soft bubble sound after long turns."
 }

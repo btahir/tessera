@@ -1,0 +1,23 @@
+{
+  "name": "atramentum",
+  "numeral": "IX",
+  "title": "Atramentum",
+  "meaning": "ink",
+  "family": "essential",
+  "kin": ["GitHub High Contrast", "Modus"],
+  "vibe": "stark, exact, printed",
+  "tagline": "Black ink on white newsprint, with halftone dots in two corners.",
+  "story": "A printed page with no words on it. By day it is black ink on white newsprint, by night off white on near black. Two opposite corners hold fields of halftone dots that shrink toward the middle, a heavy rule and a thin rule run along the top like a masthead, and a registration cross sits in a corner. While Claude works the dots swell and shrink in a slow wave, and they hold still when the answer is ready.",
+  "modes": ["light", "dark"],
+  "contrast": "high",
+  "accents": "vivid",
+  "words": ["Setting type", "Inking the plate", "Pulling a proof", "Locking the forme", "Running the press"],
+  "suffix": " ¶",
+  "alt": "Halftone dots in two corners of a plain printed page, with a rule along the top",
+  "chime": "One soft key on an old manual typewriter, a single muted tap, close and dry, no bell, no music, under 1 second",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "A manual typewriter working quietly in another room, soft uneven keys, an occasional carriage return, muffled through a wall, no voices"
+  },
+  "prompt": "Make me a Claude Code theme called Atramentum: ink. High contrast for reading, black ink on white paper by day and off white on near black by night, neutrals with almost no tint, and strong clear blue, red, green, amber and violet accents. The scene is flat newsprint with no gradients or blur: fields of halftone dots in two opposite corners that shrink toward the middle, a heavy rule and a thin rule along the top like a masthead with no words, and a registration cross in a corner. While Claude works the dots swell and shrink in a slow wave. Use print shop spinner words and one soft typewriter key as the chime."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "indicum",
+  "numeral": "III",
+  "title": "Indicum",
+  "meaning": "indigo",
+  "family": "essential",
+  "kin": ["Tokyo Night", "Night Owl"],
+  "vibe": "urban, late, focused",
+  "tagline": "A far city at 2am, flat blocks of towers low in the corners of a deep indigo page.",
+  "story": "A deep indigo navy page with a far city low in the two bottom corners, drawn as flat blocks with a lit side and a grid of tiny square windows. A few windows burn warm orange, a few cool cyan, and two antenna masts carry red lights. By day the same towers stand pale blue grey under a cool sky. While Claude works a few windows switch on and off slowly and the antenna lights pulse. When the answer is ready the city holds still.",
+  "modes": ["light", "dark"],
+  "contrast": "standard",
+  "accents": "vivid",
+  "words": ["Night shift", "Lights on", "Still up", "Working late", "Holding the line", "On watch"],
+  "suffix": " .",
+  "alt": "Flat blocks of distant towers with small lit windows and red antenna lights in the corners of a navy page",
+  "chime": "One soft electronic blip, low and rounded, a warm sine tone with a slow gentle fade, quiet, no music, under 1 second",
+  "bed": {
+    "kind": "ambience",
+    "prompt": "A distant city hum at night heard from a high quiet room, low steady traffic far away, a faint air vent, no voices, no sirens, calm"
+  },
+  "prompt": "Make me a Claude Code theme called Indicum: a far city at 2am. A deep indigo navy page in dark mode and a cool pale blue grey page in light mode, with accents in soft electric blue, cyan, warm orange, mint and rose. Draw stacked flat rectangles of distant tower blocks low in the two bottom corners, each with a lit side and a grid of tiny square windows, and one or two thin antenna masts with red lights. Keep the middle a plain soft gradient. While Claude works let a few windows switch on and off slowly and the antenna lights pulse. Use short night shift spinner words and a soft low electronic blip after long turns."
+}

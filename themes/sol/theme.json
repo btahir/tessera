@@ -1,0 +1,35 @@
+{
+  "name": "sol",
+  "numeral": "VII",
+  "title": "Sol",
+  "meaning": "sun",
+  "family": "essential",
+  "kin": [
+    "Solarized"
+  ],
+  "vibe": "balanced, sunlit, measured",
+  "tagline": "A sundial drawn in fine lines, with a slow shadow crossing the hours.",
+  "story": "A sundial is drawn in thin lines from the top right corner: rings, hour marks and a long shadow cast by the gnomon. A smaller set of rings answers it from the bottom left. By day the lines are soft teal and bronze on warm cream, and by night the same drawing sits on a deep teal page, like one room at two hours. While Claude works the shadow crosses the hour marks very slowly, and it stops where it is when the answer is ready.",
+  "modes": [
+    "light",
+    "dark"
+  ],
+  "contrast": "low",
+  "accents": "muted",
+  "words": [
+    "Measuring",
+    "Counting the hours",
+    "Reading the shadow",
+    "Keeping time",
+    "Marking noon",
+    "Turning slowly"
+  ],
+  "suffix": " ·",
+  "alt": "Thin sundial rings and hour marks in two corners, with a long shadow line",
+  "chime": "One soft singing bowl tone, struck gently with a felt mallet, warm and round, a slow even fade, no music, under 1.5 seconds",
+  "bed": {
+    "kind": "music",
+    "prompt": "A warm soft ambient drone of slow sustained tones, calm and steady, like afternoon light in a quiet room, instrumental"
+  },
+  "prompt": "Make me a Claude Code theme called Sol: a sundial drawn as precise thin line geometry. Low contrast, a deep teal page by night and a warm cream page by day, with the same lightness steps between text levels in both. Draw concentric arcs and hour ticks radiating from one corner, a long thin gnomon shadow, and a small matching set of arcs in the opposite corner, lines only. Accents on an even wheel: yellow, orange red, magenta, blue and sea green, all muted. Let the shadow sweep very slowly across the hour marks while Claude works, keep the middle quiet, use spinner words about time and measure, and play one soft singing bowl tone after long turns."
+}

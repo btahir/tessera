@@ -1,0 +1,9 @@
+{
+  "name": "sol",
+  "version": "1.0.0",
+  "description": "Sol (sun). A sundial drawn in fine lines, with a slow shadow crossing the hours.",
+  "author": {
+    "name": "Tessera"
+  },
+  "license": "MIT"
+}
