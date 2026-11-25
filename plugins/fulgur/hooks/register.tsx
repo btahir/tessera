@@ -36,6 +36,17 @@ const lookOf = (theme: Theme): ThemeSetArgs => {
   return look
 }
 
+type Bed = { asset: string; signal: AbortSignal }
+
+// The room's own sound, looped quietly for as long as the turn runs.
+function playBed($: Engine, bed: Bed | undefined) {
+  if (bed === undefined) {
+    return
+  }
+
+  void $.audio.play({ asset: bed.asset }, { shouldLoop: true, gain: 0.3, signal: bed.signal }).catch(() => undefined)
+}
+
 const find = (name: unknown) => THEMES.find(theme => theme.name === name)
 
 const help = (current: Theme) => {
@@ -67,16 +78,18 @@ export const register: Register = on => {
     bed = undefined
   }
 
-  // The room's own sound, looped quietly for as long as the turn runs.
-  const startBed = ($: Engine) => {
+  // Which bed should play now, if any. Playing it is `playBed`, at the top of the file,
+  // because the engine lets `$` be handed only to top-level functions.
+  const nextBed = (): Bed | undefined => {
     stopBed()
 
     if (sound !== 'music' || current.bed === null || !isWorking) {
-      return
+      return undefined
     }
 
     bed = new AbortController()
-    void $.audio.play({ asset: current.bed }, { shouldLoop: true, gain: 0.3, signal: bed.signal }).catch(() => undefined)
+
+    return { asset: current.bed, signal: bed.signal }
   }
 
   on('session.start', async ($, e, next) => {
@@ -112,7 +125,7 @@ export const register: Register = on => {
     if (word === 'quiet' || word === 'sound' || word === 'music') {
       sound = word
       await $.store.set('sound', sound)
-      startBed($)
+      playBed($, nextBed())
 
       const said = {
         quiet: `${current.title} is quiet.`,
@@ -133,7 +146,7 @@ export const register: Register = on => {
     await $.store.set('theme', chosen.name)
     await $.theme.set(lookOf(chosen))
     $.ui.invalidate('ui.render')
-    startBed($)
+    playBed($, nextBed())
 
     return { text: `${chosen.title}. ${chosen.tagline}` }
   })
@@ -168,7 +181,7 @@ export const register: Register = on => {
     if (e.agentId === undefined) {
       isWorking = true
       $.ui.invalidate('ui.render')
-      startBed($)
+      playBed($, nextBed())
     }
 
     return next(e)

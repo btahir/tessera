@@ -12,7 +12,7 @@ import { join } from 'node:path'
 
 import { loadThemes, root, type LoadedTheme } from './themes'
 
-const VERSION = '1.0.0'
+const VERSION = '1.0.1'
 const pluginsDir = join(root, 'plugins')
 const runtimeDir = join(root, 'runtime')
 
