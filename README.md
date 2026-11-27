@@ -180,7 +180,7 @@ To add another, read [CONTRIBUTING.md](CONTRIBUTING.md). A theme that passes `ch
 
 ## Sponsor
 
-Tessera is sponsored by [ShipTiffin](https://shiptiffin.app), which hosts the gallery.
+Tessera is sponsored by [ShipTiffin](https://shiptiffin.com), which hosts the gallery.
 
 ## License
 

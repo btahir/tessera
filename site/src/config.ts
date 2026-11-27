@@ -8,7 +8,7 @@ export const SITE_URL = 'https://tessera.shiptiffin.app'
 
 export const SITE_NAME = 'Tessera'
 export const REPO_URL = `https://github.com/${REPO}`
-export const SPONSOR_URL = 'https://shiptiffin.app'
+export const SPONSOR_URL = 'https://shiptiffin.com'
 
 /** The plugin that carries every plate, and its command. */
 export const PLUGIN = 'tessera'
